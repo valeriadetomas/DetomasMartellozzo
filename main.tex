@@ -8,6 +8,7 @@
 
 
 
+
 \title{RASDproj}
 
 \date{Prof. Elisabetta Di Nitto  -  Anno 2021/2022}
@@ -35,6 +36,7 @@ Moreover it provides use cases and scenarios for the users involved.
 This document is meant as a contractual basis for the customer and the developer.
 
 \subsubsection{Goals}
+\label{section:1.1.1}
 \begin{itemize}
     \item  allow policy makers to retrieve information from farmers
 \item allow farmers to communicate with each other
@@ -44,7 +46,7 @@ This document is meant as a contractual basis for the customer and the developer
 \end{itemize}
 
 \subsection{Scope}
- The aim of the system is to acquire and combine data and information of farmers in Telengana. 
+The aim of the system is to acquire and combine data and information of farmers in Telengana. 
 The system will also provide support both to Telengana's policy makers and farmers thanks to 
 new innovative technologies.
 \newline
@@ -95,7 +97,8 @@ new innovative technologies.
 
 
 \section{Section 2}
-\subsection{Class Diagram}
+\subsection{Product Perspective}
+\subsubsection{Class Diagram}
 \begin{figure}[H]
     \begin{center}
     \includegraphics[width=1\textwidth]{images/UMLSW2_1.png}
@@ -103,13 +106,60 @@ new innovative technologies.
     \label{fig:dataaugmentation}
     \end{center}
 \end{figure}
-\subsection{State Diagram}
+\subsubsection{State Diagram}
+\newpage
 \subsection{Product Functions}
-- insertion of data of production
+This section provides a summary of the main features and 
+functions offered by the software regarding
+the goals already described in section ~\ref{section:1.1.1}
+
+In the followiing description it is important to highlight that both
+the policy makers and the farmers must be logged in.
+
+\subsubsection{Farmers insert data} 
+This functionality is accesible to all farmers. 
+The application provides a form in which the farmer can easily insert data of his/her production.
+The form is easy to fill in, in order to complete it the farmer need to indicate:
+\begin{itemize}
+    \item the \textbf{type of product}
+    \item the \textbf{amount} producted of the selected type
+    \item the \textbf{date} relative to the date of the production
+\end{itemize}
+If the farmer needs to add more than one type of product, 
+he/she can fill in the form multiple times.
+After completing the form the user is redirected to the homepage and the policy makers 
+can see the updated data.
+This functionality can be done more than once a day since the farmer can select the date, 
+so it is possible for him to insert data of past days too.
+
+
+
+\subsubsection{Farmers visualize data}
+This functionality lets the farmer visualize all the data 
+acquired from the system. The farmer can visualize all data on his homepage.\newline
+The application shows:
+\begin{itemize}
+    \item meteorological  short-term and long-term forecast
+    \item amount of water used by the farmer
+    \item humidity of soil 
+    \item personalized suggestions concerning specific crops to plant or specific 
+    fertilizers to use – based on their location and type of production
+\end{itemize}
+
+\textbf{should I say why he needs to visualize this data or how he uses it}
+\newline
+
+This functionality is always up to date, and does not need 
+any input from the farmer.
+It is used by the farmer only to have a genaral view of 
+his farm and on how could improve the productivity of his farm.
+
+
+
+\subsubsection{other functionalities}
 - identify how farmers are performing
-- farmers visualize relevant data 
-- insertion of thing (request, suggestion, answer) in the forum
 - interaction between farmers
+insertion of thing (request, suggestion, answer) in the forum
 
 \subsubsection{Scenario}
 
