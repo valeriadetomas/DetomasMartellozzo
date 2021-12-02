@@ -53,9 +53,7 @@ new innovative technologies.
 \\
 (non so se vogliamo mettere questo : The system consists in a back-end server application and in a web application front-end)
 \\
-
-
-    Thanks to the system policy makers are able to get a complete picture of the agriculture status in the whole state.
+Thanks to the system policy makers are able to get a complete picture of the agriculture status in the whole state.
     In order to do this,  Dreams provides information that makes them able to give incentives to those farmers who are performing well and keep track of those who needs help.
     The farmers have access to a forum on which they are able to communicate with other farmers, a forum to spread useful suggestions and to request for help to those who are having a harder time.
     The application provides a personalized page for each farmer in which they can find, based on his location and type of production, specific advice, meteorological forecasts and the condition of the soil.
@@ -97,7 +95,7 @@ new innovative technologies.
 
 
 
-\section{Section 2}
+\section{Overall Description}
 \subsection{Product Perspective}
 \subsubsection{Class Diagram}
 \begin{figure}[H]
@@ -131,15 +129,16 @@ new innovative technologies.
 \end{figure}
 \newpage
 \subsection{Product Functions}
+\label{subsection:2.2}
 This section provides a summary of the main features and 
 functions offered by the software regarding
 the goals already described in section ~\ref{section:1.1.1}
 
-In the followiing description it is important to highlight that both
+In the following description it is important to highlight that both
 the policy makers and the farmers must be logged in.
 
 \subsubsection{Farmers insert data} 
-This functionality is accesible to all farmers. 
+This functionality is accessible to all farmers. 
 The application provides a form in which the farmer can easily insert data of his/her production.
 The form is easy to fill in, in order to complete it the farmer need to indicate:
 \begin{itemize}
@@ -153,6 +152,7 @@ After completing the form the user is redirected to the homepage and the policy 
 can see the updated data.
 This functionality can be done more than once a day since the farmer can select the date, 
 so it is possible for him to insert data of past days too.
+This operation can be repeated more than once a day since the farmer can select the date, so it is possible for him/her to insert data of past days too.
 
 
 
@@ -168,33 +168,33 @@ The application shows:
     fertilizers to use – based on their location and type of production
 \end{itemize}
 
-\textbf{should I say why he needs to visualize this data or how he uses it}
-\
+\textbf{Should I say why he needs to visualize this data or how he uses it}
+
 
 This functionality is always up to date, and does not need 
 any input from the farmer.
-It is used by the farmer only to have a genaral view of 
-his farm and on how could improve the productivity of his farm.
+It is used by the farmer only to have a general view of 
+his farm and on how he could improve the productivity of his farm.
 
 
 
 \subsubsection{Identify how farmers are performing}
 The main features of the policy makers is to evaluate the work of each Farmer. 
-In order to do that, they periodically analyse each farm page: 
+In order to do that, they periodically analyze each farm page: 
 the system allows them to visualize all the data in those pages 
 (but not to modify it).
 The analysis takes place twice a month.
 With this analysis they classify the workers in two different way:
 \begin{itemize}
-    \item GOOD farmer : those how have been able to produce a significant amount of product with low resources (weather), despite bad weather in that period
+    \item GOOD farmer : those how have been able to produce a significant amount of product with low resources, despite bad weather in that period.
     \item BAD farmer : those who did not produce much.
 \end{itemize}
 Policy makers inform each farmer the result they have achieved with a notification: 
 \begin{itemize}
-    \item to the GOOD farmer in the message is specified a special 
-    incentive (an amount of money) they will receive as an award and also a request to submit 
-    from their personal web page some advices they have that could be useful to the others. 
-    \item To the BAD farmers is asked to submit (also by their personal web page) an explicitly request of help specifying the problems they had.
+    \item GOOD farmers receive a special 
+    incentive, and also a request to submit 
+    from their personal web page some advice that could be useful to the others. 
+    \item To BAD farmers is asked to submit an explicit request of help specifying the problems they had.
 \end{itemize}
 The system has a specific web page that allows all 
 the users to look at a map of the area in which are 
@@ -214,15 +214,31 @@ the policy makers
 by their home page, he can ask informally an advice by sending a message 
 in the Forum.
 It is not necessary to be a good farmer in order to answer someone elses 
-message. 
-
-and all the messages are visible to everyone and 24h. 
-It is an online application so in order to read or write 
-on this page is necessary an internet connection.
+message. All the messages are visible to everyone and 24h. 
+Since it is an online application an internet connection is required to read or write 
+on this page.
 
 
 
-\subsubsection{Scenario}
+\subsection{Scenario}
+
+\subsection{User Characteristics}
+Dream has two different custumers that need to be 
+distinguished in order to provide the various 
+features specified in subsection ~\ref{subsection:2.2}. 
+We give for granted that our users have interent access.
+\subsubsection{Farmer}
+\subsubsection{Policy Maker}
+
+
+\subsection{Assumptions, Dependencies and Constraints}
+\textbf{we focus on any limitation we should face but also the domain assumption 
+(what we should assume in order for our system to offer the service as expected, 
+what the external environment in order to fulfill our general goals)}
+
+\section{Specific Requirements}
+
+\section{Formal Analysis using Alloy}
 
 
 \end{document}
