@@ -225,18 +225,18 @@ on this page.
 
 
 \subsection{User Characteristics}
-Dream has two different custumers that need to be 
+Dream has two different customers that need to be 
 distinguished in order to provide the various 
 features specified in subsection ~\ref{subsection:2.2}.
 \subsubsection{Farmer}
 - Can register on Dream in order to be recognized as farmer.\\
-- Must login on the website to use the services offered.\\
+- Must log in on the website to use the services offered.\\
 - Can discuss with other farmers.\\
 - Is able to insert data about their daily production. \\
 - Can ask for help to other farmers or to policy makers.\\
 - Can retrieve data regarding weather forecast, water irrigation system or humidity of soil.\\
-- Can search advice of different products.\\
-- Can see whether their performance is identified as good or bad.
+- Can look for advice of several products.\\
+- Can check whether their performance is identified as good or bad.
 \subsubsection{Policy Maker}
 - Already has the credential to access to the system.\\
 - Must login to Dream to benefit of its services.\\
@@ -275,8 +275,47 @@ Moreover it focuses on the limitations that the system could face.
 
 
 \section{Specific Requirements}
+\subsubsection{External Interface Requirements}
+
+\subsubsection{User Interfaces}
+qui ci vanno tutti i mockups con descrizione
+
+\subsubsection{Hardware Interfaces}
+The application does not need any specific hardware requirements. 
+
+\subsubsection{Software Interfaces}
+The web app requires a computer with a web browser installed and connected to 
+The system has to rely on a DBMS API. It allows the management of all the data the system 
+needs in order to provide its functionalities, described in subsection ~\ref{subsection:2.2}.
+
+\subsubsection{Communication Interfaces}
+All the communications between users and Dream website are made via HTTPS.
+
+\subsection{Functional Requirements}
+\subsubsection{Use Cases}
+\subsubsection{Requirements}
+\subsection{Performance Requirements}
+The system serves its user with a web application. All the computations will take place on the server side, 
+thus the app is meant to be lightweighted. Moreover the load in the night is expected to be really low.
+There are no problems about reliability. The insertion of new data requires a quick response in order to store 
+it in the system.
+
+\subsection{Design Constraints}
+\subsubsection{Standards Compliance}
+The only standard that needs to be highlighted here is the interaction with the database. It is important that the information are stored 
+in a standardized form. In such manner, it iseasier to memorize and retrieve data.
+
+\subsubsection{Any Other Constraints}
+\subsection{Software System Attributes}
+\subsubsection{Reliability}
+\subsubsection{Availability}
+\subsubsection{Security}
+\subsubsection{Maintanability}
+\subsubsection{Portability}
+
 
 \section{Formal Analysis using Alloy}
 
+\section{Effort Spent}
 
 \end{document}
