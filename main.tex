@@ -292,6 +292,7 @@ needs in order to provide its functionalities, described in subsection ~\ref{sub
 All the communications between users and Dream website are made via HTTPS.
 
 \subsection{Functional Requirements}
+\subsubsection{Use Cases}
 \subsubsection{Requirements}
 \textbf{R1} the system must allow farmers to register\\
 \textbf{R2} the system must allow farmers to log in\\
@@ -324,9 +325,6 @@ All the communications between users and Dream website are made via HTTPS.
 \textbf{R29} the system must allow Policy Makers to send notification to the farmers\\
 \textbf{R30} the system must allow Policy Makers to receive request of help by the farmers\\
 
-
-\subsubsection{Use Cases}
-\subsubsection{Requirements}
 \subsection{Performance Requirements}
 The system serves its user with a web application. All the computations will take place on the server side, 
 thus the app is meant to be lightweighted. Moreover the load in the night is expected to be really low.
@@ -336,15 +334,38 @@ it in the system.
 \subsection{Design Constraints}
 \subsubsection{Standards Compliance}
 The only standard that needs to be highlighted here is the interaction with the database. It is important that the information are stored 
-in a standardized form. In such manner, it iseasier to memorize and retrieve data.
+in a standardized form. In such manner, it is easier to memorize and retrieve data.
+
 
 \subsubsection{Any Other Constraints}
+Interaction between Dream and users needs to consider also regulatory policies.
+As a matter of fact the application asks and retrieves data of each farmer.
+More information about security and privacy will be provided in the section~\ref{subsubsection:3.4.3}
+
+
 \subsection{Software System Attributes}
+
 \subsubsection{Reliability}
+The system must prevent any failure in order to guarantee continuity. 
+Simultaneous accesses are expected to work, especially in the afternoon when users are expectd to insrt and retrieve more information.
+
 \subsubsection{Availability}
+It is expected that the system has the lowest downtime possible. 
+The system is available with a minimum time of 96\%, 
+so that it about 14 days a year of downtime are allowed.
+
+
 \subsubsection{Security}
+\label{subsubsection:3.4.3}
+
+
 \subsubsection{Maintanability}
+The web application requires ordinary maintenance for improvements and in order to fix potential bugs. 
+It is going to be scheduled at local night time, when user traffic is the lowest.
+Moreover the system must be designed in a way that allows future addition of features.
+
 \subsubsection{Portability}
+
 
 
 \section{Formal Analysis using Alloy}
