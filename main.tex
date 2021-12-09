@@ -5,6 +5,9 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{caption}
 
 
 
@@ -291,50 +294,139 @@ needs in order to provide its functionalities, described in subsection ~\ref{sub
 \subsubsection{Communication Interfaces}
 All the communications between users and Dream website are made via HTTPS.
 
+\newpage
+
 \subsection{Functional Requirements}
 \subsubsection{Use Case Diagram}
 \subsubsection{Use Cases Description ad Sequence Diagram}
 \begin{enumerate}
-    \item Farmer registration\\
-    \textbf{here the use case tabel}
-    \begin{figure}[H]
+    \item \textbf{Farmer Registration} 
+        \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+            \toprule
+            \textbf{Name} & \textbf{Farmer Registration} \\
+            \midrule
+            \textbf{Actors} & Farmer \\
+            \midrule
+            \textbf{Entry conditions} & The web application has started\\
+            \midrule
+            \textbf{Flow of events} & 
+            \begin{enumerate}
+                \item The farmer wants to sign up
+                \item The farmer inserts email, name, password, farm's name and farm's position 
+                \item The farmer clicks submit
+                \item The system checks if email is unique and if all the form is correctly fill up 
+                \item The system inserts the information in the data base
+            \end{enumerate} \\
+            \midrule
+            \textbf{Exit conditions} & The farmer is signed up\\
+            \midrule
+            \textbf{Exceptions} & 
+            \begin{itemize}
+                \item If the farmer did not insert data correctly the system will send an alert and let the user do that again
+                \item If the email is already present in the database the system will send an alert saying that the email already exists
+            \end{itemize} \\
+            \bottomrule
+            \caption{\emph{Farmer Registration} use case description}
+        \end{longtable}
+        
+            \begin{figure}[H]
+                \begin{center}
+                \includegraphics[width=0.7\textwidth]{sequence/FarmerRegistration.png}
+                \caption{\emph{Farmer Registration} sequence diagram}
+                \label{fig:sequence1}
+                \end{center}
+            \end{figure}
+
+        \item \textbf{Farmer Login}
+        \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+            \toprule
+            \textbf{Name} & \textbf{Farmer Login} \\
+            \midrule
+            \textbf{Actors} & Farmer \\
+            \midrule
+            \textbf{Entry conditions} & The web application has started\\
+            \midrule
+            \textbf{Flow of events} & 
+            \begin{enumerate}
+                \item The farmer wants to log in
+                \item The farmer inserts email and password
+                \item The farmer clicks submit
+                \item The system checks if the credentials are correct
+                \item The system notifies the farmer about the correct login
+            \end{enumerate} \\
+            \midrule
+            \textbf{Exit conditions} & The farmer has logged in\\
+            \midrule
+            \textbf{Exceptions} & 
+            \begin{itemize}
+                \item If the system does not recognize the email it will send and alert to the farmer saying that the email inserted is wrong
+                \item If the password is not correct the system will notify the farmer
+            \end{itemize} \\
+            \bottomrule
+            \caption{\emph{Farmer Login} use case description}
+        \end{longtable}
+        
+        \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequence/FarmerRegistration.png}
-        \caption{Update Farmer page.}
-        \label{fig:state1}
+        \includegraphics[width=0.5\textwidth]{sequence/FarmerLogin.png}
+        \caption{\emph{Farmer Login} sequence diagram}
+        \label{fig:sequence2}
         \end{center}
-    \end{figure}
-    \item Farmer login
-    \begin{figure}[H]
-        \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequence/FarmerLogin.png}
-        \caption{Update Farmer page.}
-        \label{fig:state1}
+        \end{figure}
+
+
+        \item Farmer send a message on the Forum
+        \item \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+            \toprule
+            \textbf{Name} & \textbf{Farmer sends a message on the forum} \\
+            \midrule
+            \textbf{Actors} & Farmer \\
+            \midrule
+            \textbf{Entry conditions} & The farmer has logged in\\
+            \midrule
+            \textbf{Flow of events} & 
+            \begin{enumerate}
+                \item The farmer wants to send a message
+                \item The farmer clicks on forum button
+                \item The system send the ser to the forum page
+                \item The farmer inserts the message 
+                \item The farmer clicks on send message
+                \item The system inserts the message into the database 
+            \end{enumerate} \\
+            \midrule
+            \textbf{Exit conditions} & The farmer's message is published\\
+            \midrule
+            \textbf{Exceptions} & 
+            \begin{itemize}
+                \item If the message body is empty the system shows an error alert
+            \end{itemize} \\
+            \bottomrule
+            \caption{\emph{Farmer message} use case description}
+        \end{longtable}
+        \begin{figure}[H]
+            \begin{center}
+            \includegraphics[width=0.6\textwidth]{sequence/messageOnForum.png}
+            \caption{\emph{Farmer message} sequence diagram}
+            \label{fig:sequence3}
         \end{center}
-    \end{figure}
-    \item Farmer send a message on the Forum
-    \begin{figure}[H]
-        \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequence/messageOnForum.png}
-        \caption{Update Farmer page.}
-        \label{fig:state1}
-        \end{center}
-    \end{figure}
+        \end{figure}
+
     \item Find a farmer on the Map\\
     \textbf{the farmers can only see the map with all the farm's, not if one is good or bad!}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/VisializeMap.png}
         \caption{Update Farmer page.}
-        \label{fig:state1}
+        \label{fig:state4}
         \end{center}
     \end{figure}
+    
     \item Find farm’s information
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/FarmInformation.png}
         \caption{Update Farmer page.}
-        \label{fig:state1}
+        \label{fig:state5}
         \end{center}
     \end{figure}
     \item Submit a request of help\\
@@ -343,7 +435,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/HelpRequest.png}
         \caption{Update Farmer page.}
-        \label{fig:state1}
+        \label{fig:state6}
         \end{center}
     \end{figure}
     \item Submit an advice
@@ -351,7 +443,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/AdviceSubmit.png}
         \caption{Update Farmer page.}
-        \label{fig:state1}
+        \label{fig:state7}
         \end{center}
     \end{figure}
     \item Visualize notifications
@@ -359,7 +451,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/SeeNotifications.png}
         \caption{Update Farmer page.}
-        \label{fig:state1}
+        \label{fig:state8}
         \end{center}
     \end{figure}
     \item Policy Maker login
@@ -367,7 +459,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/PolicyMakerLogin.png}
         \caption{Update Farmer page.}
-        \label{fig:state1}
+        \label{fig:state9}
         \end{center}
     \end{figure}
     \item Find a farm's page
