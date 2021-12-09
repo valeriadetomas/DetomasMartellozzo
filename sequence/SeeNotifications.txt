@@ -1,0 +1,25 @@
+title See Notifications
+
+actor Farmer
+participant Dream
+
+activate Farmer
+Farmer->Dream: getMyPage()
+activate Dream
+
+note over Dream: see **Farm's Information**\n for the details of the\n page loading\n...
+
+Dream-->Farmer:Farm Page
+deactivate Dream
+
+Farmer->Dream: seeNotifications()
+activate Dream
+Dream-->Farmer: list of Notifications
+deactivate Dream
+Farmer->Dream: selectNotification ()
+activate Dream
+Dream-->Farmer: notification content
+deactivate Dream
+
+
+

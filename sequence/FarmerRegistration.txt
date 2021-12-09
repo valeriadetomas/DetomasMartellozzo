@@ -1,0 +1,15 @@
+title Farmer registration
+
+actor Farmer
+participant Dream
+activate Farmer
+Farmer->Dream:getRegistrationForm()
+activate Dream
+Dream-->Farmer:registrationForm
+Farmer->Dream:newUser ( email,password,position,name,farmName )
+Dream<-Dream: validationOfUser
+alt user valid
+Dream-->Farmer:ok 
+else user invalid
+Dream-->Farmer: error
+end

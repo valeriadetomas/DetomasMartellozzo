@@ -1,0 +1,14 @@
+title Farmer send message on Forum
+
+actor Farmer
+participant Dream
+activate Farmer
+Farmer->Dream: getForumPage()
+activate Dream
+Dream-->Farmer:ForumPage
+Farmer->Farmer:writeMessage
+Farmer->Dream: sendMsg( content )
+Dream->Dream: publishMessage( content,date,time)
+Dream-->Farmer: ForumPage
+deactivate Dream
+

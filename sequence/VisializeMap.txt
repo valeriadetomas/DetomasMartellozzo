@@ -1,0 +1,14 @@
+title Visialize Map
+
+actor Farmer
+participant Dream
+activate Farmer
+Farmer->Dream: getMapPage()
+activate Dream
+Dream->Dream: identify licence
+Dream-->Farmer:Simple Map
+
+Farmer->Dream: select Farm( position )
+Dream-->Farmer: farmInformations
+deactivate Dream
+

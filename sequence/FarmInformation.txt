@@ -1,0 +1,31 @@
+title Farm’s information
+
+actor Farmer
+participant Dream
+participant DataBase
+activate Farmer
+Farmer->Dream: getMyPage()
+activate Dream
+Dream->Dream: identify user
+Dream->DataBase: getMeteorologicalData ( position )
+DataBase-->Dream: m = meteorologicalData
+Dream->DataBase: getProductionData ( email )
+DataBase-->Dream: pd = productionData
+Dream->DataBase: getSensorData ( position )
+DataBase-->Dream: s = sensorData
+
+
+
+Dream-->Farmer:Farm Page : m, pd, s 
+deactivate Dream
+Farmer->Dream: seeNotifications()
+activate Dream
+Dream-->Farmer: list of Notifications
+deactivate Dream
+
+
+
+
+
+
+

@@ -292,7 +292,90 @@ needs in order to provide its functionalities, described in subsection ~\ref{sub
 All the communications between users and Dream website are made via HTTPS.
 
 \subsection{Functional Requirements}
-\subsubsection{Use Cases}
+\subsubsection{Use Case Diagram}
+\subsubsection{Use Cases Description ad Sequence Diagram}
+\begin{enumerate}
+    \item Farmer registration\\
+    \textbf{here the use case tabel}
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequence/FarmerRegistration.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+    \item Farmer login
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequence/FarmerLogin.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+    \item Farmer send a message on the Forum
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequence/messageOnForum.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+    \item Find a farmer on the Map\\
+    \textbf{the farmers can only see the map with all the farm's, not if one is good or bad!}
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequence/VisializeMap.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+    \item Find farm’s information
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequence/FarmInformation.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+    \item Submit a request of help\\
+    \textbf{I put only the case of a forml request to the Policy Maker (button on Farm Page) if you want we can create 2 "secion" (alt) one with this formal request and one sending a message on Forum (but is yet specified in 3)}
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequence/HelpRequest.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+    \item Submit an advice
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequence/AdviceSubmit.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+    \item Visualize notifications
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequence/SeeNotifications.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+    \item Policy Maker login
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequence/PolicyMakerLogin.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+    \item Find a farm's page
+    \item Find a farmer on the Map
+    \item Update the Map
+    \item Report validation
+\end{enumerate}
+\subsubsection{Scenarios}
 \subsubsection{Requirements}
 \textbf{R1} the system must allow farmers to register\\
 \textbf{R2} the system must allow farmers to log in\\
@@ -324,6 +407,7 @@ All the communications between users and Dream website are made via HTTPS.
 \textbf{R28} the system must allow Policy Makers to update the performance of a farmer\\
 \textbf{R29} the system must allow Policy Makers to send notification to the farmers\\
 \textbf{R30} the system must allow Policy Makers to receive request of help by the farmers\\
+\subsubsection{Traceability Matrix}
 
 \subsection{Performance Requirements}
 The system serves its user with a web application. All the computations will take place on the server side, 
