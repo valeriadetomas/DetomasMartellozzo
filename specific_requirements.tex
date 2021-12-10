@@ -182,14 +182,17 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Flow of events} & 
         \begin{enumerate}
-            \item 
+            \item The farmer wants to visualize his own page
+            \item The farmer clicks on the profile page button
+            \item The system retrives the information about the farmer and redirect him to the farmer's farm page
+            \item The farmer visualize his own page
         \end{enumerate} \\
         \midrule
         \textbf{Exit conditions} & The farmer visualizes his own data\\
         \midrule
         \textbf{Exceptions} & 
         \begin{enumerate}
-            \item 
+            \item
         \end{enumerate}\\
         \bottomrule
         \caption{\emph{Farm information visualization} use case description}
@@ -204,70 +207,312 @@ All the communications between users and Dream website are made via HTTPS.
 
     \item Submit a request of help\\
     \textbf{I put only the case of a forml request to the Policy Maker (button on Farm Page) if you want we can create 2 "secion" (alt) one with this formal request and one sending a message on Forum (but is yet specified in 3)}
+    \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+        \toprule
+        \textbf{Name} & \textbf{Farmer submit a request of help} \\
+        \midrule
+        \textbf{Actors} & Farmer \\
+        \midrule
+        \textbf{Entry conditions} & The farmer has logged in\\
+        \midrule
+        \textbf{Flow of events} & 
+        \begin{enumerate}
+            \item The farmer wants to ask for help
+            \item The farmer clicks on his own page button
+            \item The farmer clicks on Help button
+            \item The farmer chooses the type of production on which he had problems
+            \item The farmer fill the form specifying the problem in details
+            \item The farmer click on submit button and send the message
+            \item The system send the notification to the Policy Makers
+            \item The system notifies the farmer that the operation went succesfully
+            \item The system returns a list of advices found in the database about this type of production
+        \end{enumerate} \\
+        \midrule
+        \textbf{Exit conditions} & The help request is send to the Policy Makers\\
+        \midrule
+        \textbf{Exceptions} & 
+        \begin{itemize}
+            \item If no type of production is selected the system notifies the farmer and waits for him to insert it
+            \item If the request body is empty the system notifies the farmer and waits for him to fill it
+        \end{itemize}\\
+        \bottomrule
+        \caption{\emph{Farmer ask for help} use case description}
+    \end{longtable}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/HelpRequest.png}
-        \caption{Submit a request of help.}
+        \caption{\emph{Farmer ask for help} sequence diagram}
         \label{fig:state6}
         \end{center}
     \end{figure}
+
     \item Submit an advice
+    \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+        \toprule
+        \textbf{Name} & \textbf{Farmer submit an advice} \\
+        \midrule
+        \textbf{Actors} & Farmer \\
+        \midrule
+        \textbf{Entry conditions} & The farmer has logged in\\
+        \midrule
+        \textbf{Flow of events} & 
+        \begin{enumerate}
+            \item The farmer has to submit an advice 
+            \item The farmer clicks on his own page button
+            \item The farmer clicks on Advice button
+            \item The farmer chooses the type of production on which he wants to gave advices
+            \item The farmer fill the form writing his advice
+            \item The farmer clicks submit button and send the message
+            \item The system save the advice in the database
+            \item The system notifies the farmer that the operation went succesfully 
+        \end{enumerate} \\
+        \midrule
+        \textbf{Exit conditions} & The farmer submit an advice\\
+        \midrule
+        \textbf{Exceptions} & 
+        \begin{itemize}
+            \item If the farmer is not a "good" one the system don't save the advice and notice him whith an error message
+        \end{itemize}\\
+        \bottomrule
+        \caption{\emph{Farmer send advice} use case description}
+    \end{longtable}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/AdviceSubmit.png}
-        \caption{Submit an advice.}
+        \caption{\emph{Farmer send advice} sequence diagram}
         \label{fig:state7}
         \end{center}
     \end{figure}
+
     \item Visualize notifications
+    \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+        \toprule
+        \textbf{Name} & \textbf{Farmer visualizes his notifications} \\
+        \midrule
+        \textbf{Actors} & Farmer \\
+        \midrule
+        \textbf{Entry conditions} & The farmer has logged in\\
+        \midrule
+        \textbf{Flow of events} & 
+        \begin{enumerate}
+            \item The farmer wants to reads his notifications
+            \item The farmer clicks on his own page button
+            \item The farmer clicks on Notification button
+            \item The system returns a list of messages
+            \item The farmer select one message between the ones in the list
+            \item The system return the body of the message
+        \end{enumerate} \\
+        \midrule
+        \textbf{Exit conditions} & The farmer visualizes his notifications\\
+        \midrule
+        \textbf{Exceptions} & 
+        \begin{itemize}
+            \item 
+        \end{itemize}\\
+        \bottomrule
+        \caption{\emph{Farmer visualize notifications} use case description}
+    \end{longtable}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/SeeNotifications.png}
-        \caption{Visualize notifications.}
+        \caption{\emph{Farmer visualize notifications} sequence diagram}
         \label{fig:state8}
         \end{center}
     \end{figure}
+
     \item Policy Maker login
+    \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+        \toprule
+        \textbf{Name} & \textbf{Farmer visualizes their own data} \\
+        \midrule
+        \textbf{Actors} & Policy Maker \\
+        \midrule
+        \textbf{Entry conditions} & The web application has started\\
+        \midrule
+        \textbf{Flow of events} & 
+        \begin{enumerate}
+            \item The Policy Maker wants to log in 
+            \item The Policy Maker inserts code and password
+            \item The Policy Maker clicks submit button
+            \item The system checks if the credentials are correct
+            \item The system notifies the Policy Maker about the correct login
+        \end{enumerate} \\
+        \midrule
+        \textbf{Exit conditions} & The Policy Maker has logged in\\
+        \midrule
+        \textbf{Exceptions} & 
+        \begin{itemize}
+            \item If the system does not recognize the code it will send and alert the Policy Maker saying the code inserted is wrong
+            \item If the password is not correct the system will notify the Policy Maker 
+        \end{itemize}\\
+        \bottomrule
+        \caption{\emph{Policy Maker login} use case description}
+    \end{longtable}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/PolicyMakerLogin.png}
-        \caption{Policy Maker login.}
+        \caption{\emph{Policy Maker login} sequence diagram}
         \label{fig:state9}
         \end{center}
     \end{figure}
+
     \item Find a farm's page
+    \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+        \toprule
+        \textbf{Name} & \textbf{Policy Maker visualizes a farm’s page} \\
+        \midrule
+        \textbf{Actors} & Policy Maker \\
+        \midrule
+        \textbf{Entry conditions} & The Policy Maker has logged in\\
+        \midrule
+        \textbf{Flow of events} & 
+        \begin{enumerate}
+            \item The Policy Maker wants to visualize one farm's page
+            \item The Policy Maker type the name of the farm on the search form
+            \item The Policy Maker clicks search button
+            \item The system redirect the Policy Maker to the farm's page
+        \end{enumerate} \\
+        \midrule
+        \textbf{Exit conditions} & The Policy Maker visualizes the farm's page\\
+        \midrule
+        \textbf{Exceptions} & 
+        \begin{itemize}
+            \item If no name is inserted in the search form the system notifies the Policy Maker of the missing data
+            \item If the name inserted is not found by the system in the database, it send an error message
+        \end{itemize}\\
+        \bottomrule
+        \caption{\emph{Farm’s page visualization} use case description}
+    \end{longtable}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/PolicyMakerseachFarm.png}
-        \caption{Find a farm's page.}
+        \caption{\emph{Farm’s page visualization} sequence diagram}
         \label{fig:state9}
         \end{center}
     \end{figure}
+
     \item Find a farmer on the Map
+    \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+        \toprule
+        \textbf{Name} & \textbf{Policy Maker visualizes a farm’s page} \\
+        \midrule
+        \textbf{Actors} & Policy Maker \\
+        \midrule
+        \textbf{Entry conditions} & The Policy Maker has logged in\\
+        \midrule
+        \textbf{Flow of events} & 
+        \begin{enumerate}
+            \item The Policy Maker wants to visualize the map
+            \item The Policy Maker clicks on map button
+            \item The system redirect the Policy Maker to the map page
+            \item The Policy Maker visualizes the map and select a farm
+            \item The system retrieves the information about the farm (also the last evaluation) and shows them to the Policy Maker
+            \item The Policy Maker visualizes the data about the selected farm
+        \end{enumerate} \\
+        \midrule
+        \textbf{Exit conditions} & The Policy Maker visualizes his own data\\
+        \midrule
+        \textbf{Exceptions} & 
+        \begin{itemize}
+            \item 
+        \end{itemize}\\
+        \bottomrule
+        \caption{\emph{Farm visualization on map} use case description}
+    \end{longtable}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/searchOnMap.png}
-        \caption{Find a farmer on the Map.}
+        \caption{\emph{Farm visualization on map} sequence diagram}
         \label{fig:state9}
         \end{center}
     \end{figure}
+
     \item Update the Map
+    \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+        \toprule
+        \textbf{Name} & \textbf{Policy Maker update the map} \\
+        \midrule
+        \textbf{Actors} & Policy Maker \\
+        \midrule
+        \textbf{Entry conditions} & The Policy Maker has logged in\\
+        \midrule
+        \textbf{Flow of events} & 
+        \begin{enumerate}
+            \item The Policy Maker wants to report an evaluation
+            \item The Policy Maker clicks on map button
+            \item The system redirect the Policy Maker to the map page
+            \item The Policy Maker visualizes the map and select a farm
+            \item The system retrieves the information about the farm (also the last evaluation) and shows them to the Policy Maker
+            \item The Policy Maker clicks update button
+            \item The Policy Maker select the evaluation
+                \begin{itemize}
+                    \item The Policy Maker select "good" , an amount of money for the award and writes the body of the message
+                    \item The Policy Maker select "bad" and writes the body of the message
+                \end{itemize}
+            \item The Policy Maker clicks submit button and send the message
+            \item The system save the evaluation on the map
+            \item The system send the message to the Fram's owner
+            \item The system notifies the Policy Maker that the operation went succesfully 
+        \end{enumerate} \\
+        \midrule
+        \textbf{Exit conditions} & The Policy Maker visualizes the map updated\\
+        \midrule
+        \textbf{Exceptions} & 
+        \begin{itemize}
+            \item 
+        \end{itemize}\\
+        \bottomrule
+        \caption{\emph{Map updating} use case description}
+    \end{longtable}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/updateMap.png}
-        \caption{Update the Map.}
+        \caption{\emph{Map updating} sequence diagram}
         \label{fig:state9}
         \end{center}
     \end{figure}
+
     \item Reply to a request of help
+    \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+        \toprule
+        \textbf{Name} & \textbf{Policy Maker send anvice} \\
+        \midrule
+        \textbf{Actors} & Policy Maker \\
+        \midrule
+        \textbf{Entry conditions} & The Policy Maker has logged in\\
+        \midrule
+        \textbf{Flow of events} & 
+        \begin{enumerate}
+            \item The Policy Maker wants to send specific advices to a farmer
+            \item The Policy Maker wants to see the farm's farm information
+            \item The Policy Maker type the name of the farm on search form
+            \item The Policy Maker clicks search button 
+            \item The Policy Maker wants to see the advices stored in the database on the type of production the farmers ask for help on
+            \item The Policy Maker analyze the data 
+            \item The Policy Maker select the farmer ( addressee ),the type of production and writes the solution he found
+            \item The Policy Maker clicks send button
+            \item The system sends the message to the farmer
+            \item The system notifies the Policy Maker that the operation went succesfully
+        \end{enumerate} \\
+        \midrule
+        \textbf{Exit conditions} & The Policy Maker send solutions\\
+        \midrule
+        \textbf{Exceptions} & 
+        \begin{itemize}
+            \item 
+        \end{itemize}\\
+        \bottomrule
+        \caption{\emph{Problem resolution} use case description}
+    \end{longtable}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/replyHelp.png}
-        \caption{Reply to a request of help.}
+        \caption{\emph{Problem resolution} sequence diagram}
         \label{fig:state9}
         \end{center}
     \end{figure}
 \end{enumerate}
+
 \subsubsection{Scenarios}
 \subsubsection{Requirements}
 \textbf{R1} the system must allow farmers to register\\
