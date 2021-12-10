@@ -1,0 +1,58 @@
+
+actor PolicyMaker
+participant Dream
+participant DataBase
+
+activate PolicyMaker
+PolicyMaker->Dream:getMapPage()
+activate Dream
+Dream->Dream: identify licence
+Dream->DataBase:getMap ( complete )
+activate DataBase
+DataBase-->Dream:map
+deactivate DataBase
+Dream-->PolicyMaker:Complete Map
+deactivate Dream
+PolicyMaker->Dream: select Farm( position )
+activate Dream
+Dream->DataBase:getFarmInfo ( position )
+activate DataBase
+DataBase-->Dream:farmInformations
+deactivate DataBase
+Dream-->PolicyMaker: farmInformations
+deactivate Dream
+
+PolicyMaker->Dream: updateValidation( result )
+activate Dream
+
+Dream->DataBase: updateMap ( position, result )
+activate DataBase
+DataBase-->Dream:map
+deactivate DataBase
+Dream-->PolicyMaker: complete map updated
+deactivate Dream
+alt good farm
+PolicyMaker->Dream: submitNotification ( result, amountAward, content )
+activate Dream
+Dream-->PolicyMaker:ok
+deactivate Dream
+
+else bad farm
+PolicyMaker->Dream: submitNotification ( result, content )
+activate Dream
+Dream-->PolicyMaker:ok
+deactivate Dream
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
