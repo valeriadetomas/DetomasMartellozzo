@@ -1,5 +1,19 @@
 \subsection{Product Perspective}
 \subsubsection{Class Diagram}
+The class diagram represented in Figure~\ref{fig:uml} represents the domain of the system. \\
+The main elements in the class diagram are:
+\begin{itemize}
+    \item \textbf{User}: identifies two types of users who can access the application. 
+    Farmer and policy makers are the two categories of users that are present in the system. 
+    The distinction has to be applied in order to have different permissions.
+    \item \textbf{Farm}:
+    \item \textbf{Evaluation}:
+    \item \textbf{Map}:
+    \item \textbf{Weather Info}:
+    \item \textbf{Production}:
+    \item \textbf{Form}:
+    \item 
+\end{itemize}
 \begin{figure}[H]
     \begin{center}
     \includegraphics[width=1\textwidth]{images/UMLSW2_1.png}
@@ -7,28 +21,43 @@
     \label{fig:uml}
     \end{center}
 \end{figure}
-\subsubsection{State Diagram}
-\begin{figure}[H]
-    \begin{center}
-    \includegraphics[width=1\textwidth]{images/State chart 1.png}
-    \caption{Update Farmer page.}
-    \label{fig:state1}
-    \end{center}
-\end{figure}
-\begin{figure}[H]
-    \begin{center}
-    \includegraphics[width=1\textwidth]{images/State chart 2.png}
-    \caption{Analysis of farmers.}
-    \label{fig:state2}
-    \end{center}
-\end{figure}
-\begin{figure}[H]
-    \begin{center}
-    \includegraphics[width=1\textwidth]{images/State chart 3.png}
-    \caption{Request of help.}
-    \label{fig:state3}
-    \end{center}
-\end{figure}
+\newpage
+\subsubsection{State Diagrams}
+The following state diagrams describe the behavior of the main objects of the system's domain previously described(Figure~\ref{fig:uml}). 
+They consider all the potentional states that the element examined can have 
+while a certain event takes place.
+
+\begin{enumerate}
+    \item \textbf{Update of the Farmer Page}
+        The state diagram represented in figure~\ref{fig:state1} represents the states of 
+
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=1\textwidth]{images/State chart 1.png}
+        \caption{Update Farmer page.}
+        \label{fig:state1}
+        \end{center}
+    \end{figure}
+
+    \item \textbf{Analysis of different farmers}
+
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=1\textwidth]{images/State chart 2.png}
+        \caption{Analysis of farmers.}
+        \label{fig:state2}
+        \end{center}
+    \end{figure}
+
+    \item \textbf{Request of help from a farmer}
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=1\textwidth]{images/State chart 3.png}
+        \caption{Request of help.}
+        \label{fig:state3}
+        \end{center}
+    \end{figure}
+\end{enumerate}
 \newpage
 \subsection{Product Functions}
 \label{subsection:2.2}

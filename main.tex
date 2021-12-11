@@ -8,19 +8,35 @@
 \usepackage{booktabs}
 \usepackage{caption}
 
-
-
-
-\title{RASDproj}
-
-\date{Prof. Elisabetta Di Nitto  -  Anno 2021/2022}
-
-\author{Sofia Martellozzo - 
-      Valeria Detomas 
-}
-
 \begin{document}
-\maketitle
+
+
+\begin{titlepage}
+      \centering
+      \vfill
+      \begin{figure}
+            \begin{center}
+                  \includegraphics[width=0.6\textwidth]{images/logo_polimi.png}
+            \end{center}
+      \end{figure}
+      \vfill
+      {\scshape\LARGE Software Engineering 2 Project\\Academic Year 2021 - 2022 \par}
+      \vspace{1cm}
+      \newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+      \centering
+      \HRule \\[0.3cm]
+      \huge  Requirements Analysis\\ and Specifications Document\\% Title of your document
+      \HRule \\
+      \vspace{1.5cm}
+      {\Large Valeria \textsc{Detomas} \quad Sofia \textsc{Martellozzo} \par}
+      \vfill
+      {\large Professor\par
+          Elisabetta \textsc{Di Nitto}}
+      \vfill
+      {\large \textbf{Version 1}\\ \today \par}
+\end{titlepage}
+
+
 \newpage
 \renewcommand\contentsname{Contents}
 \tableofcontents
@@ -32,14 +48,17 @@
 \input{introduction}
 
 %-----------------------------------------------------------%
+\newpage
 \section{Overall Description}
 \input{overall_description}
 
 %-----------------------------------------------------------%
+\newpage
 \section{Specific Requirements}
 \input{specific_requirements}
 
 %-----------------------------------------------------------%
+\newpage
 \section{Formal Analysis using Alloy}
 
 
