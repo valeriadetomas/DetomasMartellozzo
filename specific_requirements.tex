@@ -242,7 +242,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/HelpRequest.png}
         \caption{\emph{Farmer ask for help} sequence diagram}
-        \label{fig:state6}
+        \label{fig:sequence6}
         \end{center}
     \end{figure}
 
@@ -280,7 +280,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/AdviceSubmit.png}
         \caption{\emph{Farmer send advice} sequence diagram}
-        \label{fig:state7}
+        \label{fig:sequence7}
         \end{center}
     \end{figure}
 
@@ -316,7 +316,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/SeeNotifications.png}
         \caption{\emph{Farmer visualize notifications} sequence diagram}
-        \label{fig:state8}
+        \label{fig:sequence8}
         \end{center}
     \end{figure}
 
@@ -352,7 +352,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/PolicyMakerLogin.png}
         \caption{\emph{Policy Maker login} sequence diagram}
-        \label{fig:state9}
+        \label{fig:sequence9}
         \end{center}
     \end{figure}
 
@@ -387,7 +387,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/PolicyMakerseachFarm.png}
         \caption{\emph{Farm’s page visualization} sequence diagram}
-        \label{fig:state9}
+        \label{fig:sequence10}
         \end{center}
     \end{figure}
 
@@ -423,7 +423,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/searchOnMap.png}
         \caption{\emph{Farm visualization on map} sequence diagram}
-        \label{fig:state9}
+        \label{fig:sequence11}
         \end{center}
     \end{figure}
 
@@ -468,7 +468,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/updateMap.png}
         \caption{\emph{Map updating} sequence diagram}
-        \label{fig:state9}
+        \label{fig:sequence12}
         \end{center}
     \end{figure}
 
@@ -508,12 +508,21 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/replyHelp.png}
         \caption{\emph{Problem resolution} sequence diagram}
-        \label{fig:state9}
+        \label{fig:sequence13}
         \end{center}
     \end{figure}
 \end{enumerate}
 
+%-----------------------------------------------------------------------------------%
 \subsubsection{Scenarios}
+\begin{enumerate}
+    \item \textbf{Scenario 1}
+    Dayanita is a young woman that lives in Singaram, a small town in the region of Telengana in India
+    \item 
+\end{enumerate}
+
+
+%-----------------------------------------------------------------------------------%
 \subsubsection{Requirements}
 \textbf{R1} the system must allow farmers to register\\
 \textbf{R2} the system must allow farmers to log in\\
@@ -547,12 +556,14 @@ All the communications between users and Dream website are made via HTTPS.
 \textbf{R30} the system must allow Policy Makers to receive request of help by the farmers\\
 \subsubsection{Traceability Matrix}
 
+%-----------------------------------------------------------------------------------%
 \subsection{Performance Requirements}
 The system serves its user with a web application. All the computations will take place on the server side, 
 thus the app is meant to be lightweighted. Moreover the load in the night is expected to be really low.
 There are no problems about reliability. The insertion of new data requires a quick response in order to store 
 it in the system.
 
+%-----------------------------------------------------------------------------------%
 \subsection{Design Constraints}
 \subsubsection{Standards Compliance}
 The only standard that needs to be highlighted here is the interaction with the database. It is important that the information are stored 
@@ -565,6 +576,7 @@ As a matter of fact the application asks and retrieves data of each farmer.
 More information about security and privacy will be provided in the section~\ref{subsubsection:3.4.3}
 
 
+%-----------------------------------------------------------------------------------%
 \subsection{Software System Attributes}
 
 \subsubsection{Reliability}
