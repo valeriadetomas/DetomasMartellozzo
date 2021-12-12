@@ -1,7 +1,11 @@
 \subsubsection{External Interface Requirements}
+This section of the document gives a clear description of all the requirments that the system needs in order to performe all 
+the functionalities described in section ~\ref{subsection:2.2}.
 
 \subsubsection{User Interfaces}
-qui ci vanno tutti i mockups con descrizione
+The following mockups of the web application provide a first idea on how the features of the system are offered to the users. 
+Moreover it gives a real perpespective of how the users interact with the system. 
+The Design Document (reference) provides a thorough and detailed description of the features represented in each mockup.
 
 \subsubsection{Hardware Interfaces}
 The application does not need any specific hardware requirements. 
@@ -185,7 +189,7 @@ All the communications between users and Dream website are made via HTTPS.
             \item The farmer wants to visualize his own page
             \item The farmer clicks on the profile page button
             \item The system retrives the information about the farmer and redirect him to the farmer's farm page
-            \item The farmer visualize his own page
+            \item The farmer visualizes his own page
         \end{enumerate} \\
         \midrule
         \textbf{Exit conditions} & The farmer visualizes his own data\\
@@ -221,19 +225,19 @@ All the communications between users and Dream website are made via HTTPS.
             \item The farmer clicks on his own page button
             \item The farmer clicks on Help button
             \item The farmer chooses the type of production on which he had problems
-            \item The farmer fill the form specifying the problem in details
-            \item The farmer click on submit button and send the message
-            \item The system send the notification to the Policy Makers
+            \item The farmer fills the form specifying the problem
+            \item The farmer clicks on the submit button and sends the message
+            \item The system sends the notification to the Policy Makers
             \item The system notifies the farmer that the operation went succesfully
-            \item The system returns a list of advices found in the database about this type of production
+            \item The system returns a list of advices retrieved from the database about the type of production selected
         \end{enumerate} \\
         \midrule
-        \textbf{Exit conditions} & The help request is send to the Policy Makers\\
+        \textbf{Exit conditions} & The help request is sent to the Policy Makers\\
         \midrule
         \textbf{Exceptions} & 
         \begin{itemize}
             \item If no type of production is selected the system notifies the farmer and waits for him to insert it
-            \item If the request body is empty the system notifies the farmer and waits for him to fill it
+            \item If the request body is empty the system notifies the farmer and waits for him to fill it in
         \end{itemize}\\
         \bottomrule
         \caption{\emph{Farmer ask for help} use case description}
@@ -249,7 +253,7 @@ All the communications between users and Dream website are made via HTTPS.
     \item Submit an advice
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
-        \textbf{Name} & \textbf{Farmer submit an advice} \\
+        \textbf{Name} & \textbf{Farmer submits an advice} \\
         \midrule
         \textbf{Actors} & Farmer \\
         \midrule
@@ -260,10 +264,10 @@ All the communications between users and Dream website are made via HTTPS.
             \item The farmer has to submit an advice 
             \item The farmer clicks on his own page button
             \item The farmer clicks on Advice button
-            \item The farmer chooses the type of production on which he wants to gave advices
-            \item The farmer fill the form writing his advice
-            \item The farmer clicks submit button and send the message
-            \item The system save the advice in the database
+            \item The farmer chooses the type of production on which he wants to give advices
+            \item The farmer fills the form writing his advice
+            \item The farmer clicks submit button and sends the message
+            \item The system saves the advice in the database
             \item The system notifies the farmer that the operation went succesfully 
         \end{enumerate} \\
         \midrule
@@ -271,7 +275,7 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Exceptions} & 
         \begin{itemize}
-            \item If the farmer is not a "good" one the system don't save the advice and notice him whith an error message
+            \item If the farmer is not a "good" one the system doesn't save the advice and nottifies the farmer with an error message
         \end{itemize}\\
         \bottomrule
         \caption{\emph{Farmer send advice} use case description}
@@ -295,12 +299,12 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Flow of events} & 
         \begin{enumerate}
-            \item The farmer wants to reads his notifications
+            \item The farmer wants to read his notifications
             \item The farmer clicks on his own page button
             \item The farmer clicks on Notification button
             \item The system returns a list of messages
-            \item The farmer select one message between the ones in the list
-            \item The system return the body of the message
+            \item The farmer selects one message between the ones in the list
+            \item The system returns the body of the message
         \end{enumerate} \\
         \midrule
         \textbf{Exit conditions} & The farmer visualizes his notifications\\
@@ -333,7 +337,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{enumerate}
             \item The Policy Maker wants to log in 
             \item The Policy Maker inserts code and password
-            \item The Policy Maker clicks submit button
+            \item The Policy Maker clicks the submit button
             \item The system checks if the credentials are correct
             \item The system notifies the Policy Maker about the correct login
         \end{enumerate} \\
@@ -342,7 +346,7 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Exceptions} & 
         \begin{itemize}
-            \item If the system does not recognize the code it will send and alert the Policy Maker saying the code inserted is wrong
+            \item If the system does not recognize the code it will send an alert  to the Policy Maker saying that the code inserted is wrong
             \item If the password is not correct the system will notify the Policy Maker 
         \end{itemize}\\
         \bottomrule
@@ -367,18 +371,18 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Flow of events} & 
         \begin{enumerate}
-            \item The Policy Maker wants to visualize one farm's page
-            \item The Policy Maker type the name of the farm on the search form
+            \item The Policy Maker wants to visualize a farm's page
+            \item The Policy Maker types the name of the farm on the search form
             \item The Policy Maker clicks search button
-            \item The system redirect the Policy Maker to the farm's page
+            \item The system redirects the Policy Maker to the farm's page
         \end{enumerate} \\
         \midrule
         \textbf{Exit conditions} & The Policy Maker visualizes the farm's page\\
         \midrule
         \textbf{Exceptions} & 
         \begin{itemize}
-            \item If no name is inserted in the search form the system notifies the Policy Maker of the missing data
-            \item If the name inserted is not found by the system in the database, it send an error message
+            \item If no name is inserted in the search form the system notifies the Policy Maker about the missing data
+            \item If the name inserted is not present in the system's database, the system sends an error message
         \end{itemize}\\
         \bottomrule
         \caption{\emph{Farm’s page visualization} use case description}
@@ -404,8 +408,8 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{enumerate}
             \item The Policy Maker wants to visualize the map
             \item The Policy Maker clicks on map button
-            \item The system redirect the Policy Maker to the map page
-            \item The Policy Maker visualizes the map and select a farm
+            \item The system redirects the Policy Maker to the map page
+            \item The Policy Maker visualizes the map and selects a farm
             \item The system retrieves the information about the farm (also the last evaluation) and shows them to the Policy Maker
             \item The Policy Maker visualizes the data about the selected farm
         \end{enumerate} \\
@@ -439,19 +443,19 @@ All the communications between users and Dream website are made via HTTPS.
         \textbf{Flow of events} & 
         \begin{enumerate}
             \item The Policy Maker wants to report an evaluation
-            \item The Policy Maker clicks on map button
-            \item The system redirect the Policy Maker to the map page
-            \item The Policy Maker visualizes the map and select a farm
+            \item The Policy Maker clicks on the map button
+            \item The system redirects the Policy Maker to the map page
+            \item The Policy Maker visualizes the map and selects a farm
             \item The system retrieves the information about the farm (also the last evaluation) and shows them to the Policy Maker
             \item The Policy Maker clicks update button
             \item The Policy Maker select the evaluation
                 \begin{itemize}
-                    \item The Policy Maker select "good" , an amount of money for the award and writes the body of the message
-                    \item The Policy Maker select "bad" and writes the body of the message
+                    \item The Policy Maker selects "good", decides an amount of money for the award and writes the body of the message
+                    \item The Policy Maker selects "bad" and writes the body of the message
                 \end{itemize}
-            \item The Policy Maker clicks submit button and send the message
-            \item The system save the evaluation on the map
-            \item The system send the message to the Fram's owner
+            \item The Policy Maker clicks submit button and sends the message
+            \item The system saves the evaluation on the map
+            \item The system sends the message to the Farm's owner
             \item The system notifies the Policy Maker that the operation went succesfully 
         \end{enumerate} \\
         \midrule
@@ -484,15 +488,15 @@ All the communications between users and Dream website are made via HTTPS.
         \textbf{Flow of events} & 
         \begin{enumerate}
             \item The Policy Maker wants to send specific advices to a farmer
-            \item The Policy Maker wants to see the farm's farm information
-            \item The Policy Maker type the name of the farm on search form
+            \item The Policy Maker wants to see the informationabout a farm
+            \item The Policy Maker types the name of the farm on search form
             \item The Policy Maker clicks search button 
-            \item The Policy Maker wants to see the advices stored in the database on the type of production the farmers ask for help on
-            \item The Policy Maker analyze the data 
-            \item The Policy Maker select the farmer ( addressee ),the type of production and writes the solution he found
+            \item The Policy Maker wants to see the advices stored in the database on the type of production the farmers asked for help on
+            \item The Policy Maker analyzes the data 
+            \item The Policy Maker selects the farmer (name) and the type of production and writes the solution he found
             \item The Policy Maker clicks send button
             \item The system sends the message to the farmer
-            \item The system notifies the Policy Maker that the operation went succesfully
+            \item The system notifies the Policy Maker that the operation was succesful
         \end{enumerate} \\
         \midrule
         \textbf{Exit conditions} & The Policy Maker send solutions\\
@@ -517,7 +521,9 @@ All the communications between users and Dream website are made via HTTPS.
 \subsubsection{Scenarios}
 \begin{enumerate}
     \item \textbf{Scenario 1}
-    Dayanita is a young woman that lives in Singaram, a small town in the region of Telengana in India
+    Dayanita is a young woman that lives in Singaram, a small town in the state of Telengana in India. 
+    She lives with her parents in their family's farm.
+
     \item 
 \end{enumerate}
 
@@ -556,8 +562,32 @@ All the communications between users and Dream website are made via HTTPS.
 \textbf{R30} the system must allow Policy Makers to receive request of help by the farmers\\
 %-----------------------------------------------------------------------------------%
 \subsubsection{Goals}
+
+\begin{table}[ht]
+\caption{default}
+\begin{center}
+%\rowcolors{1}{}{gray}
+\begin{tabular}{||r||r||r||}
+    \hline
+   Goals & Domain Assumpitons & Requirements \\
+    \hline
+    G1 & 1.08 & -0.49  \\
+    \hline
+    G2 & -1.13 & -0.42  \\
+    \hline
+    G3 & 0.02 & -0.54 \\
+    \hline
+    G4 & -0.54 & 0.97 \\
+    \hline
+    G5 & -0.29 & -0.53 \\
+    \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
 \begin{itemize}   
-\item \textbf{G1} Allow Policy Makers to retrieve information about a farm
+\item \textbf{G1} Allow Policy Makers to retrieve information about a farm and to evaluate their performance
     \begin{itemize}
         \renewcommand\labelitemi{--}
         \item \textbf{R14} The system must be able to show the meteorological data of the Farm’s position
@@ -663,21 +693,21 @@ All the communications between users and Dream website are made via HTTPS.
     \item \textbf{}
     \end{itemize} 
     
-\item \textbf{G7} Policy Makers and farmers should be able to consult the map of the zone ( and the informations stored in it ) with different levels of visibility\\
+\item \textbf{G7} Policy Makers and farmers should be able to consult the map of the zone ( and the informations stored in it ) with different levels of visibility
     \begin{enumerate}
         \item \textbf{G7A} Policy Makers and farmers should be able to see the position of the farms on the map
         \begin{itemize}
             \renewcommand\labelitemi{--}
-            \item\textbf{R1} The system must allow farmers to register\\
-            \item\textbf{R2} The system must allow farmers to log in\\
-            \item\textbf{R3} The system must save the farmers registration data\\
-            \item\textbf{R4} The system must guarantee that each email address is unique\\
-            \item\textbf{R5} The system must verify that the email address is valid\\
-            \item\textbf{R19} The system must be able to show the map of the zone\\
-            \item\textbf{R20} The system must be able to show the farms position on the map\\
-            \item\textbf{R23} The system does not allow Policy Makers to register\\
-            \item\textbf{R24} The system must allow Policy Makers to log in\\
-            \item\textbf{} The system must verify that the code is valid\\
+            \item\textbf{R1} The system must allow farmers to register
+            \item\textbf{R2} The system must allow farmers to log in
+            \item\textbf{R3} The system must save the farmers registration data
+            \item\textbf{R4} The system must guarantee that each email address is unique
+            \item\textbf{R5} The system must verify that the email address is valid
+            \item\textbf{R19} The system must be able to show the map of the zone
+            \item\textbf{R20} The system must be able to show the farms position on the map
+            \item\textbf{R23} The system does not allow Policy Makers to register
+            \item\textbf{R24} The system must allow Policy Makers to log in
+            \item\textbf{} The system must verify that the code is valid
             \item\textbf{}
             \item\textbf{}
             \item\textbf{}
@@ -685,16 +715,16 @@ All the communications between users and Dream website are made via HTTPS.
         \item\textbf{G7B} Policy Makers should be able to see both the information about the production and the evaluation of each farm
         \begin{itemize}
             \renewcommand\labelitemi{--}
-            \item \textbf{} The system must be able to show the types of production cultivated in a farm\\
-            \item \textbf{} The system must be able to show the quantity of product has been cultivated for each type and farm\\
-            \item \textbf{R19} The system must be able to show the map of the zone\\
-            \item \textbf{R20} The system must be able to show the farms position on the map\\
-            \item \textbf{R21} The system must be able to show on the map if a farm is performing well or not\\
-            \item \textbf{R23} The system does not allow Policy Makers to register\\
-            \item \textbf{R24} The system must allow Policy Makers to log in\\
-            \item \textbf{} The system must verify that the code is valid\\
-            \item \textbf{R28} The system must allow Policy Makers to update the performance of a farmer\\
-            \item \textbf{R29} The system must allow Policy Makers to send notification to the farmers\\
+            \item \textbf{} The system must be able to show the types of production cultivated in a farm
+            \item \textbf{} The system must be able to show the quantity of product has been cultivated for each type and farm
+            \item \textbf{R19} The system must be able to show the map of the zone
+            \item \textbf{R20} The system must be able to show the farms position on the map
+            \item \textbf{R21} The system must be able to show on the map if a farm is performing well or not
+            \item \textbf{R23} The system does not allow Policy Makers to register
+            \item \textbf{R24} The system must allow Policy Makers to log in
+            \item \textbf{} The system must verify that the code is valid
+            \item \textbf{R28} The system must allow Policy Makers to update the performance of a farmer
+            \item \textbf{R29} The system must allow Policy Makers to send notification to the farmers
             \item \textbf{}
             \item \textbf{}
             \item \textbf{}
@@ -703,14 +733,14 @@ All the communications between users and Dream website are made via HTTPS.
         \item \textbf{G7C} Farmers should be able to see only the type of production of a farmer by the map
         \begin{itemize}
             \renewcommand\labelitemi{--}
-            \item \textbf{R1} The system must allow farmers to register\\
-            \item \textbf{R2} The system must allow farmers to log in\\
-            \item \textbf{R3} The system must save the farmers registration data\\
-            \item \textbf{R4} The system must guarantee that each email address is unique\\
-            \item \textbf{R5} The system must verify that the email address is valid\\
-            \item \textbf{} The system must be able to show the types of production cultivated in a farm\\
-            \item \textbf{R19} The system must be able to show the map of the zone\\
-            \item \textbf{R20} The system must be able to show the farms position on the map\\
+            \item \textbf{R1} The system must allow farmers to register
+            \item \textbf{R2} The system must allow farmers to log in
+            \item \textbf{R3} The system must save the farmers registration data
+            \item \textbf{R4} The system must guarantee that each email address is unique
+            \item \textbf{R5} The system must verify that the email address is valid
+            \item \textbf{} The system must be able to show the types of production cultivated in a farm
+            \item \textbf{R19} The system must be able to show the map of the zone
+            \item \textbf{R20} The system must be able to show the farms position on the map
             \item \textbf{}
             \item \textbf{}
             \item \textbf{}
