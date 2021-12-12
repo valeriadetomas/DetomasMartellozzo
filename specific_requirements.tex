@@ -18,13 +18,13 @@ The Design Document (reference) provides a thorough and detailed description of 
 \begin{figure}[ht!]
     \begin{minipage}{0.5\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{mocups/FLogIn.png}
+        \includegraphics[width=1\textwidth]{mocups/FLogIn.png}
         \caption{\emph{Farmer Log in} Web page}
         \label{fig:mockupLogin}
     \end{minipage}\hfill
     \begin{minipage}{0.5\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{mocups/SignUp.png}
+        \includegraphics[width=1\textwidth]{mocups/SignUp.png}
         \caption{\emph{Farmer Sign up} Web page}
         \label{fig:smockupSignUp}
     \end{minipage}
@@ -673,228 +673,106 @@ All the communications between users and Dream website are made via HTTPS.
 
 %-----------------------------------------------------------------------------------%
 \subsubsection{Requirements}
-\textbf{R1} the system must allow farmers to register\\
-\textbf{R2} the system must allow farmers to log in\\
-\textbf{R3} the system must save the farmers registration data\\
-\textbf{R4} the system must guarantee that each email address is unique\\
-\textbf{R5} the system must verify that the email address is valid (the type!)\\
-\textbf{R6} the system must save the farmers information about their production submitted\\
-\textbf{R7} the system must allow farmers to insert the type of production \\
-\textbf{R8} the system must allow farmers to insert the amount of production type\\
-\textbf{R9} the system must allow farmers to specify a problem they faced to the Policy Makers\\
-\textbf{R10} the system must allow farmers to select the type of production on which they had troubles\\
-\textbf{R11} the system must save the advice submitted by the farmers\\
-\textbf{R12} the system must allow farmers to select the type of product in their suggestion\\
-\textbf{R13} the system must be able to show to the farmers advices send by the Policy Makers (as a notification)\\
-\textbf{R14} the system must be able to show the meteorological data of the Farm’s position\\
-\textbf{R15} the system must be able to show the farm’s sensor data \\
-\textbf{R16} the system must allow farmers to send messages on the forum\\
-\textbf{R17} the system must register date and time of a message in the forum\\
-\textbf{R18} the system must be able to show all the messages on the forum\\
-\textbf{R19} the system must be able to show the map of the zone\\
-\textbf{R20} the system must be able to show the farms position on the map\\
+\textbf{R1} The system must allow farmers to register\\
+\textbf{R2} The system must allow farmers to log in\\
+\textbf{R3} The system must save the farmers registration data\\
+\textbf{R4} The system must guarantee that each email address is unique\\
+\textbf{R5} The system must verify that the email address is valid (the type!)\\
+\textbf{R6} The system must save the farmers information about their production submitted\\
+\textbf{R7} The system must allow farmers to insert the type of production \\
+\textbf{R8} The system must allow farmers to insert the amount of production type\\
+\textbf{R9} The system must allow farmers to specify a problem they faced to the Policy Makers\\
+\textbf{R10} The system must allow farmers to select the type of production on which they had troubles\\
+\textbf{R11} The system must save the advice submitted by the farmers\\
+\textbf{R12} The system must allow farmers to select the type of product in their suggestion\\
+\textbf{R13} The system must be able to show to the farmers advices send by the Policy Makers (as a notification)\\
+\textbf{R14} The system must be able to show the meteorological data of the Farm’s position\\
+\textbf{R15} The system must be able to show the farm’s sensor data \\
+\textbf{R16} The system must allow farmers to send messages on the forum\\
+\textbf{R17} The system must register date and time of a message in the forum\\
+\textbf{R18} The system must be able to show all the messages on the forum\\
+\textbf{R19} The system must be able to show the map of the zone\\
+\textbf{R20} The system must be able to show the farms position on the map\\
 \textbf{R21} the system must be able to show on the map if a farm is performing well or not \\
-\textbf{R22} the system must allow farmers to visualise notification send by Policy Makers\\
-\textbf{R23} the system does not allow Policy Makers to register\\
-\textbf{R24} the system must allow Policy Makers to log in\\
-\textbf{R25} the system must allow Policy Makers to search a farm by name (OK?)\\
-\textbf{R26} the system must allow Policy Makers to see all farms’ pages\\
-\textbf{R27} the system must not allow Policy Makers to modify any farm’s page\\
-\textbf{R28} the system must allow Policy Makers to update the performance of a farmer\\
-\textbf{R29} the system must allow Policy Makers to send notification to the farmers\\
-\textbf{R30} the system must allow Policy Makers to receive request of help by the farmers\\
+\textbf{R22} The system must allow farmers to visualise notification send by Policy Makers\\
+\textbf{R23} The system must allow farmers to see all information about his own farm\\
+\textbf{R24} The system must be able to show the types of production cultivated in a farm\\
+\textbf{R25} The system must be able to show the quantity of product has been cultivated for each type in a farm\\
+\textbf{R26} The system does not allow Policy Makers to register\\
+\textbf{R27} The system must allow Policy Makers to log in\\
+\textbf{R28} The system must verify that the code is valid\\
+\textbf{R29} The system must allow Policy Makers to search a farm by name (OK?)\\
+\textbf{R30} The system must allow Policy Makers to see all farms’ pages\\
+\textbf{R31} The system must not allow Policy Makers to modify any farm’s page\\
+\textbf{R32} The system must allow Policy Makers to update the performance of a farmer\\
+\textbf{R33} The system must allow Policy Makers to send notification to the farmers\\
+\textbf{R34} The system must allow Policy Makers to receive request of help by the farmers\\
 %-----------------------------------------------------------------------------------%
+\newpage
+
 \subsubsection{Goals}
 
 \begin{table}[ht]
-\caption{default}
+
 \begin{center}
 %\rowcolors{1}{}{gray}
-\begin{tabular}{||r||r||r||}
+
+\rowcolors{1}{gray!25}{white} 
+\begin{tabular}{|p{2cm}|p{4cm}|p{4cm}|}
+    
     \hline
    Goals & Domain Assumpitons & Requirements \\
     \hline
-    G1 & 1.08 & -0.49  \\
+    G1 & DA1, DA2, DA3, DA4, DA5, DA6, DA7, DA8, DA9, DA13, DA16 & R14, R15, R26, R27, R28, R29, R30, R31, R32 \\ 
     \hline
-    G2 & -1.13 & -0.42  \\
+    G2 & DA1, DA4, DA6, DA10, DA15, DA17 & R1, R2, R3, R4, R5, R16, R17, R18 \\
     \hline
-    G3 & 0.02 & -0.54 \\
+    G3 & DA1, DA2, DA6, DA9, DA12, DA14, DA15, DA17 & R1, R2, R3, R4, R5, R6, R7, R8, R11, R12 \\
     \hline
-    G4 & -0.54 & 0.97 \\
+    G4 & DA1, DA6, DA9, DA11, DA15, DA17 & R1, R2, R3, R4, R5, R9, R10, R13, R22, R33, R34 \\
     \hline
-    G5 & -0.29 & -0.53 \\
+    G5 & DA1, DA3, DA4, DA5, DA6, DA7, DA8, DA9, DA10, DA13, DA15, DA17 & R1, R2, R3, R4, R5, R14, R15, R22, R23, R24, R25 \\
+    \hline
+    G6A & DA1, DA5, DA6, DA8, DA9, DA15, DA16, DA17 & R1, R2, R3, R4, R5, R19, R20, R26, R27, R28 \\
+    \hline
+    G6B & DA1, DA2, DA5, DA6, DA8, DA9, DA13, DA15, DA16, DA17 & R19, R20, R21, R24, R25, R26, R27, R28, R32, R33 \\
+    \hline
+    G6C & DA1, DA2, DA5, DA6, DA8, DA9, DA15, DA16, DA17 & R1, R2, R3, R4, R5, R19, R20, R24 \\
     \hline
 \end{tabular}
 \end{center}
+\caption{default}
 \end{table}
 
 
+
 \begin{itemize}   
-\item \textbf{G1} Allow Policy Makers to retrieve information about a farm and to evaluate their performance
-    \begin{itemize}
-        \renewcommand\labelitemi{--}
-        \item \textbf{R14} The system must be able to show the meteorological data of the Farm’s position
-        \item \textbf{R15} The system must be able to show the farm’s sensor data
-        \item \textbf{R23} The system does not allow Policy Makers to register
-        \item \textbf{R24} The system must allow Policy Makers to log in
-        \item \textbf{} The system must verify that the code is valid
-        \item \textbf{R25} The system must allow Policy Makers to search a farm by name
-        \item \textbf{R26} The system must allow Policy Makers to see all farms’ pages
-        \item \textbf{R27} The system must not allow Policy Makers to modify any farm’s page
-        \item \textbf{R28} The system must allow Policy Makers to update the performance of a farmer
-        \item \textbf{DA1} In order to access the system users need to have Internet connection
-        \item \textbf{DA2} Farmers always insert correct data on their production activity
-        \item \textbf{DA3} Data from sensors is always correct
-        \item \textbf{DA4} Date and Time on the system are always correct
-        \item \textbf{DA5} The position of the Farm is always correct
-        \item \textbf{DA6} Internet connection works always without errors
-        \item \textbf{DA7} Meteorological data is accurate
-        \item \textbf{DA8} Every farm has a different position
-        \item \textbf{DA9} Each farm belongs to exacly one farmer
-        \item \textbf{DA13} Performances of farmers are always identified correctly
-        \item \textbf{DA16} Policy Makers have a given code and password to access the system
-        \item \textbf{DA13} Performances of farmers are always identified correctly
-    \end{itemize}
-
-\item \textbf{G2} Allow farmer to comunicate with each other
-    \begin{itemize}
-        \renewcommand\labelitemi{--}
-        \item \textbf{R1} The system must allow farmers to register
-        \item \textbf{R2} The system must allow farmers to log in
-        \item \textbf{R3} The system must save the farmers registration data
-        \item \textbf{R4} The system must guarantee that each email address is unique
-        \item \textbf{R5} The system must verify that the email address is valid
-        \item \textbf{R16} The system must allow farmers to send messages on the forum
-        \item \textbf{R17} The system must register date and time of a message in the forum
-        \item \textbf{R18} The system must be able to show all messages on the forum
-        \item \textbf{DA1} In order to access the system users need to have Internet connection
-        \item \textbf{DA4} Date and Time on the system are always correct
-        \item \textbf{DA6} Internet connection works always without errors
-        \item \textbf{DA10} Discussion on the forum are related only to the farm activity
-        \item \textbf{DA15} The email and farm's name must be unique
-        \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
-    \end{itemize}    
-
-\item \textbf{G3} Allow farmer to insert data and advices on his production
-    \begin{itemize}
-    \renewcommand\labelitemi{--}
-    \item \textbf{R1} The system must allow farmers to register
-    \item \textbf{R2} The system must allow farmers to log in
-    \item \textbf{R3} The system must save the farmers registration data
-    \item \textbf{R4} The system must guarantee that each email address is unique
-    \item \textbf{R5} The system must verify that the email address is valid
-    \item \textbf{R6} The system must save the farmers information about their production submitted
-    \item \textbf{R7} The system must allow farmers to insert the type of production
-    \item \textbf{R8} The system must allow farmers to insert the amount of production type
-    \item \textbf{R11} The system must save the advice submitted by the farmers
-    \item \textbf{R12} The system must allow farmers to select the type of product in their suggestion
-    \item \textbf{DA1} In order to access the system users need to have Internet connection
-    \item \textbf{DA2} Farmers always insert correct data on their production activity
-    \item \textbf{DA6} Internet connection works always without errors
-    \item \textbf{DA9} Each farm belongs to exacly one farmer
-    \item \textbf{DA12} Advice on a product must be given by a farmer that produces the same type
-    \item \textbf{DA14} Farmers can insert data more than once a day
-    \item \textbf{DA15} The email and farm's name must be unique
-    \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
-    \end{itemize} 
-
-\item \textbf{G4} Allow farmer to send request of help to Policy Makers
-    \begin{itemize}
-    \renewcommand\labelitemi{--}
-    \item \textbf{R1} The system must allow farmers to register
-    \item \textbf{R2} The system must allow farmers to log in
-    \item \textbf{R3} The system must save the farmers registration data
-    \item \textbf{R4} The system must guarantee that each email address is unique
-    \item \textbf{R5} The system must verify that the email address is valid
-    \item \textbf{R9} The system must allow farmers to specify a problem they faced to the Policy Makers
-    \item \textbf{R10} The system must allow farmers to select the type of production on which they had troubles
-    \item \textbf{R13} The system must be able to show to the farmers advices send by the Policy Makers
-    \item \textbf{R22} The system must allow farmers to visualise notification send by Policy Makers
-    \item \textbf{R29} The system must allow Policy Makers to send notification to the farmers
-    \item \textbf{R30} The system must allow Policy Makers to receive request of help by the farmers
-    \item \textbf{DA1} In order to access the system users need to have Internet connection
-    \item \textbf{DA6} Internet connection works always without errors
-    \item \textbf{DA9} Each farm belongs to exacly one farmer
-    \item \textbf{DA11} Formal request of help must be related to a farmer's own production
-    \item \textbf{DA15} The email and farm's name must be unique
-    \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
-    \end{itemize} 
-
-\item \textbf{G5} Allow farmers to retrieve information relevant for their activity
-    \begin{itemize}
-    \renewcommand\labelitemi{--}
-    \item \textbf{R1} The system must allow farmers to register
-    \item \textbf{R2} The system must allow farmers to log in
-    \item \textbf{R3} The system must save the farmers registration data
-    \item \textbf{R4} The system must guarantee that each email address is unique
-    \item \textbf{R5} The system must verify that the email address is valid
-    \item \textbf{R14} The system must be able to show the meteorological data of the Farm’s position
-    \item \textbf{R15} The system must be able to show the farm’s sensor data
-    \item \textbf{} The system must allow farmers to their own Farm's page
-    \item \textbf{R22} The system must allow farmers to visualise notification send by Policy Makers
-    \item \textbf{DA1} In order to access the system users need to have Internet connection
-    \item \textbf{DA3} Data from sensors is always correct
-    \item \textbf{DA4} Date and Time on the system are always correct
-    \item \textbf{DA5} The position of the Farm is always correct
-    \item \textbf{DA6} Internet connection works always without errors
-    \item \textbf{DA7} Meteorological data is accurate
-    \item \textbf{DA8} Every farm has a different position
-    \item \textbf{DA9} Each farm belongs to exacly one farmer
-    \item \textbf{DA10} Discussion on the forum are related only to the farm activity
-    \item \textbf{DA13} Performances of farmers are always identified correctly
-    \item \textbf{DA15} The email and farm's name must be unique
-    \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
-    \end{itemize} 
-    
-\item \textbf{G6} Policy Makers and farmers should be able to consult the map of the zone ( and the informations stored in it ) with different levels of visibility
-    \begin{enumerate}
-        \item \textbf{G7A} Policy Makers and farmers should be able to see the position of the farms on the map
+    \item \textbf{G1} Allow Policy Makers to retrieve information about a farm and to evaluate their performance
         \begin{itemize}
             \renewcommand\labelitemi{--}
-            \item\textbf{R1} The system must allow farmers to register
-            \item\textbf{R2} The system must allow farmers to log in
-            \item\textbf{R3} The system must save the farmers registration data
-            \item\textbf{R4} The system must guarantee that each email address is unique
-            \item\textbf{R5} The system must verify that the email address is valid
-            \item\textbf{R19} The system must be able to show the map of the zone
-            \item\textbf{R20} The system must be able to show the farms position on the map
-            \item\textbf{R23} The system does not allow Policy Makers to register
-            \item\textbf{R24} The system must allow Policy Makers to log in
-            \item\textbf{} The system must verify that the code is valid
-            \item\textbf{DA1} In order to access the system users need to have Internet connection
-            \item\textbf{DA5} The position of the Farm is always correct
-            \item\textbf{DA6} Internet connection works always without errors
-            \item \textbf{DA8} Every farm has a different position
-            \item \textbf{DA9} Each farm belongs to exacly one farmer
-            \item \textbf{DA15} The email and farm's name must be unique
-            \item \textbf{DA16} Policy Makers have a given code and password to access the system
-            \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
-        \end{itemize}
-        \item\textbf{G7B} Policy Makers should be able to see both the information about the production and the evaluation of each farm
-        \begin{itemize}
-            \renewcommand\labelitemi{--}
-            \item \textbf{} The system must be able to show the types of production cultivated in a farm
-            \item \textbf{} The system must be able to show the quantity of product has been cultivated for each type and farm
-            \item \textbf{R19} The system must be able to show the map of the zone
-            \item \textbf{R20} The system must be able to show the farms position on the map
-            \item \textbf{R21} The system must be able to show on the map if a farm is performing well or not
-            \item \textbf{R23} The system does not allow Policy Makers to register
-            \item \textbf{R24} The system must allow Policy Makers to log in
-            \item \textbf{} The system must verify that the code is valid
-            \item \textbf{R28} The system must allow Policy Makers to update the performance of a farmer
-            \item \textbf{R29} The system must allow Policy Makers to send notification to the farmers
+            \item \textbf{R14} The system must be able to show the meteorological data of the Farm’s position
+            \item \textbf{R15} The system must be able to show the farm’s sensor data
+            \item \textbf{R26} The system does not allow Policy Makers to register
+            \item \textbf{R27} The system must allow Policy Makers to log in
+            \item \textbf{R28} The system must verify that the code is valid
+            \item \textbf{R29} The system must allow Policy Makers to search a farm by name
+            \item \textbf{R30} The system must allow Policy Makers to see all farms’ pages
+            \item \textbf{R31} The system must not allow Policy Makers to modify any farm’s page
+            \item \textbf{R32} The system must allow Policy Makers to update the performance of a farmer
             \item \textbf{DA1} In order to access the system users need to have Internet connection
             \item \textbf{DA2} Farmers always insert correct data on their production activity
+            \item \textbf{DA3} Data from sensors is always correct
+            \item \textbf{DA4} Date and Time on the system are always correct
             \item \textbf{DA5} The position of the Farm is always correct
             \item \textbf{DA6} Internet connection works always without errors
+            \item \textbf{DA7} Meteorological data is accurate
             \item \textbf{DA8} Every farm has a different position
             \item \textbf{DA9} Each farm belongs to exacly one farmer
             \item \textbf{DA13} Performances of farmers are always identified correctly
-            \item \textbf{DA15} The email and farm's name must be unique
             \item \textbf{DA16} Policy Makers have a given code and password to access the system
-            \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
-        \end{itemize}    
-        \item \textbf{G7C} Farmers should be able to see only the type of production of a farmer by the map
+        \end{itemize}
+    
+    \item \textbf{G2} Allow farmer to comunicate with each other
         \begin{itemize}
             \renewcommand\labelitemi{--}
             \item \textbf{R1} The system must allow farmers to register
@@ -902,35 +780,162 @@ All the communications between users and Dream website are made via HTTPS.
             \item \textbf{R3} The system must save the farmers registration data
             \item \textbf{R4} The system must guarantee that each email address is unique
             \item \textbf{R5} The system must verify that the email address is valid
-            \item \textbf{} The system must be able to show the types of production cultivated in a farm
-            \item \textbf{R19} The system must be able to show the map of the zone
-            \item \textbf{R20} The system must be able to show the farms position on the map
+            \item \textbf{R16} The system must allow farmers to send messages on the forum
+            \item \textbf{R17} The system must register date and time of a message in the forum
+            \item \textbf{R18} The system must be able to show all messages on the forum
             \item \textbf{DA1} In order to access the system users need to have Internet connection
-            \item \textbf{DA2} Farmers always insert correct data on their production activity
-            \item \textbf{DA5} The position of the Farm is always correct
+            \item \textbf{DA4} Date and Time on the system are always correct
             \item \textbf{DA6} Internet connection works always without errors
-            \item \textbf{DA8} Every farm has a different position
-            \item \textbf{DA9} Each farm belongs to exacly one farmer
+            \item \textbf{DA10} Discussion on the forum are related only to the farm activity
             \item \textbf{DA15} The email and farm's name must be unique
-            \item \textbf{DA16} Policy Makers have a given code and password to access the system
             \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
-            
-        \end{itemize}
-    \end{enumerate}
-\end{itemize}
+        \end{itemize}    
     
-\textbf{}
-    \textbf{}
-    \textbf{}
-    \textbf{}
-    \textbf{}
-    \textbf{}
-    \textbf{}
-    \textbf{}
-    \textbf{}
-    \textbf{}
-    \textbf{}
-    \textbf{}
+    \item \textbf{G3} Allow farmer to insert data and advices on his production
+        \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item \textbf{R1} The system must allow farmers to register
+        \item \textbf{R2} The system must allow farmers to log in
+        \item \textbf{R3} The system must save the farmers registration data
+        \item \textbf{R4} The system must guarantee that each email address is unique
+        \item \textbf{R5} The system must verify that the email address is valid
+        \item \textbf{R6} The system must save the farmers information about their production submitted
+        \item \textbf{R7} The system must allow farmers to insert the type of production
+        \item \textbf{R8} The system must allow farmers to insert the amount of production type
+        \item \textbf{R11} The system must save the advice submitted by the farmers
+        \item \textbf{R12} The system must allow farmers to select the type of product in their suggestion
+        \item \textbf{DA1} In order to access the system users need to have Internet connection
+        \item \textbf{DA2} Farmers always insert correct data on their production activity
+        \item \textbf{DA6} Internet connection works always without errors
+        \item \textbf{DA9} Each farm belongs to exacly one farmer
+        \item \textbf{DA12} Advice on a product must be given by a farmer that produces the same type
+        \item \textbf{DA14} Farmers can insert data more than once a day
+        \item \textbf{DA15} The email and farm's name must be unique
+        \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
+        \end{itemize} 
+    
+    \item \textbf{G4} Allow farmer to send request of help to Policy Makers
+        \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item \textbf{R1} The system must allow farmers to register
+        \item \textbf{R2} The system must allow farmers to log in
+        \item \textbf{R3} The system must save the farmers registration data
+        \item \textbf{R4} The system must guarantee that each email address is unique
+        \item \textbf{R5} The system must verify that the email address is valid
+        \item \textbf{R9} The system must allow farmers to specify a problem they faced to the Policy Makers
+        \item \textbf{R10} The system must allow farmers to select the type of production on which they had troubles
+        \item \textbf{R13} The system must be able to show to the farmers advices send by the Policy Makers
+        \item \textbf{R22} The system must allow farmers to visualise notification send by Policy Makers
+        \item \textbf{R33} The system must allow Policy Makers to send notification to the farmers
+        \item \textbf{R34} The system must allow Policy Makers to receive request of help by the farmers
+        \item \textbf{DA1} In order to access the system users need to have Internet connection
+        \item \textbf{DA6} Internet connection works always without errors
+        \item \textbf{DA9} Each farm belongs to exacly one farmer
+        \item \textbf{DA11} Formal request of help must be related to a farmer's own production
+        \item \textbf{DA15} The email and farm's name must be unique
+        \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
+        \end{itemize} 
+    
+    \item \textbf{G5} Allow farmers to retrieve information relevant for their activity
+        \begin{itemize}
+        \renewcommand\labelitemi{--}
+        \item \textbf{R1} The system must allow farmers to register
+        \item \textbf{R2} The system must allow farmers to log in
+        \item \textbf{R3} The system must save the farmers registration data
+        \item \textbf{R4} The system must guarantee that each email address is unique
+        \item \textbf{R5} The system must verify that the email address is valid
+        \item \textbf{R14} The system must be able to show the meteorological data of the Farm’s position
+        \item \textbf{R15} The system must be able to show the farm’s sensor data
+        \item \textbf{R22} The system must allow farmers to visualise notification send by Policy Makers
+        \item \textbf{R23} The system must allow farmers to see all information about his own farm
+        \item \textbf{R24} The system must be able to show the types of production cultivated in a farm
+        \item \textbf{R25} The system must be able to show the quantity of product has been cultivated for each type in a farm
+        \item \textbf{DA1} In order to access the system users need to have Internet connection
+        \item \textbf{DA3} Data from sensors is always correct
+        \item \textbf{DA4} Date and Time on the system are always correct
+        \item \textbf{DA5} The position of the Farm is always correct
+        \item \textbf{DA6} Internet connection works always without errors
+        \item \textbf{DA7} Meteorological data is accurate
+        \item \textbf{DA8} Every farm has a different position
+        \item \textbf{DA9} Each farm belongs to exacly one farmer
+        \item \textbf{DA10} Discussion on the forum are related only to the farm activity
+        \item \textbf{DA13} Performances of farmers are always identified correctly
+        \item \textbf{DA15} The email and farm's name must be unique
+        \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
+        \end{itemize} 
+        
+    \item \textbf{G6} Policy Makers and farmers should be able to consult the map of the zone ( and the informations stored in it ) with different levels of visibility
+        \begin{enumerate}
+            \item \textbf{G6A} Policy Makers and farmers should be able to see the position of the farms on the map
+            \begin{itemize}
+                \renewcommand\labelitemi{--}
+                \item\textbf{R1} The system must allow farmers to register
+                \item\textbf{R2} The system must allow farmers to log in
+                \item\textbf{R3} The system must save the farmers registration data
+                \item\textbf{R4} The system must guarantee that each email address is unique
+                \item\textbf{R5} The system must verify that the email address is valid
+                \item\textbf{R19} The system must be able to show the map of the zone
+                \item\textbf{R20} The system must be able to show the farms position on the map
+                \item\textbf{R26} The system does not allow Policy Makers to register
+                \item\textbf{R27} The system must allow Policy Makers to log in
+                \item\textbf{R28} The system must verify that the code is valid
+                \item\textbf{DA1} In order to access the system users need to have Internet connection
+                \item\textbf{DA5} The position of the Farm is always correct
+                \item\textbf{DA6} Internet connection works always without errors
+                \item \textbf{DA8} Every farm has a different position
+                \item \textbf{DA9} Each farm belongs to exacly one farmer
+                \item \textbf{DA15} The email and farm's name must be unique
+                \item \textbf{DA16} Policy Makers have a given code and password to access the system
+                \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
+            \end{itemize}
+            \item\textbf{G6B} Policy Makers should be able to see both the information about the production and the evaluation of each farm
+            \begin{itemize}
+                \renewcommand\labelitemi{--}
+                \item \textbf{R19} The system must be able to show the map of the zone
+                \item \textbf{R20} The system must be able to show the farms position on the map
+                \item \textbf{R21} The system must be able to show on the map if a farm is performing well or not
+                \item \textbf{R24} The system must be able to show the types of production cultivated in a farm
+                \item \textbf{R25} The system must be able to show the quantity of product has been cultivated for each type in a farm
+                \item \textbf{R26} The system does not allow Policy Makers to register
+                \item \textbf{R27} The system must allow Policy Makers to log in
+                \item \textbf{R28} The system must verify that the code is valid
+                \item \textbf{R32} The system must allow Policy Makers to update the performance of a farmer
+                \item \textbf{R33} The system must allow Policy Makers to send notification to the farmers
+                \item \textbf{DA1} In order to access the system users need to have Internet connection
+                \item \textbf{DA2} Farmers always insert correct data on their production activity
+                \item \textbf{DA5} The position of the Farm is always correct
+                \item \textbf{DA6} Internet connection works always without errors
+                \item \textbf{DA8} Every farm has a different position
+                \item \textbf{DA9} Each farm belongs to exacly one farmer
+                \item \textbf{DA13} Performances of farmers are always identified correctly
+                \item \textbf{DA15} The email and farm's name must be unique
+                \item \textbf{DA16} Policy Makers have a given code and password to access the system
+                \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
+            \end{itemize}    
+            \item \textbf{G6C} Farmers should be able to see only the type of production of a farmer by the map
+            \begin{itemize}
+                \renewcommand\labelitemi{--}
+                \item \textbf{R1} The system must allow farmers to register
+                \item \textbf{R2} The system must allow farmers to log in
+                \item \textbf{R3} The system must save the farmers registration data
+                \item \textbf{R4} The system must guarantee that each email address is unique
+                \item \textbf{R5} The system must verify that the email address is valid
+                \item \textbf{R19} The system must be able to show the map of the zone
+                \item \textbf{R20} The system must be able to show the farms position on the map
+                \item \textbf{R24} The system must be able to show the types of production cultivated in a farm
+                \item \textbf{DA1} In order to access the system users need to have Internet connection
+                \item \textbf{DA2} Farmers always insert correct data on their production activity
+                \item \textbf{DA5} The position of the Farm is always correct
+                \item \textbf{DA6} Internet connection works always without errors
+                \item \textbf{DA8} Every farm has a different position
+                \item \textbf{DA9} Each farm belongs to exacly one farmer
+                \item \textbf{DA15} The email and farm's name must be unique
+                \item \textbf{DA16} Policy Makers have a given code and password to access the system
+                \item \textbf{DA17} All farmers that sign up own a real farm in Telengana
+                
+            \end{itemize}
+        \end{enumerate}
+    \end{itemize}
 
 
 
