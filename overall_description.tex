@@ -29,7 +29,15 @@ while a certain event takes place.
 
 \begin{enumerate}
     \item \textbf{Update of the Farmer Page}
-        The state diagram represented in figure~\ref{fig:state1} represents the states of 
+        The state diagram represented in figure~\ref{fig:state1} represents 
+        the events that might occur whenever the farmer page is updated.
+        The three main circumstances when the page is updated are:
+        \begin {itemize}
+        \item Farmer inserts new production data
+        \item Every day the weather forecast is updated with the new data available on it
+        \item Data collected from sensors are always up to date
+        \end{itemize}
+        The page is so update after one of this events occurs.
 
     \begin{figure}[H]
         \begin{center}
@@ -40,6 +48,11 @@ while a certain event takes place.
     \end{figure}
 
     \item \textbf{Analysis of different farmers}
+    The state diagram in figure \ref{fig:state2} represents the analysis that is performed 
+    by the policy makers once a month.
+    As a matter of fact the policy maker starts the analysis after selecting the farm, he visualizes then the farmer's farm page and analyzes the information 
+    that is present in it. After the anlaysis the map is updated and the system sends a notification, that is then different if the 
+    farmer’s performance is either good or bad.
 
     \begin{figure}[H]
         \begin{center}
@@ -50,6 +63,9 @@ while a certain event takes place.
     \end{figure}
 
     \item \textbf{Request of help from a farmer}
+    \item The diagram represented in Figure \ref{fig:state3} shows the events that takes place 
+    when a farmer sends a request of help. It can happen by writing a message in the forum 
+    or by sending a request through a form in the homepage.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=1\textwidth]{images/State chart 3.png}
