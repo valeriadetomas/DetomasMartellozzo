@@ -1,14 +1,24 @@
-title Visialize Map
+
 
 actor Farmer
 participant Dream
+participant DataBase
+
 activate Farmer
 Farmer->Dream: getMapPage()
 activate Dream
 Dream->Dream: identify licence
+Dream->DataBase:getMap ( incomplete )
+activate DataBase
+DataBase-->Dream:map
+deactivate DataBase
 Dream-->Farmer:Simple Map
 
 Farmer->Dream: select Farm( position )
+Dream->DataBase:getFarmInfo ( position )
+activate DataBase
+DataBase-->Dream:farmInformations
+deactivate DataBase
 Dream-->Farmer: farmInformations
 deactivate Dream
 

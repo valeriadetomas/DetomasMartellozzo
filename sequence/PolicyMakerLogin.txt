@@ -1,4 +1,3 @@
-title PolicyMaker login
 
 actor PolicyMaker
 participant Dream

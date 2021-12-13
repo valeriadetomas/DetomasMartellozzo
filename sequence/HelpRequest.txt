@@ -1,16 +1,13 @@
-title Help Request
+
 
 actor Farmer
 participant Dream
-participant ProductionDB
+
 activate Farmer
 Farmer->Dream: getMyPage()
 activate Dream
 Dream->Dream: identify user
-Dream->ProductionDB: getProductionData ( email )
-activate ProductionDB
-ProductionDB-->Dream:pd = production data
-deactivate ProductionDB
+
 note over Dream: see **Farm's Information**\n for the details of the\n page loading\n...
 
 Dream-->Farmer:Farm Page
@@ -20,16 +17,16 @@ Farmer->Dream: click( problemButton )
 activate Dream
 Dream-->Farmer: Problem form
 Farmer->Dream: sendRequest ( productionType, problem )
-Dream->ProductionDB: findAdvice ( productionType )
-activate ProductionDB
-ProductionDB-->Dream: advices
-deactivate ProductionDB
+Dream->Dream: send to \nPolicy Maker
 Dream-->Farmer: notification (advices)
 deactivate Dream
 Farmer->Dream: seeNotifications()
 activate Dream
 Dream-->Farmer: list of Notifications
 deactivate Dream
+Farmer->Dream: seeNotification( advice  )
+activate Dream
+Dream-->Farmer:advice message
 
 
 

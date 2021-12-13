@@ -1,4 +1,3 @@
-title Farmer login
 
 actor Farmer
 participant Dream
