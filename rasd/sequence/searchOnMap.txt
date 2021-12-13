@@ -1,0 +1,32 @@
+
+
+actor PolicyMaker
+participant Dream
+participant DataBase
+
+activate PolicyMaker
+PolicyMaker->Dream:getMapPage()
+activate Dream
+Dream->Dream: identify licence
+Dream->DataBase:getMap ( complete )
+activate DataBase
+DataBase-->Dream:map
+deactivate DataBase
+Dream-->PolicyMaker:Complete Map
+deactivate Dream
+PolicyMaker->Dream: select Farm( position )
+activate Dream
+Dream->DataBase:getFarmInfo ( position )
+activate DataBase
+DataBase-->Dream:farmInformations
+deactivate DataBase
+Dream-->PolicyMaker: farmInformations
+deactivate Dream
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{caption}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+      \centering
+      \vfill
+      \begin{figure}
+            \begin{center}
+                  \includegraphics[width=0.6\textwidth]{images/logo_polimi.png}
+            \end{center}
+      \end{figure}
+      \vfill
+      {\scshape\LARGE Software Engineering 2 Project\\Academic Year 2021 - 2022 \par}
+      \vspace{1cm}
+      \newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+      \centering
+      \HRule \\[0.3cm]
+      \huge  Requirements Analysis\\ and Specifications Document\\% Title of your document
+      \HRule \\
+      \vspace{1.5cm}
+      {\Large Valeria \textsc{Detomas} \quad Sofia \textsc{Martellozzo} \par}
+      \vfill
+      {\large Professor\par
+          Elisabetta \textsc{Di Nitto}}
+      \vfill
+      {\large \textbf{Version 1}\\ \today \par}
+\end{titlepage}
+
+
+\newpage
+\renewcommand\contentsname{Contents}
+\tableofcontents
+
+\newpage
+
+%-----------------------------------------------------------%
+\section{Introduction}
+\input{introduction}
+
+%-----------------------------------------------------------%
+\newpage
+\section{Overall Description}
+\input{overall_description}
+
+%-----------------------------------------------------------%
+\newpage
+\section{Specific Requirements}
+\input{specific_requirements}
+
+%-----------------------------------------------------------%
+\newpage
+\section{Formal Analysis using Alloy}
+
+
+%-----------------------------------------------------------%
+\section{Effort Spent}
+
+\end{document}

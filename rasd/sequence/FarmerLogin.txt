@@ -1,0 +1,18 @@
+
+actor Farmer
+participant Dream
+activate Farmer
+Farmer->Dream:getLoginForm()
+activate Dream
+Dream-->Farmer:loginForm
+Farmer->Dream:login ( email,password )
+Dream<-Dream: validationOfUser
+alt user registered
+alt psw correct
+Dream-->Farmer:HomePage
+else psw incorrect
+Dream-->Farmer: error 
+end
+else user not registered
+Dream-->Farmer: error
+end
