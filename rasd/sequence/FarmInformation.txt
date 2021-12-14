@@ -17,10 +17,7 @@ DataBase-->Dream: s = sensorData
 
 
 Dream-->Farmer:Farm Page : m, pd, s 
-deactivate Dream
-Farmer->Dream: seeNotifications()
-activate Dream
-Dream-->Farmer: list of Notifications
+
 deactivate Dream
 
 
