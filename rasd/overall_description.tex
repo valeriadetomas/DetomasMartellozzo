@@ -12,7 +12,7 @@ The main elements in the class diagram are:
     It contains also the data about the production inserted by the farmer himself, that could be not present yet.
     (if a farmer has not started yet or has not inserted these information).\\
     Each farm is provided of sensors of two kind: one that collect data about the amount of water used by the farmer in his farm and humidity every day.\\
-    \item \textbf{Notification}: this class represents content sent between users (in order to communicate something) or something submitted in the sistem that is stored in the database.\\
+    \item \textbf{Notification}: this class represents content sent between users (in order to communicate something) or something submitted in the sistem that is stored in the database.
         \begin{enumerate}
             \item \textsl{Help}: it stores the single farmer that writes it, 
             the type of production he selects and a body where hthe farmer explains in details the problem.\\
@@ -23,16 +23,16 @@ The main elements in the class diagram are:
             farms more than once since this event happens once a month.\\ Despite it, an evaluation is related only to one farm and the result can be positive (1) or negative (0).\\ The evaluation is sent by the policy maker to the farm owner.
             \item \textsl{Solution}: this class is like the Help one, in fact is the reply of a policy maker to a help request (by Help notification) from a farmer with in the body the solution found by the sender.
         \end{enumerate}
-    \item \textbf{Evaluation}:
+    
     \item \textbf{Map}: this object contains a list of all the farms located in Telegana and registered in the application.\\It stores all the information about the farms due to provides them to the users (in different ways).
     \item \textbf{Weather Info}: this class is a rapresentation of the meteorological information of the country, provided by an external application.\\These information are specific for each position in which is located a farm.
-    \item \textbf{Production}:
+    
     \item \textbf{Forum}:
-    \item \textbf{SensorsData}
+    
 \end{itemize}
 \begin{figure}[H]
     \begin{center}
-    \includegraphics[width=1\textwidth]{images/UMLSW2_2.png}
+    \includegraphics[width=1\textwidth]{images/UMLSW2_3.png}
     \caption{UML diagram.}
     \label{fig:uml}
     \end{center}
