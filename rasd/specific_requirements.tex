@@ -705,7 +705,8 @@ All the communications between users and Dream website are made via HTTPS.
 
     \item \textbf{Scenario 4}\\
     A policy maker working for Telengana's government is working with Dream application. The policy maker logs in with his code and password 
-    to check his notification. The first notification he notices is a new request of help from Ajar's farm. He then looks at Ajar's farm page to look up all the information.
+    to check his notification. \\
+    The first notification he notices is a new request of help from Ajar's farm. He then looks at Ajar's farm page to look up all the information.\\
     Ajar is looking for suggestions on his wheat crop. The policy maker at this point send the solution of Ajar's problem, 
     filtering for type of production: wheat. 
     He reads all the advices written by other farmers and chooses the one written by Denali: wheat should be 
@@ -746,12 +747,12 @@ All the communications between users and Dream website are made via HTTPS.
 \textbf{R26} The system does not allow Policy Makers to register\\
 \textbf{R27} The system must allow Policy Makers to log in\\
 \textbf{R28} The system must verify that the code is valid\\
-\textbf{R29} The system must allow Policy Makers to search a farm by name (OK?)\\
+\textbf{R29} The system must allow Policy Makers to search a farm by name\\
 \textbf{R30} The system must allow Policy Makers to see all farms’ pages\\
-\textbf{R31} The system must not allow Policy Makers to modify any farm’s page\\
+\textbf{R31} The system must not allow Policy Makers to modify any farm page\\
 \textbf{R32} The system must allow Policy Makers to update the performance of a farmer\\
-\textbf{R33} The system must allow Policy Makers to send notification to the farmers\\
-\textbf{R34} The system must allow Policy Makers to receive request of help by the farmers\\
+\textbf{R33} The system must allow Policy Makers to send notifications to the farmers\\
+\textbf{R34} The system must allow Policy Makers to receive requests of help by the farmers\\
 %-----------------------------------------------------------------------------------%
 \newpage
 
@@ -813,7 +814,7 @@ All the communications between users and Dream website are made via HTTPS.
             \item \textbf{DA9} Each farm belongs to exacly one farmer
             \item \textbf{DA13} Performances of farmers are always identified correctly
             \item \textbf{DA16} Policy Makers have a given code and password to access the system
-            \item \textbf{DA18} The special incentive that the farmers received for their good work, is used on stuff related to their production
+            \item \textbf{DA18} The special incentive that the farmers receive for their good work, is used on stuff related to their farm activity
         \end{itemize}
     
     \item \textbf{G2} Allow farmer to comunicate with each other
@@ -1020,7 +1021,11 @@ so that it about 14 days a year of downtime are allowed.
 
 \subsubsection{Security}
 \label{subsubsection:3.4.3}
-Security of the data and of the communication user-system is a primary concern. Users credential are stored in a data base, so the system crypt the password data before store it. The system recognises the right type of user during the log in phase to ensure providing the correct level visibility of the data and the permission to update them or not. In this way farmer’s privacy is guaranteed. As a matter of fact a farmer can’t see another farmer’s page.
+Security of the data and of the communication user-system is a primary concern. Users credential are stored in a data base, 
+so the system crypts the password data before storing it. \\
+The system recognises the right type of user during the log in phase to ensure the correct 
+level of visibility of the data and the permission to update the data or not. 
+In this way farmer’s privacy is guaranteed. As a matter of fact a farmer can not see another farmer page.
 
 
 \subsubsection{Maintanability}
