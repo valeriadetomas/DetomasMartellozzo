@@ -211,7 +211,7 @@ All the communications between users and Dream website are made via HTTPS.
                 \end{center}
             \end{figure}
 
-        \item \textbf{Farmer Login}
+    \item \textbf{Farmer Login}
         \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
             \toprule
             \textbf{Name} & \textbf{Farmer Login} \\
@@ -249,8 +249,8 @@ All the communications between users and Dream website are made via HTTPS.
         \end{figure}
 
 
-        \item Farmer send a message on the Forum
-        \item \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+    \item \textbf{Farmer send a message on the Forum}
+        \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
             \toprule
             \textbf{Name} & \textbf{Farmer sends a message on the forum} \\
             \midrule
@@ -277,6 +277,7 @@ All the communications between users and Dream website are made via HTTPS.
             \bottomrule
             \caption{\emph{Farmer message} use case description}
         \end{longtable}
+
         \begin{figure}[H]
             \begin{center}
             \includegraphics[width=0.6\textwidth]{sequence/messageOnForum.png}
@@ -285,7 +286,49 @@ All the communications between users and Dream website are made via HTTPS.
         \end{center}
         \end{figure}
 
-    \item Find a farmer on the Map\\
+    \item \textbf{Submit production data}
+        \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
+            \toprule
+            \textbf{Name} & \textbf{Farmer submit production data} \\
+            \midrule
+            \textbf{Actors} & Farmer \\
+            \midrule
+            \textbf{Entry conditions} & The farmer has logged in\\
+            \midrule
+            \textbf{Flow of events} & 
+            \begin{enumerate}
+                \item The farmer wants to add new data about his production
+                \item The farmer clicks on his own farm page button
+                \item The clicks on Add data button
+                \item The farmer selects the type of production on which he wants to add information
+                \item The farmer selects the quantity of product cultivated
+                \item The farmer select the date in which he reap 
+                \item The farmer clicks on submit button
+                \item The system inserts the data in the database and redirect the farmer to the updated page
+            \end{enumerate} \\
+            \midrule
+            \textbf{Exit conditions} & The farmer's data are stored\\
+            \midrule
+            \textbf{Exceptions} & 
+            \begin{itemize}
+                \item If the type of production is empty the system shows an error alert
+                \item If the quantity is not specified the system shows an error alert
+                \item If the date is not selected the system shows an error alert
+            \end{itemize} \\
+            \bottomrule
+            \caption{\emph{Submit data} use case description}
+        \end{longtable}
+
+        \begin{figure}[H]
+            \begin{center}
+            \includegraphics[width=0.6\textwidth]{sequence/AddData.png}
+            \caption{\emph{Submit data} sequence diagram}
+            \label{fig:sequence4}
+        \end{center}
+        \end{figure}
+    
+
+    \item \textbf{Find a farmer on the Map}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Farmer visualizes the map} \\
@@ -314,11 +357,11 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{center}
         \includegraphics[width=0.45\textwidth]{sequence/VisializeMap.png}
         \caption{\emph{Farms' map visualization} sequence diagram}
-        \label{fig:sequence4}
+        \label{fig:sequence5}
         \end{center}
     \end{figure}
     
-    \item Find farm’s information
+    \item \textbf{Find farm’s information}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Farmer visualizes their own data} \\
@@ -344,15 +387,16 @@ All the communications between users and Dream website are made via HTTPS.
         \bottomrule
         \caption{\emph{Farm information visualization} use case description}
     \end{longtable}
+
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/FarmInformation.png}
         \caption{\emph{Farm information visualization} sequence diagram}
-        \label{fig:sequence5}
+        \label{fig:sequence6}
         \end{center}
     \end{figure}
 
-    \item Submit a request of help\\
+    \item \textbf{Submit a request of help}
     \textbf{I put only the case of a forml request to the Policy Maker (button on Farm Page) if you want we can create 2 "secion" (alt) one with this formal request and one sending a message on Forum (but is yet specified in 3)}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
@@ -385,15 +429,16 @@ All the communications between users and Dream website are made via HTTPS.
         \bottomrule
         \caption{\emph{Farmer ask for help} use case description}
     \end{longtable}
+
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/HelpRequest.png}
         \caption{\emph{Farmer ask for help} sequence diagram}
-        \label{fig:sequence6}
+        \label{fig:sequence7}
         \end{center}
     \end{figure}
 
-    \item Submit an advice
+    \item \textbf{Submit an advice}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Farmer submits an advice} \\
@@ -423,15 +468,16 @@ All the communications between users and Dream website are made via HTTPS.
         \bottomrule
         \caption{\emph{Farmer send advice} use case description}
     \end{longtable}
+
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/AdviceSubmit.png}
         \caption{\emph{Farmer send advice} sequence diagram}
-        \label{fig:sequence7}
+        \label{fig:sequence8}
         \end{center}
     \end{figure}
 
-    \item Visualize notifications
+    \item \textbf{Visualize notifications}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Farmer visualizes his notifications} \\
@@ -459,15 +505,16 @@ All the communications between users and Dream website are made via HTTPS.
         \bottomrule
         \caption{\emph{Farmer visualize notifications} use case description}
     \end{longtable}
+
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/SeeNotifications.png}
         \caption{\emph{Farmer visualize notifications} sequence diagram}
-        \label{fig:sequence8}
+        \label{fig:sequence9}
         \end{center}
     \end{figure}
 
-    \item Policy Maker login
+    \item \textbf{Policy Maker login}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Farmer visualizes their own data} \\
@@ -495,15 +542,16 @@ All the communications between users and Dream website are made via HTTPS.
         \bottomrule
         \caption{\emph{Policy Maker login} use case description}
     \end{longtable}
+
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/PolicyMakerLogin.png}
         \caption{\emph{Policy Maker login} sequence diagram}
-        \label{fig:sequence9}
+        \label{fig:sequence10}
         \end{center}
     \end{figure}
 
-    \item Find a farm's page
+    \item \textbf{Find a farm's page}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Policy Maker visualizes a farm’s page} \\
@@ -530,15 +578,16 @@ All the communications between users and Dream website are made via HTTPS.
         \bottomrule
         \caption{\emph{Farm’s page visualization} use case description}
     \end{longtable}
+
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/PolicyMakerseachFarm.png}
         \caption{\emph{Farm’s page visualization} sequence diagram}
-        \label{fig:sequence10}
+        \label{fig:sequence11}
         \end{center}
     \end{figure}
 
-    \item Find a farmer on the Map
+    \item \textbf{Find a farmer on the Map}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Policy Maker visualizes a farm’s page} \\
@@ -566,15 +615,16 @@ All the communications between users and Dream website are made via HTTPS.
         \bottomrule
         \caption{\emph{Farm visualization on map} use case description}
     \end{longtable}
+
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/searchOnMap.png}
         \caption{\emph{Farm visualization on map} sequence diagram}
-        \label{fig:sequence11}
+        \label{fig:sequence12}
         \end{center}
     \end{figure}
 
-    \item Update the Map
+    \item \textbf{Update the Map}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Policy Maker update the map} \\
@@ -611,15 +661,16 @@ All the communications between users and Dream website are made via HTTPS.
         \bottomrule
         \caption{\emph{Map updating} use case description}
     \end{longtable}
+
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/updateMap.png}
         \caption{\emph{Map updating} sequence diagram}
-        \label{fig:sequence12}
+        \label{fig:sequence13}
         \end{center}
     \end{figure}
 
-    \item Reply to a request of help
+    \item \textbf{Reply to a request of help}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Policy Maker send anvice} \\
@@ -651,11 +702,12 @@ All the communications between users and Dream website are made via HTTPS.
         \bottomrule
         \caption{\emph{Problem resolution} use case description}
     \end{longtable}
+
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/replyHelp.png}
         \caption{\emph{Problem resolution} sequence diagram}
-        \label{fig:sequence13}
+        \label{fig:sequence14}
         \end{center}
     \end{figure}
 \end{enumerate}
@@ -985,7 +1037,99 @@ All the communications between users and Dream website are made via HTTPS.
 
 
 %-----------------------------------------------------------------------------------%
+
 \subsubsection{Traceability Matrix}
+
+\begin{table}[ht]
+    \begin{center}
+        \begin{tabular}{|p{2cm}|p{5cm}|p{3cm}|}
+            \toprule Requirements & Use Cases & Scenarios \\
+            \midrule
+            R1 & UC1, UC3, UC4, UC5, UC6, UC7, UC9 & S1, S3 \\
+            \midrule
+            R2 & UC2, UC3, UC4, UC5, UC6, UC7, UC8, UC9 & S1, S3 \\
+            \midrule
+            R3 & UC1, UC6 & S1, S3 \\
+            \midrule
+            R4 & UC1, UC2 &  \\
+            \midrule
+            R5 & UC2 & \\
+            \midrule
+            R6 & UC2, UC3 & S1, S3 \\
+            \midrule
+            R7 & UC4 & S1, S3 \\
+            \midrule
+            R8 & UC4 & S1, S3 \\
+            \midrule
+            R9 & UC7 & S3 \\
+            \midrule
+            R10 & UC7 & S3 \\
+            \midrule
+            R11 & UC8 &  \\
+            \midrule
+            R12 & UC8 &  \\
+            \midrule
+            R13 & UC9, UC14 & S3 \\
+            \midrule
+            R14 & UC6 & S1 \\
+            \midrule
+            R15 & UC6 & S1 \\
+            \midrule
+            R16 & UC3 & S1, S3 \\
+            \midrule
+            R17 & UC3 & S1, S3 \\
+            \bottomrule
+            
+        \end{tabular}
+    \end{center}
+    \caption{Traceability matrix from R1 to R17}
+    
+\end{table}
+\begin{table}[ht]
+    \begin{center}
+        \begin{tabular}{|p{2cm}|p{5cm}|p{3cm}|}
+            \toprule Requirements & Use Cases & Scenarios \\
+            \midrule
+            R18 & UC3 & S1, S3 \\
+            \midrule
+            R19 & UC5, UC12 & S2 \\
+            \midrule
+            R20 & UC5, UC12 & S2 \\
+            \midrule
+            R21 & UC12 & S2 \\
+            \midrule
+            R22 & UC9 & S3 \\
+            \midrule
+            R23 & UC6, UC9 & S1, S3 \\
+            \midrule
+            R24 & UC5, UC6, UC11 & S1, S3 \\
+            \midrule
+            R25 & UC6, UC11 & S1, S2, S3, S4 \\
+            \midrule
+            R26 & & S2 \\
+            \midrule
+            R27 & UC10 & S2, S4 \\
+            \midrule
+            R28 & UC10 & S2, S4 \\
+            \midrule
+            R29 & UC11 & S2, S4 \\
+            \midrule
+            R30 & UC11 & S2, S4 \\
+            \midrule
+            R31 & & S2, S4 \\
+            \midrule
+            R32 & UC13 & S2 \\
+            \midrule
+            R33 & UC13, UC14 & S2, S4 \\
+            \midrule
+            R34 & UC14 & S4 \\
+            \bottomrule
+            
+        \end{tabular}
+    \end{center}
+    \caption{Traceability matrix from R18 to R34}
+    
+\end{table}
 %-----------------------------------------------------------------------------------%
 \subsection{Performance Requirements}
 The system serves its user with a web application. All the computations will take place on the server side, 

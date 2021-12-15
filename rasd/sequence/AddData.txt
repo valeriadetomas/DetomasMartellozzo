@@ -1,0 +1,26 @@
+
+
+actor Farmer
+participant Dream
+
+activate Farmer
+Farmer->Dream: getMyPage()
+activate Dream
+Dream->Dream: identify user
+
+note over Dream: see **Farm's Information**\n for the details of the\n page loading\n...
+
+Dream-->Farmer:Farm Page
+deactivate Dream
+
+Farmer->Dream: click( addDataButton ) 
+activate Dream
+Dream-->Farmer: Production form
+Farmer->Dream: submitData ( productionType, quantity, date )
+Dream->Dream: save data
+Dream-->Farmer: Farm Page
+deactivate Dream
+
+
+
+
