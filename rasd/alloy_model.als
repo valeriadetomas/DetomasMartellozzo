@@ -20,8 +20,19 @@ sig Date{
     day: one Int,
     month: one Int,
     year: one Int
+}{
+    day > 0
+    month > 0
+    year > 0
 }
-sig Time{}
+
+sig Time{
+    hour : one Int,
+    minute : one Int
+}{
+    hour > 0
+    minute >= 0
+}
 sig MessageContent{}
 
 sig Message{
@@ -165,7 +176,6 @@ fact singleWheaterInfo{
 }
 
 
-
 //no production without farm
 fact noProductionWithoutFarm{
     all p: Production | one f: Farm | p in f.products
@@ -204,4 +214,14 @@ fact allFarmsMapped {
 //only one evaluation per month for a farm
 fact singleEvaluation {
     no disj e1, e2: Evaluation | one f: Farm | e1.receiver=e2.receiver and e1.date.month=e2.date.month and e1.date.year = e2.date.year
+}
+
+//the evaluation receiver must be the same of the owner of the farm on which is made
+fact courrespondingOwner {
+    all e: Evaluation | one farm: Farm | e in farm.evaluation and farm.owner = e.receiver
+}
+
+//only good farmer can make advice
+fact howCanSubmitAnAdvice {
+    all advice: Advice | one farm: Farm | one e: Evaluation | advice.sender=farm.owner and e in farm.evaluation and advice.date.month=e.date.month and advice.date.year=e.date.year and e.result = True
 }
