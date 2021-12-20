@@ -1,20 +1,27 @@
-sig Password{}
+
 sig Username{}
+sig Password{}
+{
+ all p: Password | ( some u: User |  u.password  = p)
+}
 sig Surname{}
 sig Email{}
 sig Code{}
 
-sig Farmer{
-    username: one Username,
-    surname: one Surname,
-    email: one Email,
-    password: one Password
+abstract sig User{
+	password: one Password
 }
 
-sig PolicyMaker{
-    code: one Code, 
-    password: one Password
+sig Farmer extends User{
+    username: one Username,
+    surname: one Surname,
+    email: one Email
 }
+
+sig PolicyMaker extends User{
+    code: one Code 
+}
+    
 
 sig Date{
     day: one Int,
@@ -104,7 +111,7 @@ sig Weather{}
 sig WeatherInfo{
     basicInfo: Weather,
     temperature: Int,
-    position: Position,
+    position: one Position,
     date: Date
 }
 
@@ -149,10 +156,10 @@ fact UniqueCode{
     no disj pm1,pm2: PolicyMaker| pm1.code = pm2.code 
 }
 
+/*
 fact noPasswordWithoutFarmerOrPolicyMaker {
-    (all p: Password | one f: Farmer | f.password = p) or 
-    (all p: Password | one pm: PolicyMaker | pm.password = p) 
-}
+    all p: Password | ( some u: User |  u.password  = p)
+}*/
 
 //farm name is unique
 fact UniqueFarmName {
@@ -180,14 +187,9 @@ fact singleWheaterInfo{
 }
 
 //weather position equal farm position
-fact positionValidity{
-	all f:Farm | one w: WeatherInfo | w.position = f.position and w in f.weather
+fact weatherValidity{
+	all f: Farm | f.position = f.weather.position
 }
-
-fact alwaysSamePosition{
- no disj w1, w2: WeatherInfo| one f:Farm | w1 in f.weather and w2 in f.weather and w1.position != w2.position 
-}
-
 
 //no production without farm
 fact noProductionWithoutFarm{
@@ -247,11 +249,11 @@ fact howCanSubmitAnAdvice {
 pred word{
 	
 	--#Farmer = 4
-	#PolicyMaker = 2
+	#PolicyMaker = 1
 	#Notification=0
-	#Farm = 4
+	#Farm = 2
 	
 }
-run word for 5
+run word for 8
 
 	
