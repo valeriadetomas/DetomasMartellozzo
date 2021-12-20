@@ -22,7 +22,6 @@ sig PolicyMaker extends User{
     code: one Code 
 }
     
-
 sig Date{
     day: one Int,
     month: one Int,
@@ -40,6 +39,7 @@ sig Time{
     hour > 0
     minute >= 0
 }
+
 sig MessageContent{}
 
 sig Message{
@@ -105,7 +105,6 @@ sig Evaluation extends Notification{
 
 sig Position {}
 sig Weather{}
-
 sig WeatherInfo{
     basicInfo: Weather,
     temperature: Int,
@@ -114,7 +113,6 @@ sig WeatherInfo{
 }
 
 sig FarmName{}
-
 sig Farm{
     name: one FarmName,
     owner: one Farmer,
@@ -131,6 +129,10 @@ one sig Map{
 }
 
 
+////////////////////////////////////////
+//   FACTS
+////////////////////////////////////////
+
 //Bool can only be true or false
 fact boolean{
     True + False = Bool
@@ -145,6 +147,7 @@ fact UniqueEmail{
     no disj f1,f2: Farmer| f1.email = f2.email
 }
 
+//username and surname can't exist without farmers
 fact noUsernameWithoutFarmer {
 all un: Username | one f: Farmer | f.username = un
 }
@@ -178,63 +181,57 @@ fact noFarmerWithoutFarm {
     all f: Farmer | one farm: Farm | farm.owner = f
 }
 
-//There is no wheater info with the same date and position with different temperature or wheater info
-fact singleWheaterInfo{
+//There is no weather info with the same date and position with different temperature or weather info
+fact singleWeatherInfo{
     all w1, w2: WeatherInfo | (w1.position=w2.position and w1.date=w2.date)  implies (w1.temperature= w2.temperature and w1.basicInfo=w2.basicInfo)
 }
 
-//weather position equal farm position
+//weather position is the same one of the farm 
 fact weatherValidity{
 	all f: Farm | f.position = f.weather.position
 }
 
-//no production without farm
+//production does not exist without farm
 fact noProductionWithoutFarm{
     all p: Production | one f: Farm | p in f.products
 }
 
-//no product without production
+//product does not exist without production
 fact noProductWithoutProduction{
 	all p: ProductName | one production: Production | p = production.type
 }
 
-//no different production of same type in one farm in one day
+//no different production's type in one farm each day
 fact noProductionsOfSameType{
     no disj p1, p2: Production | one f: Farm  | p1.type=p2.type and p1 in f.products and p2 in f.products and p1.date=p2.date
 }
 
-//no product of a zero amount in a farm
-fact noEmptyProduction {
-    all p: Production | one f: Farm | p in f.products iff p.amount>0
-}
-
-//all message are stored in the forum
+//all messages are stored in the forum
 fact messageValidity{
 	all m:Message | one f:Forum | m in f.messages
 }
 
-
-//all message have different body
+//all messages have different content
 fact noEqualMessages{
 	no disj m1, m2: Message | m1.content = m2.content
 }
 
-//no equal notification
+//all notifications have different content
 fact noEqualNotifications{
 	no disj n1, n2: Notification | n1.body = n2.body
 }
 
-//no message sent in the same instant by the same farmer
+//no messages sent at the same moment by the same farmer
 fact oneMessageAtTime{
     no disj m1, m2: Message | m1.sender=m2.sender and m1.date=m2.date and m1.time=m2.time 
 }
 
-//every help have exacly one Solution
+//every help request has exacly one Solution
 fact oneSolutionForOneHelp{
     all h: Help | one s: Solution | h.sender = s.receiver and h.typeOfProduction=s.typeOfProduction
 }
 
-//no sensor data without a farm
+//no sensor data exists without a farm
 fact noSensorWithoutFarm{
     all s1, s2 : SensorData | one f: Farm | s1 in f.water and s2 in f.humidity
 }
@@ -254,42 +251,69 @@ fact evaluationValidity{
 	all f: Farm | #f.evaluation >0 implies f.owner = f.evaluation.receiver
 }
 
+//no evaluations exists without the associated farm
 fact noEvaluationWithoutFarm{
 	all e: Evaluation | one f: Farm | f.owner=e.receiver implies e in f.evaluation
 }
 
-//only good farmer can make advice
+//only farmers who have a positive evaluation can write advices
 fact howCanSubmitAnAdvice {
     all advice: Advice | one farm: Farm | one e: Evaluation | advice.sender=farm.owner and e in farm.evaluation and advice.date.month=e.date.month and advice.date.year=e.date.year and e.result = True
 }
 
+////////////////////////////////////////
+//   ASSERTIONS
+////////////////////////////////////////
+
+// G1: allow policy makers to retrieve information from farmers and to evaluate their performance 
+assert evaluatePerformormance{
+	no e:Evaluation | one f: Farm |  e.receiver = f.owner implies e not in f.evaluation
+}
+check evaluatePerformormance for 10
+
+// G2: allow farmers to communicate with each other 
+assert farmersCommunication{
+	all m: Message | one f: Forum | m in f.messages implies (one farmer: Farmer | m.sender = farmer)
+}
+check farmersCommunication for 10
+
+// G3: allow farmers to insert data and advices on his production 
+assert insertData{
+	all p: Production | some f: Farm | p in f.products implies (one product:ProductName | 
+product = p.type) and (#f.products >0)
+}
+check insertData for 10
+
+assert insertAdvice{
+	no a: Advice | one f: Farm | a.sender = f.owner and #f.evaluation<1
+}
+check insertAdvice for 10
 
 
-pred word1{
-	
-	//registration of 2 farmer only
+////////////////////////////////////////
+//   PREDICATES
+////////////////////////////////////////
+
+
+pred world1{
 	#PolicyMaker = 0
 	#Notification=0
 	#Farmer = 2
 	#Code = 0
 	#MessageContent = 0
-
 }
-run word1 for 3
+run world1 for 3
 
-pred word2{
+pred world2{
 	#Farmer = 1
 	#Evaluation = 3
 	#Notification = 3
 	#Message = 0
 	#PolicyMaker = 2
-
 }
-run word2 for 6
+run world2 for 6
 
-pred word3{
-
-	//messages in the forum
+pred world3{
 	#Farmer = 2
 	#Message = 4
 	#PolicyMaker = 0
@@ -297,12 +321,5 @@ pred word3{
 	#Production = 2
 	#Date = 2
 	#Time = 3
-
 }
-run word3 for 5
-
-
-
-
-
-	
+run world3 for 5

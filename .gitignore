@@ -1,5 +1,6 @@
 
 # LaTex
+*.fdb_latexmk
 *.aux
 *.bbl
 *.blg
@@ -10,6 +11,11 @@
 *.toc
 *.nav
 *.snm
+*.synctex.gz
+*.fls
+
+
+
 
 
 # Mac
