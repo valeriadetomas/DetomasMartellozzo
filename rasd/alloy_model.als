@@ -277,7 +277,15 @@ pred word1{
 }
 run word1 for 3
 
+pred word2{
+	#Farmer = 1
+	#Evaluation = 3
+	#Notification = 3
+	#Message = 0
+	#PolicyMaker = 2
 
+}
+run word2 for 6
 
 pred word3{
 
