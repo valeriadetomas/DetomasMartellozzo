@@ -1,0 +1,16 @@
+
+# LaTex
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.nav
+*.snm
+
+
+# Mac
+.DS_Store
