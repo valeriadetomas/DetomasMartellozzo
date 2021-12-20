@@ -28,8 +28,8 @@ sig Date{
     month: one Int,
     year: one Int
 }{
-    day > 0
-    month > 0
+    day > 0 
+    month > 0 || month< 13
     year > 0
 }
 
@@ -55,12 +55,8 @@ one sig Forum{
 
 sig ProductName{}
 
-sig Product{
-    name: one ProductName
-}
-
 sig Production{
-    type: one Product,
+    type: one ProductName,
     amount: one Int,
     date : one Date
 }{
@@ -80,23 +76,25 @@ one sig False extends Bool{}
 
 abstract sig Notification{
     body: one MessageContent,
-    typeOfProduction: one Production,
     date: one Date,
     time: one Time 
 }
 
 sig Help extends Notification{
     sender: one Farmer,
-    receiver: one PolicyMaker
+    receiver: one PolicyMaker,
+    typeOfProduction: one Production
 }
 sig Advice extends Notification{
     sender: one Farmer,
-    receiver: one PolicyMaker
+    receiver: one PolicyMaker,
+    typeOfProduction: one Production
 }
 
 sig Solution extends Notification{
     sender: one PolicyMaker,
-    receiver: one Farmer
+    receiver: one Farmer,
+    typeOfProduction: one Production
 }
 
 sig Evaluation extends Notification{
@@ -151,15 +149,14 @@ fact noUsernameWithoutFarmer {
 all un: Username | one f: Farmer | f.username = un
 }
 
+fact noSurnameWithoutFarmer {
+all sur: Surname | one f: Farmer | f.surname = sur
+}
+
 //policy maker's code is unique
 fact UniqueCode{
     no disj pm1,pm2: PolicyMaker| pm1.code = pm2.code 
 }
-
-/*
-fact noPasswordWithoutFarmerOrPolicyMaker {
-    all p: Password | ( some u: User |  u.password  = p)
-}*/
 
 //farm name is unique
 fact UniqueFarmName {
@@ -198,12 +195,12 @@ fact noProductionWithoutFarm{
 
 //no product without production
 fact noProductWithoutProduction{
-	all p: Product | one production: Production | p in production.type
+	all p: ProductName | one production: Production | p = production.type
 }
 
 //no different production of same type in one farm in one day
 fact noProductionsOfSameType{
-    no disj p1, p2: Product | one f: Farm | one p: Production | p1.name=p2.name and p1.date=p2.date and p in f.products and p.type.name=p1.name and p.type.name=p2.name 
+    no disj p1, p2: Production | one f: Farm  | p1.type=p2.type and p1 in f.products and p2 in f.products and p1.date=p2.date
 }
 
 //no product of a zero amount in a farm
@@ -211,9 +208,25 @@ fact noEmptyProduction {
     all p: Production | one f: Farm | p in f.products iff p.amount>0
 }
 
+//all message are stored in the forum
+fact messageValidity{
+	all m:Message | one f:Forum | m in f.messages
+}
+
+
+//all message have different body
+fact noEqualMessages{
+	no disj m1, m2: Message | m1.content = m2.content
+}
+
+//no equal notification
+fact noEqualNotifications{
+	no disj n1, n2: Notification | n1.body = n2.body
+}
+
 //no message sent in the same instant by the same farmer
 fact oneMessageAtTime{
-    no disj m1, m2: Message | m1.sender=m2.sender and m1.date=m2.date and m1.time=m2.time and m1.content != m2.content
+    no disj m1, m2: Message | m1.sender=m2.sender and m1.date=m2.date and m1.time=m2.time 
 }
 
 //every help have exacly one Solution
@@ -237,8 +250,12 @@ fact singleEvaluation {
 }
 
 //the evaluation receiver must be the same of the owner of the farm on which is made
-fact courrespondingOwner {
-    all e: Evaluation | one farm: Farm | e in farm.evaluation and farm.owner = e.receiver
+fact evaluationValidity{
+	all f: Farm | #f.evaluation >0 implies f.owner = f.evaluation.receiver
+}
+
+fact noEvaluationWithoutFarm{
+	all e: Evaluation | one f: Farm | f.owner=e.receiver implies e in f.evaluation
 }
 
 //only good farmer can make advice
@@ -246,14 +263,38 @@ fact howCanSubmitAnAdvice {
     all advice: Advice | one farm: Farm | one e: Evaluation | advice.sender=farm.owner and e in farm.evaluation and advice.date.month=e.date.month and advice.date.year=e.date.year and e.result = True
 }
 
-pred word{
+
+
+pred word1{
 	
-	--#Farmer = 4
-	#PolicyMaker = 1
+	//registration of 2 farmer only
+	#PolicyMaker = 0
 	#Notification=0
-	#Farm = 2
-	
+	#Farmer = 2
+	#Code = 0
+	#MessageContent = 0
+
 }
-run word for 8
+run word1 for 3
+
+
+
+pred word3{
+
+	//messages in the forum
+	#Farmer = 2
+	#Message = 4
+	#PolicyMaker = 0
+	#Code = 0
+	#Production = 2
+	#Date = 2
+	#Time = 3
+
+}
+run word3 for 5
+
+
+
+
 
 	
