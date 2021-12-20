@@ -39,11 +39,11 @@ sig Message{
     date: one Date,
     time: one Time,
     content: one MessageContent,
-    sender: Farmer
+    sender: one Farmer
 }
 
 one sig Forum{
-    messages: some Message
+    messages: set Message
 }
 
 sig ProductName{}
@@ -54,13 +54,17 @@ sig Product{
 
 sig Production{
     type: one Product,
-    amount: one Int
-    date : Date
+    amount: one Int,
+    date : one Date
+}{
+	amount > 0
 }
 
 sig SensorData{
     quantity: Int, 
     date: Date
+}{
+	quantity >= 0
 }
 
 abstract sig Bool{}
@@ -68,30 +72,30 @@ one sig True extends Bool{}
 one sig False extends Bool{}
 
 abstract sig Notification{
-    body: MessageContent,
-    typeOfProduction: Production,
-    date: Date,
-    time: Time 
+    body: one MessageContent,
+    typeOfProduction: one Production,
+    date: one Date,
+    time: one Time 
 }
 
 sig Help extends Notification{
-    sender: Farmer,
-    receiver: PolicyMaker
+    sender: one Farmer,
+    receiver: one PolicyMaker
 }
 sig Advice extends Notification{
-    sender: Farmer,
-    receiver: PolicyMaker
+    sender: one Farmer,
+    receiver: one PolicyMaker
 }
 
 sig Solution extends Notification{
-    sender: PolicyMaker,
-    receiver: Farmer
+    sender: one PolicyMaker,
+    receiver: one Farmer
 }
 
 sig Evaluation extends Notification{
-    sender: PolicyMaker,
-    receiver: Farmer,
-    result: Bool
+    sender: one PolicyMaker,
+    receiver: one Farmer,
+    result: one Bool
 }
 
 sig Position {}
@@ -109,15 +113,15 @@ sig FarmName{}
 sig Farm{
     name: one FarmName,
     owner: one Farmer,
-    products: some Production,
-    water: SensorData,
-    humidity: SensorData,
-    position: Position, 
+    products: set Production,
+    water: some SensorData,
+    humidity: some SensorData,
+    position: one Position, 
     weather: some WeatherInfo, 
-    evaluation: Evaluation
+    evaluation: set Evaluation
 }
 
-sig Map{
+one sig Map{
     farms: some Farm
 }
 
@@ -129,7 +133,7 @@ fact boolean{
 
 //Uniquness of farmer's username and email
 fact UniqueUsernames{
-    no disj f1,f2: Famrer| f1.username = f2.username
+    no disj f1,f2: Farmer| f1.username = f2.username
 }
 
 fact UniqueEmail{
@@ -166,13 +170,22 @@ fact UniqueFarmsPosition{
 }
 
 //no farmer without farm
-fact noFamrerWithoutFarm {
-    all f: Farmer | one farm: Farm | farm.farmer = f
+fact noFarmerWithoutFarm {
+    all f: Farmer | one farm: Farm | farm.owner = f
 }
 
 //There is no wheater info with the same date and position with different temperature or wheater info
 fact singleWheaterInfo{
     all w1, w2: WeatherInfo | (w1.position=w2.position and w1.date=w2.date)  implies (w1.temperature= w2.temperature and w1.basicInfo=w2.basicInfo)
+}
+
+//weather position equal farm position
+fact positionValidity{
+	all f:Farm | one w: WeatherInfo | w.position = f.position and w in f.weather
+}
+
+fact alwaysSamePosition{
+ no disj w1, w2: WeatherInfo| one f:Farm | w1 in f.weather and w2 in f.weather and w1.position != w2.position 
 }
 
 
@@ -181,9 +194,14 @@ fact noProductionWithoutFarm{
     all p: Production | one f: Farm | p in f.products
 }
 
+//no product without production
+fact noProductWithoutProduction{
+	all p: Product | one production: Production | p in production.type
+}
+
 //no different production of same type in one farm in one day
 fact noProductionsOfSameType{
-    no disj p1, p2: Product | one f: Farm | p': Production | p1.name=p2.name and p1.date=p2.date and p' in f.products and p'.type.name=p1.name and p'.type.name=p2.name 
+    no disj p1, p2: Product | one f: Farm | one p: Production | p1.name=p2.name and p1.date=p2.date and p in f.products and p.type.name=p1.name and p.type.name=p2.name 
 }
 
 //no product of a zero amount in a farm
@@ -213,7 +231,7 @@ fact allFarmsMapped {
 
 //only one evaluation per month for a farm
 fact singleEvaluation {
-    no disj e1, e2: Evaluation | one f: Farm | e1.receiver=e2.receiver and e1.date.month=e2.date.month and e1.date.year = e2.date.year
+    no disj e1, e2: Evaluation | e1.receiver=e2.receiver and e1.date.month=e2.date.month and e1.date.year = e2.date.year
 }
 
 //the evaluation receiver must be the same of the owner of the farm on which is made
@@ -225,3 +243,15 @@ fact courrespondingOwner {
 fact howCanSubmitAnAdvice {
     all advice: Advice | one farm: Farm | one e: Evaluation | advice.sender=farm.owner and e in farm.evaluation and advice.date.month=e.date.month and advice.date.year=e.date.year and e.result = True
 }
+
+pred word{
+	
+	--#Farmer = 4
+	#PolicyMaker = 2
+	#Notification=0
+	#Farm = 4
+	
+}
+run word for 5
+
+	
