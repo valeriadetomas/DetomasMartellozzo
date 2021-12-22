@@ -170,7 +170,7 @@ The Design Document (reference) provides a thorough and detailed description of 
 The application does not need any specific hardware requirements. 
 
 \subsubsection{Software Interfaces}
-The web app requires a computer with a web browser installed and connected to 
+The web app requires a computer with a web browser installed and a stable internet connection.\\
 The system has to rely on a DBMS API. It allows the management of all the data the system 
 needs in order to provide its functionalities, described in subsection ~\ref{subsection:2.2}.
 
@@ -202,7 +202,7 @@ All the communications between users and Dream website are made via HTTPS.
             \textbf{Flow of events} & 
             \begin{enumerate}
                 \item The farmer wants to sign up
-                \item The farmer inserts email, name, password, farm's name and farm's position 
+                \item The farmer inserts email, name, surname, password, farm's name and farm's position 
                 \item The farmer clicks submit
                 \item The system checks if email is unique and if all the form is correctly fill up 
                 \item The system inserts the information in the data base
@@ -240,7 +240,7 @@ All the communications between users and Dream website are made via HTTPS.
             \begin{enumerate}
                 \item The farmer wants to log in
                 \item The farmer inserts email and password
-                \item The farmer clicks submit
+                \item The farmer clicks log in
                 \item The system checks if the credentials are correct
                 \item The system notifies the farmer about the correct login
             \end{enumerate} \\
@@ -278,7 +278,7 @@ All the communications between users and Dream website are made via HTTPS.
             \begin{enumerate}
                 \item The farmer wants to send a message
                 \item The farmer clicks on forum button
-                \item The system send the ser to the forum page
+                \item The system send the farmer to the forum page
                 \item The farmer inserts the message 
                 \item The farmer clicks on send message
                 \item The system inserts the message into the database 
@@ -315,7 +315,7 @@ All the communications between users and Dream website are made via HTTPS.
             \begin{enumerate}
                 \item The farmer wants to add new data about his production
                 \item The farmer clicks on his own farm page button
-                \item The clicks on Add data button
+                \item The farmer clicks on Add data button
                 \item The farmer selects the type of production on which he wants to add information
                 \item The farmer selects the quantity of product cultivated
                 \item The farmer selects the date in which he reaps 
@@ -357,7 +357,7 @@ All the communications between users and Dream website are made via HTTPS.
         \begin{enumerate}
             \item The farmer wants to visualize the map
             \item The farmer clicks on map button
-            \item The system send the farmer to the map page
+            \item The system sends the farmer to the map page
             \item The farmer visualizes the map and selects a farm
             \item The system retrieves the information about the farm and shows them to the farmer
             \item The farmer visualizes the data about the selected farm
@@ -396,10 +396,7 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Exit conditions} & The farmer visualizes his own data\\
         \midrule
-        \textbf{Exceptions} & 
-        \begin{enumerate}
-            \item
-        \end{enumerate}\\
+        \textbf{Exceptions} & \\
         \bottomrule
         \caption{\emph{Farm information visualization} use case description}
     \end{longtable}
@@ -413,7 +410,6 @@ All the communications between users and Dream website are made via HTTPS.
     \end{figure}
 
     \item \textbf{Submit a request of help}
-    \textbf{I put only the case of a forml request to the Policy Maker (button on Farm Page) if you want we can create 2 "secion" (alt) one with this formal request and one sending a message on Forum (but is yet specified in 3)}
     \begin{longtable}{p{0.26\linewidth}p{0.75\linewidth}}
         \toprule
         \textbf{Name} & \textbf{Farmer submit a request of help} \\
@@ -425,21 +421,20 @@ All the communications between users and Dream website are made via HTTPS.
         \textbf{Flow of events} & 
         \begin{enumerate}
             \item The farmer wants to ask for help
-            \item The farmer clicks on his own page button
+            \item The farmer clicks on his farm's page button
             \item The farmer clicks on Help button
             \item The farmer chooses the type of production on which he had problems
             \item The farmer fills the form specifying the problem
             \item The farmer clicks on the submit button and sends the message
-            \item The system sends the notification to the Policy Makers
+            \item The system sends the notification to a policy maker
             \item The system notifies the farmer that the operation went succesfully
-            \item The system returns a list of advices retrieved from the database about the type of production selected
         \end{enumerate} \\
         \midrule
-        \textbf{Exit conditions} & The help request is sent to the Policy Makers\\
+        \textbf{Exit conditions} & The help request is sent to a policy maker\\
         \midrule
         \textbf{Exceptions} & 
         \begin{itemize}
-            \item If no type of production is selected the system notifies the farmer and waits for him to insert it
+            \item If no type of production is selected, the system notifies the farmer and waits for him to insert it
             \item If the request body is empty the system notifies the farmer and waits for him to fill it in
         \end{itemize}\\
         \bottomrule
@@ -448,7 +443,7 @@ All the communications between users and Dream website are made via HTTPS.
 
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequence/HelpRequest.png}
+        \includegraphics[width=0.6\textwidth]{sequence/HelpRequest.png}
         \caption{\emph{Farmer ask for help} sequence diagram}
         \label{fig:sequence7}
         \end{center}
@@ -479,7 +474,7 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Exceptions} & 
         \begin{itemize}
-            \item If the farmer is not a "good" one the system doesn't save the advice and nottifies the farmer with an error message
+            \item If the farmer is not a "good" one the system doesn't save the advice and notifies the farmer with an error message
         \end{itemize}\\
         \bottomrule
         \caption{\emph{Farmer send advice} use case description}
@@ -505,7 +500,7 @@ All the communications between users and Dream website are made via HTTPS.
         \textbf{Flow of events} & 
         \begin{enumerate}
             \item The farmer wants to read his notifications
-            \item The farmer clicks on his own page button
+            \item The farmer clicks on his farm's page button
             \item The farmer clicks on Notification button
             \item The system returns a list of messages
             \item The farmer selects one message between the ones in the list
@@ -514,17 +509,14 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Exit conditions} & The farmer visualizes his notifications\\
         \midrule
-        \textbf{Exceptions} & 
-        \begin{itemize}
-            \item 
-        \end{itemize}\\
+        \textbf{Exceptions} & \\
         \bottomrule
         \caption{\emph{Farmer visualize notifications} use case description}
     \end{longtable}
 
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequence/SeeNotifications.png}
+        \includegraphics[width=0.5\textwidth]{sequence/SeeNotifications.png}
         \caption{\emph{Farmer visualize notifications} sequence diagram}
         \label{fig:sequence9}
         \end{center}
@@ -597,7 +589,7 @@ All the communications between users and Dream website are made via HTTPS.
 
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequence/PolicyMakerseachFarm.png}
+        \includegraphics[width=0.5\textwidth]{sequence/PolicyMakerseachFarm.png}
         \caption{\emph{Farm’s page visualization} sequence diagram}
         \label{fig:sequence11}
         \end{center}
@@ -624,10 +616,7 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Exit conditions} & The Policy Maker visualizes his own data\\
         \midrule
-        \textbf{Exceptions} & 
-        \begin{itemize}
-            \item 
-        \end{itemize}\\
+        \textbf{Exceptions} & \\
         \bottomrule
         \caption{\emph{Farm visualization on map} use case description}
     \end{longtable}
@@ -655,7 +644,7 @@ All the communications between users and Dream website are made via HTTPS.
             \item The Policy Maker clicks on the map button
             \item The system redirects the Policy Maker to the map page
             \item The Policy Maker visualizes the map and selects a farm
-            \item The system retrieves the information about the farm (also the last evaluation) and shows them to the Policy Maker
+            \item The system retrieves the information about the farm and shows them to the Policy Maker
             \item The Policy Maker clicks update button
             \item The Policy Maker select the evaluation
                 \begin{itemize}
@@ -672,7 +661,7 @@ All the communications between users and Dream website are made via HTTPS.
         \midrule
         \textbf{Exceptions} & 
         \begin{itemize}
-            \item 
+            \item If the result field is empty, the system sends an error message to the policy maker 
         \end{itemize}\\
         \bottomrule
         \caption{\emph{Map updating} use case description}
@@ -709,12 +698,9 @@ All the communications between users and Dream website are made via HTTPS.
             \item The system notifies the Policy Maker that the operation was succesful
         \end{enumerate} \\
         \midrule
-        \textbf{Exit conditions} & The Policy Maker send solutions\\
+        \textbf{Exit conditions} & The Policy Maker sends solutions\\
         \midrule
-        \textbf{Exceptions} & 
-        \begin{itemize}
-            \item 
-        \end{itemize}\\
+        \textbf{Exceptions} & \\
         \bottomrule
         \caption{\emph{Problem resolution} use case description}
     \end{longtable}
@@ -791,7 +777,7 @@ All the communications between users and Dream website are made via HTTPS.
 \textbf{R2} The system must allow farmers to log in\\
 \textbf{R3} The system must save the farmers registration data\\
 \textbf{R4} The system must guarantee that each email address is unique\\
-\textbf{R5} The system must verify that the email address is valid (the type!)\\
+\textbf{R5} The system must verify that the email address is valid\\
 \textbf{R6} The system must save the farmers information about their production submitted\\
 \textbf{R7} The system must allow farmers to insert the type of production \\
 \textbf{R8} The system must allow farmers to insert the amount of production type\\
@@ -799,7 +785,7 @@ All the communications between users and Dream website are made via HTTPS.
 \textbf{R10} The system must allow farmers to select the type of production on which they had troubles\\
 \textbf{R11} The system must save the advice submitted by the farmers\\
 \textbf{R12} The system must allow farmers to select the type of product in their suggestion\\
-\textbf{R13} The system must be able to show to the farmers advices send by the Policy Makers (as a notification)\\
+\textbf{R13} The system must be able to show to the farmers advices send by the Policy Makers\\
 \textbf{R14} The system must be able to show the meteorological data of the Farm’s position\\
 \textbf{R15} The system must be able to show the farm’s sensor data \\
 \textbf{R16} The system must allow farmers to send messages on the forum\\

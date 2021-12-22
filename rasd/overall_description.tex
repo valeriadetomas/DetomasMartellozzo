@@ -6,7 +6,7 @@ The main elements in the class diagram are:
     \item \textbf{User}: identifies two types of users who can access the application.\\
     \textsl{Farmer} and \textsl{Policy Maker} are the two categories of users that are present in the system. \\
     The distinction has to be applied in order to have different permissions.\\
-    Both have a password used for the autentication and an email, in the case of a farmer, or an alphanumeric code owned by a policy maker.
+    Users have a password used for the autentication and an email, in the case of a farmer, or an alphanumeric code, in case of a policy maker.
     \item \textbf{Farm}: stores all the information related to a Farm.\\ 
     It can be owned only by a farmer, and is located in a specific position visible by the map. \\
     It contains also the data about the production inserted by the farmer himself, that could be not present yet.
@@ -15,19 +15,19 @@ The main elements in the class diagram are:
     \item \textbf{Notification}: this class represents content sent between users (in order to communicate something) or something submitted in the sistem that is stored in the database.
         \begin{enumerate}
             \item \textsl{Help}: it stores the single farmer that writes it, 
-            the type of production he selects and a body where hthe farmer explains in details the problem.\\
-            When this notification is sent (to the policy makers) the system registers in it the actual date and time.
+            the type of production he selects and a body where the farmer explains in details the problem.\\
+            When this notification is sent to a policy maker, the system registers in it the actual date and time.
             \item \textsl{Advice}: the structure of it is the same as the Help class but it is not sent to anyone,
              it is immediatly stored in the database.
             \item \textsl{Evaluation}: this class represents the evaluation on exacly one farm by a single policy maker.\\ Each policy maker can evaluate one or more 
             farms more than once since this event happens once a month.\\ Despite it, an evaluation is related only to one farm and the result can be positive (1) or negative (0).\\ The evaluation is sent by the policy maker to the farm owner.
-            \item \textsl{Solution}: this class is like the Help one, in fact is the reply of a policy maker to a help request (by Help notification) from a farmer with in the body the solution found by the sender.
+            \item \textsl{Solution}: this class is like the Help one, in fact is the reply of a policy maker to a help request within the body the solution found by the sender.
         \end{enumerate}
     
-    \item \textbf{Map}: this object contains a list of all the farms located in Telegana and registered in the application.\\It stores all the information about the farms due to provides them to the users (in different ways).
-    \item \textbf{Weather Info}: this class is a rapresentation of the meteorological information of the country, provided by an external application.\\These information are specific for each position in which is located a farm.
+    \item \textbf{Map}: this object contains a list of all the farms located in Telegana and registered in the application.\\It stores all the information about the farms in order to provide them to the users.
+    \item \textbf{Weather Info}: this class is a representation of the meteorological information of the country, provided by an external application.\\These information are specific for each position in which a farm is located.
     
-    \item \textbf{Forum}: here are stored all the messages sent by the farmers on the forum page.\\ It allows the system to make them always visible to all the farmers.\\ In addition to that the messages are also ordered by date and time in which they were sent.
+    \item \textbf{Forum}: here are stored all the messages sent by the farmers on the forum page.\\ It allows the system to make the messages always visible to all the farmers.\\ In addition to that the messages are also ordered by date and time in which they were sent.
     
 \end{itemize}
 \begin{figure}[H]
@@ -50,10 +50,10 @@ while a certain event takes place.
         The three main circumstances when the page is updated are:
         \begin {itemize}
         \item Farmer inserts new production data
-        \item Every day the weather forecast is updated with the new data available on it
-        \item Data collected from sensors are always up to date
+        \item There is new data available on weather forecast
+        \item Sensors collect new data
         \end{itemize}
-        The page is so update after one of this events occurs.
+        The page is so updated after one of this events occurs.
 
     \begin{figure}[H]
         \begin{center}
@@ -80,7 +80,7 @@ while a certain event takes place.
 
     \item \textbf{Request of help from a farmer}
     \item The diagram represented in Figure \ref{fig:state3} shows the events that takes place 
-    when a farmer sends a request of help. It can happen by writing a message in the forum 
+    when a farmer sends a request of help. It can happen either by writing a message in the forum 
     or by sending a request through a form in the homepage.
     \begin{figure}[H]
         \begin{center}
@@ -94,27 +94,26 @@ while a certain event takes place.
 \subsection{Product Functions}\label{subsection:2.2}
 This section provides a summary of the main features and 
 functions offered by the software regarding
-the goals already described in section ~\ref{section:1.1.1}
+the goals already described in section~\ref{section:1.1.1}.
 
 In the following description it is important to highlight that both
 the policy makers and the farmers must be logged in.
 
 \subsubsection{Farmers insert data} 
-This functionality is accessible to all farmers. 
-The application provides a form in which the farmer can easily insert data of his/her production.
-The form is easy to fill in, in order to complete it the farmer need to indicate:
+This functionality is accessible to all farmers.\\
+The application provides a form in which a farmer can easily insert data of his production.
+The form is easy to fill in, in order to complete it the farmer needs to specify:
 \begin{itemize}
     \item the \textbf{type of product}
     \item the \textbf{amount} producted of the selected type
     \item the \textbf{date} relative to the date of the production
 \end{itemize}
 If the farmer needs to add more than one type of product, 
-he/she can fill in the form multiple times.
-After completing the form the user is redirected to the homepage and the policy makers 
-can see the updated data.
+he can fill in the form multiple times.\\
+After completing the form the user is redirected to his updated farm's page and the policy makers 
+can see the updated data.\\
 This functionality can be done more than once a day since the farmer can select the date, 
 so it is possible for him to insert data of past days too.
-This operation can be repeated more than once a day since the farmer can select the date, so it is possible for him/her to insert data of past days too.
 
 
 
@@ -126,26 +125,22 @@ The application shows:
     \item meteorological  short-term and long-term forecast
     \item amount of water used by the farmer
     \item humidity of soil 
-    \item personalized suggestions concerning specific crops to plant or specific 
-    fertilizers to use – based on their location and type of production
+    \item list of all his past productions
 \end{itemize}
 
-\textbf{Should I say why he needs to visualize this data or how he uses it}
-
-
-This functionality is always up to date, and does not need 
+\noindent This functionality is always up to date, and does not need 
 any input from the farmer.
 It is used by the farmer only to have a general view of 
-his farm and on how he could improve the productivity of his farm.
+his farm.
 
 
 
 \subsubsection{Identify how farmers are performing}
-The main features of the policy makers is to evaluate the work of each Farmer. 
+The main feature of the policy makers is to evaluate the work of each farmer. 
 In order to do that, they periodically analyze each farm page: 
 the system allows them to visualize all the data in those pages 
-(but not to modify it).
-The analysis takes place twice a month.
+(but not to modify it).\\
+The analysis takes place once a month.\\
 With this analysis they classify the workers in two different way:
 \begin{itemize}
     \item GOOD farmer : those how have been able to produce a significant amount of product with low resources, despite bad weather in that period.
@@ -159,7 +154,7 @@ Policy makers inform each farmer the result they have achieved with a notificati
     \item To BAD farmers is asked to submit an explicit request of help specifying the problems they had.
 \end{itemize}
 The system has a specific web page that allows all 
-the users to look at a map of the area in which are 
+the users to look at a map of the area in which there are 
 specified all the farms. It is also shown if the farm's owner has performed 
 a good job in that period.
 At the end of each analysis the policy makers 
@@ -167,15 +162,15 @@ update the map (they are the only ones that are able to modify it).
 
 
 \subsubsection{Interaction between farmers}
-This functionality permits the farmers to comunicate with each other. 
+This functionality permits the farmers to communicate with each other. 
 The application has a specific web page were the farmers can send messages 
-whenever they want.
+whenever they want.\\
 If a farmer has an issue, before submitting a formal request of help to 
 the policy makers 
-by their home page, he can ask informally an advice by sending a message 
-in the Forum.
+by their farm's page, he can ask informally an advice by sending a message 
+in the forum.
 It is not necessary to be a good farmer in order to answer someone elses 
-message. All the messages are visible to everyone and 24h. 
+message.\\ All the messages are visible to everyone and 24h. 
 Since it is an online application an internet connection is required 
 to read or write on this page.
 
@@ -194,7 +189,7 @@ features specified in subsection ~\ref{subsection:2.2}.
     \item Is able to insert data about their daily production
     \item Can ask for help to other farmers or to policy makers
     \item Can retrieve data regarding weather forecast, water irrigation system or humidity of soil
-    \item Can look for advice of several products
+    \item Can give and ask for advice on several products
     \item Can check whether their performance is identified as good or bad
 \end{itemize}
 
@@ -237,5 +232,3 @@ Moreover it focuses on the limitations that the system could face.
 \textbf{DA17} All farmers that sign up own a real farm in Telengana.\\
 \textbf{DA18} The special incentive that the farmers receive for their good work, is used on stuff related to their farm activity.\\
 
-
-\subsubsection{Constraints}
