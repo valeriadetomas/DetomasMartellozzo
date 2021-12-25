@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{caption}
+
+
+\usepackage{listings}
+
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\begin{document}
+
+
+\begin{titlepage}
+      \centering
+      \begin{figure}
+            \begin{center}
+                  \includegraphics[width=0.6\textwidth]{images/logo_polimi.png}
+            \end{center}
+      \end{figure}
+      \vfill
+      {\scshape\LARGE Software Engineering 2 Project\\Academic Year 2021 - 2022 \par}
+      \vspace{0.8cm}
+      {\scshape\LARGE DREAM}
+      \vfill
+      \newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+      \centering
+      \HRule \\[0.4cm]
+      \huge  Design Document\\% Title of your document
+      \HRule \\
+      \vspace{1cm}
+      {\Large Valeria \textsc{Detomas} \quad Sofia \textsc{Martellozzo} \par}
+      \vfill
+      {\large Professor\par
+          Elisabetta \textsc{Di Nitto}}
+      \vfill
+      {\large \textbf{Version 1}\\ \today \par}
+\end{titlepage}
+
+
+\newpage
+\renewcommand\contentsname{Contents}
+\tableofcontents
+
+\newpage
+
+%-----------------------------------------------------------%
+\section{Introduction}
+\input{introduction.tex}
+
+%-----------------------------------------------------------%
+\newpage
+\section{Architectural Design}
+\input{architectural_design.tex}
+
+%-----------------------------------------------------------%
+\newpage
+\section{User Interface Design}
+\input{user_interface_design.tex}
+
+%-----------------------------------------------------------%
+\newpage
+\section{Requirements Traceability}
+\input{requirements_traceability.tex}
+
+%-----------------------------------------------------------%
+\newpage
+\section{Implementation, Integration and Test Plan}
+
+
+
+%-----------------------------------------------------------%
+\newpage 
+\section{Effort Spent}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|p{3cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|}
+            \hline
+            Student & Time for S.1 & Time for S2 & Time for S.3 & Time for S.4 & Time for S.5\\
+            \hline
+            Valeria Detomas & h & h & h & h & h\\
+            \hline
+            Sofia Martellozzo & h & h & h & h & h\\
+            \hline
+      \end{tabular}
+\end{table}
+
+%-----------------------------------------------------------%
+\section{Software and Tools used}
+\begin{itemize}
+      \item \LaTeX{} as document preparation system
+      \item \href{https://lucid.co/}{Lucid}for the state chart 
+      \item \href{https://sequencediagram.org}{SequenceDiagram.org} for the sequence diagrams
+      \item \href{http://www.umletino.com/umletino.html}{Umletino} for UML diagram 
+      \item \href{https://app.diagrams.net/}{Diagrams} for the use case diagram 
+      \item \href{https://balsamiq.com}{Balsamig} for the mockups 
+      \item \textbf{Alloy} as a model analyzer
+      \item \href{https://github.com/}{GitHub} as verion control system.
+\end{itemize}
+
+
+%-----------------------------------------------------------%
+\section{References}
+\begin{itemize}
+      \item Specification document: R\&DD Assignment A.Y. 2021-2022
+      \item alloytool.org : Alloy Documentation
+\end{itemize}
+
+\end{document}
