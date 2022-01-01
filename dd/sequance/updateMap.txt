@@ -1,0 +1,79 @@
+actor PolicyMaker
+actor Farmer
+participant WebApplication
+participant PMWebServices
+participant FWebServices
+participant NotificationManager
+participant Model
+participant DataManager
+participant DatabaseServer
+
+
+
+
+activate PolicyMaker
+PolicyMaker->WebApplication:selectFarm(position)
+activate WebApplication
+WebApplication->PMWebServices:selectFarm(position)
+activate PMWebServices
+PMWebServices-->WebApplication:farmName, Set<typeOfProduction,quantity>, evaluation
+deactivate PMWebServices
+WebApplication-->PolicyMaker:farmName, Set<typeOfProduction,quantity>, evaluation
+deactivate WebApplication
+
+PolicyMaker->WebApplication:click( makeEvaluationButton )
+activate WebApplication
+WebApplication->PMWebServices:getEvaluationForm()
+activate PMWebServices
+PMWebServices-->WebApplication:evaluationForm(farmName)
+deactivate PMWebServices
+WebApplication-->PolicyMaker:evaluationForm(farmName)
+deactivate WebApplication
+
+PolicyMaker->WebApplication: submitEvaluation( farm, result, content)
+activate WebApplication
+WebApplication->PMWebServices:submitEvaluation( farm, result, content)
+activate PMWebServices
+PMWebServices->NotificationManager:submitEvaluation( email, result, content)
+activate NotificationManager
+NotificationManager->Model:saveEvaluation (email,result) 
+activate Model
+
+
+Model->DataManager:saveEvaluation (email,result) 
+activate DataManager
+DataManager->DatabaseServer:saveEvaluation (email,result) 
+activate DatabaseServer
+DatabaseServer-->DataManager:ok
+deactivate DatabaseServer
+DataManager-->Model:ok
+deactivate DataManager
+Model-->NotificationManager:ok
+
+NotificationManager-->FWebServices:evaqluation( result, content )
+activate FWebServices
+FWebServices-->WebApplication:evaqluation( result, content )
+deactivate FWebServices
+
+WebApplication-->Farmer:evaqluation( result, content )
+activate Farmer
+deactivate WebApplication
+deactivate Farmer
+
+
+Model-->NotificationManager:completeMap
+deactivate Model
+NotificationManager-->PMWebServices:completeMap
+deactivate NotificationManager
+
+PMWebServices-->WebApplication:completeMap
+deactivate PMWebServices
+activate WebApplication
+WebApplication-->PolicyMaker:completeMap
+deactivate WebApplication
+
+deactivate PolicyMaker
+
+
+
+

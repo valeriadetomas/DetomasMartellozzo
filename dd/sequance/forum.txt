@@ -1,0 +1,56 @@
+actor Farmer
+participant WebApplication
+participant WebServices
+participant ForumManager
+participant Model
+participant DataManager
+participant DatabaseServer
+
+
+activate Farmer
+Farmer->WebApplication: getForumPage()
+activate WebApplication
+WebApplication->WebServices:getForum()
+activate WebServices
+WebServices->ForumManager:getForum()
+activate ForumManager
+ForumManager->Model:getForum()
+activate Model
+Model-->ForumManager:Forum (List<messages>)
+deactivate Model
+ForumManager-->WebServices:Forum (List<messages>)
+deactivate ForumManager
+WebServices-->WebApplication:forumPage
+deactivate WebServices
+WebApplication-->Farmer: forumPage
+deactivate WebApplication
+Farmer->WebApplication: sendmessage(content)
+activate WebApplication
+WebApplication->WebServices:sendmessage(content)
+activate WebServices
+WebServices->ForumManager:forwardMessageSubmission(email,content)
+activate ForumManager
+ForumManager->Model:newMessage(email,content)
+activate Model
+Model->DataManager:newMessage ( name, surname, content, \n                          date, time)
+activate DataManager
+DataManager->DatabaseServer:saveMessage ( name, surname, content, \n                          date, time)
+activate DatabaseServer
+
+DatabaseServer-->DataManager: ok
+deactivate DatabaseServer
+DataManager-->Model:ok
+deactivate DataManager
+Model-->ForumManager:Forum(List<messages>)
+deactivate Model
+
+ForumManager-->WebServices:Forum(List<messages>)
+deactivate ForumManager
+WebServices-->WebApplication:forumPage
+deactivate WebServices
+WebApplication-->Farmer:forumPage
+deactivate WebApplication
+deactivate Farmer
+
+
+

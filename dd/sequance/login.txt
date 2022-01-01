@@ -1,0 +1,184 @@
+actor User
+participant WebApplication
+participant WebServices
+participant AccessManager
+participant AuthenticationService
+participant Model
+participant DataManager
+participant DatabaseServer
+
+alt farmer
+activate User
+User->WebApplication: getLoginForum(farmer)
+activate WebApplication
+WebApplication->WebServices:getLoginForum
+activate WebServices
+WebServices-->WebApplication:loginForum
+deactivate WebServices
+WebApplication-->User: farmerLoginForum
+deactivate WebApplication
+User->WebApplication: login( email, password )
+activate WebApplication
+WebApplication->WebServices:sendLoginReq(email,password)
+activate WebServices
+WebServices->AccessManager:forwardLoginReq(email,password)
+activate AccessManager
+AccessManager->AuthenticationService:loginReq(email,password)
+activate AuthenticationService
+AuthenticationService->Model:checkCredentials(emai,password)
+activate Model
+Model->DataManager:getFarmerCredentials(email)
+activate DataManager
+DataManager->DatabaseServer:getFarmerCredentials(email)
+activate DatabaseServer
+alt email found
+DatabaseServer-->DataManager: em, psw
+deactivate DatabaseServer
+DataManager-->Model:em,psw
+deactivate DataManager
+Model-->AuthenticationService:em,psw
+deactivate Model
+AuthenticationService->AuthenticationService: checkCredential
+alt right credentials
+AuthenticationService-->AccessManager:farmerHomePage
+deactivate AuthenticationService
+AccessManager-->WebServices:farmerHomePage
+deactivate AccessManager
+WebServices-->WebApplication:farmerHomePage
+deactivate WebServices
+WebApplication-->User:farmerHomePage
+deactivate WebApplication
+deactivate User
+
+else wrong credentials
+activate AuthenticationService
+AuthenticationService-->AccessManager:error
+deactivate AuthenticationService
+activate AccessManager
+AccessManager-->WebServices:error
+deactivate AccessManager
+activate WebServices
+WebServices-->WebApplication:error
+deactivate WebServices
+activate WebApplication
+WebApplication-->User:error
+activate User
+deactivate WebApplication
+deactivate User
+end
+else email not found
+activate DatabaseServer
+DatabaseServer-->DataManager: error
+deactivate DatabaseServer
+activate DataManager
+DataManager-->Model:error
+deactivate DataManager
+activate Model
+Model-->AuthenticationService:error
+deactivate Model
+activate AuthenticationService
+AuthenticationService-->AccessManager:error
+deactivate AuthenticationService
+activate AccessManager
+AccessManager-->WebServices:error
+deactivate AccessManager
+activate WebServices
+WebServices-->WebApplication:error
+deactivate WebServices
+activate WebApplication
+WebApplication-->User:error
+deactivate WebApplication
+activate User
+deactivate User
+
+
+end
+
+else policy maker
+
+activate User
+User->WebApplication: getLoginForum(policyMaker)
+activate WebApplication
+WebApplication->WebServices:getLoginForum
+activate WebServices
+WebServices-->WebApplication:loginForum
+deactivate WebServices
+WebApplication-->User: policyMLoginForum
+deactivate WebApplication
+User->WebApplication: login( code, password )
+activate WebApplication
+WebApplication->WebServices:sendLoginReq(code,password)
+activate WebServices
+WebServices->AccessManager:forwardLoginReq(code,password)
+activate AccessManager
+AccessManager->AuthenticationService:loginReq(code,password)
+activate AuthenticationService
+AuthenticationService->Model:checkCredentials(code,password)
+activate Model
+Model->DataManager:getPolicyMCredentials(code)
+activate DataManager
+DataManager->DatabaseServer:getPolicyMCredentials(code)
+activate DatabaseServer
+alt code not found
+DatabaseServer-->DataManager: cd, psw
+deactivate DatabaseServer
+DataManager-->Model:cd,psw
+deactivate DataManager
+Model-->AuthenticationService:cd,psw
+deactivate Model
+AuthenticationService->AuthenticationService: checkCredential
+alt right credentials
+AuthenticationService-->AccessManager:policyMakerHomePage
+deactivate AuthenticationService
+AccessManager-->WebServices:policyMakerHomePage
+deactivate AccessManager
+WebServices-->WebApplication:policyMakerHomePage
+deactivate WebServices
+WebApplication-->User:policyMakerHomePage
+deactivate WebApplication
+deactivate User
+
+else wrong credentials
+activate AuthenticationService
+AuthenticationService-->AccessManager:error
+deactivate AuthenticationService
+activate AccessManager
+AccessManager-->WebServices:error
+deactivate AccessManager
+activate WebServices
+WebServices-->WebApplication:error
+deactivate WebServices
+activate WebApplication
+WebApplication-->User:error
+activate User
+deactivate WebApplication
+deactivate User
+end
+else code not found
+activate DatabaseServer
+DatabaseServer-->DataManager: error
+deactivate DatabaseServer
+activate DataManager
+DataManager-->Model:error
+deactivate DataManager
+activate Model
+Model-->AuthenticationService:error
+deactivate Model
+activate AuthenticationService
+AuthenticationService-->AccessManager:error
+deactivate AuthenticationService
+activate AccessManager
+AccessManager-->WebServices:error
+deactivate AccessManager
+activate WebServices
+WebServices-->WebApplication:error
+deactivate WebServices
+activate WebApplication
+WebApplication-->User:error
+deactivate WebApplication
+activate User
+deactivate User
+end
+
+
+end 

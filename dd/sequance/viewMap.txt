@@ -1,0 +1,109 @@
+actor User
+participant WebApplication
+participant WebServices
+participant ViewInfoManager
+participant Model
+participant MapsManager
+participant MapsServer
+participant DataManager
+participant DatabaseServer
+
+alt farmer
+activate User
+
+User->WebApplication: click( mapButton )
+activate WebApplication
+WebApplication->WebServices:getMap()
+activate WebServices
+WebServices->ViewInfoManager:getMap( incomplete )
+activate ViewInfoManager
+ViewInfoManager->Model:getMap( incomplete )
+activate Model
+
+Model->MapsManager:getMap()
+activate MapsManager
+MapsManager->MapsServer:getMap()
+activate MapsServer
+MapsServer-->MapsManager: map
+deactivate MapsServer
+MapsManager-->Model:map
+deactivate MapsManager
+
+Model->DataManager:getAllPositions()
+activate DataManager
+DataManager->DatabaseServer:getAllPositions()
+activate DatabaseServer
+DatabaseServer-->DataManager:Set<position, farm(name, typeOdProd)>
+deactivate DatabaseServer
+DataManager-->Model:Set<position, farm(name, typeOdProd)>
+deactivate DataManager
+Model-->ViewInfoManager:simpleMap
+deactivate Model
+
+ViewInfoManager-->WebServices:simpleMap
+deactivate ViewInfoManager
+WebServices-->WebApplication:simpleMap
+deactivate WebServices
+WebApplication-->User:simpleMap
+deactivate WebApplication
+User->WebApplication:selectFarm(position)
+activate WebApplication
+WebApplication->WebServices:selectFarm(position)
+activate WebServices
+WebServices-->WebApplication:farmName, List<typeOfProduction>
+deactivate WebServices
+WebApplication-->User:farmName, List<typeOfProduction>
+deactivate WebApplication
+deactivate User
+
+else policy maker
+activate User
+
+User->WebApplication: click( mapButton )
+activate WebApplication
+WebApplication->WebServices:getMap()
+activate WebServices
+WebServices->ViewInfoManager:getMap( complete )
+activate ViewInfoManager
+ViewInfoManager->Model:getMap( complete )
+activate Model
+
+Model->MapsManager:getMap()
+activate MapsManager
+MapsManager->MapsServer:getMap()
+activate MapsServer
+MapsServer-->MapsManager: map
+deactivate MapsServer
+MapsManager-->Model:map
+deactivate MapsManager
+
+Model->DataManager:getAllPositions()
+activate DataManager
+DataManager->DatabaseServer:getAllPositions()
+activate DatabaseServer
+DatabaseServer-->DataManager:Set<position, farm(name,typeOdProd,quantity,evaluation)>
+deactivate DatabaseServer
+DataManager-->Model:Set<position, farm(name, typeOdProd,quantity,evaluation)>
+deactivate DataManager
+Model-->ViewInfoManager:completeMap
+deactivate Model
+
+ViewInfoManager-->WebServices:completeMap
+deactivate ViewInfoManager
+WebServices-->WebApplication:completeMap
+deactivate WebServices
+WebApplication-->User:completeMap
+deactivate WebApplication
+User->WebApplication:selectFarm(position)
+activate WebApplication
+WebApplication->WebServices:selectFarm(position)
+activate WebServices
+WebServices-->WebApplication:farmName, Set<typeOfProduction,quantity>, evaluation
+deactivate WebServices
+WebApplication-->User:farmName, Set<typeOfProduction,quantity>, evaluation
+deactivate WebApplication
+deactivate User
+end
+
+
+

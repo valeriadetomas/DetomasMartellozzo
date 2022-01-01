@@ -1,0 +1,79 @@
+actor Farmer
+participant WebApplication
+participant WebServices
+participant AccessManager
+participant RegistrationService
+participant Model
+participant DataManager
+participant DatabaseServer
+
+
+activate Farmer
+Farmer->WebApplication: getRegistrationForum()
+activate WebApplication
+WebApplication->WebServices:getRegistrationForum
+activate WebServices
+WebServices-->WebApplication:registrationForum
+deactivate WebServices
+WebApplication-->Farmer: registrationForum
+deactivate WebApplication
+Farmer->WebApplication: signup ( name, surname,\n               email, password,\n               farm, position )
+activate WebApplication
+WebApplication->WebServices:sendSignUpReq ( name, surname,\n                              email, password,\n                              farm, position )
+activate WebServices
+WebServices->AccessManager:forwardSignUpReq ( name, surname,\n                                  email, password,\n                                  farm, position )
+activate AccessManager
+AccessManager->RegistrationService:signUpReq ( name, surname,\n                     email, password,\n                     farm, position )
+activate RegistrationService
+RegistrationService->Model:newUser ( name, surname,\n                  email, password,\n                  farm, position )
+activate Model
+Model->DataManager:newUser ( name, surname,\n                  email, password,\n                  farm, position )
+activate DataManager
+DataManager->DatabaseServer:saveUser ( name, surname,\n                  email, password,\n                  farm, position )
+activate DatabaseServer
+alt info ok
+DatabaseServer-->DataManager: ok
+deactivate DatabaseServer
+DataManager-->Model:ok
+deactivate DataManager
+Model-->RegistrationService:ok
+deactivate Model
+
+RegistrationService-->AccessManager:ok
+deactivate RegistrationService
+AccessManager-->WebServices:farmerLoginPage
+deactivate AccessManager
+WebServices-->WebApplication:farmerLoginPage
+deactivate WebServices
+WebApplication-->Farmer:farmerLoginPage
+deactivate WebApplication
+deactivate Farmer
+
+else info not valid
+activate DatabaseServer
+DatabaseServer-->DataManager: error
+deactivate DatabaseServer
+activate DataManager
+DataManager-->Model:error
+deactivate DataManager
+activate Model
+Model-->RegistrationService:error
+deactivate Model
+activate RegistrationService
+RegistrationService-->AccessManager:error
+deactivate RegistrationService
+activate AccessManager
+AccessManager-->WebServices:error
+deactivate AccessManager
+activate WebServices
+WebServices-->WebApplication:error
+deactivate WebServices
+activate WebApplication
+WebApplication-->Farmer:error
+deactivate WebApplication
+activate Farmer
+deactivate Farmer
+
+
+end
+
