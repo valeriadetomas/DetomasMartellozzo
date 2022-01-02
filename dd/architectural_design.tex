@@ -1,6 +1,6 @@
 %---------------------%
 \subsection{High-level components and their interaction}
-In the following section is provided an high view of the architecture of the system, that is structured following the three logic layer:\\
+In the following section it is provided a high level view of the architecture of the system, which is structured following the three logic layer:\\
 
 \begin{figure}[H]
     \begin{center}
@@ -11,7 +11,12 @@ In the following section is provided an high view of the architecture of the sys
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Presentation Layer (P)}: The presentation tier is the user interface and communication layer of the application, where the end user interacts with the application. Its main purpose is to display information to and collect information from the user. This top-level tier can run on a web browser, as desktop application, or a graphical user interface (GUI), for example. \\ \\Web presentation tiers are usually developed using HTML, CSS and JavaScript. Desktop applications can be written in a variety of languages depending on the platform.
+    \item \textbf{Presentation Layer (P)}: The presentation tier is the user interface and communication layer 
+    of the application, where the end user interacts with the application. Its main purpose is to display 
+    information to and collect information from the user. This top-level tier can run on a web browser, 
+    as desktop application, or a graphical user interface (GUI), for example. \\ \\Web presentation tiers 
+    are usually developed using HTML, CSS and JavaScript. Desktop applications can be written in a variety 
+    of languages depending on the platform.
     \item \textbf{Business Logic or Application Layer(L)}: The application tier is the heart of the application. In this tier, information collected in the presentation tier is processed - sometimes against other information in the data tier - using business logic, a specific set of business rules. The application tier can also add, delete or modify data in the data tier.\\ \\The application tier is typically developed using Python, Java, Perl, PHP or Ruby, and communicates with the data tier using API calls. 
     \item \textbf{Data Layer (D)}: The data tier, sometimes called database tier, data access tier or back-end, is where the information processed by the application is stored and managed. This can be a relational database management system such as PostgreSQL, MySQL, MariaDB, Oracle, DB2, Informix or Microsoft SQL Server, or in a NoSQL Database server such as Cassandra, CouchDB or MongoDB. 
 \end{itemize}
@@ -49,7 +54,7 @@ The client is a Web Application, with is by definition a thin client, because of
 %---------------------%
 \subsection{Component view}
 
-In this section is provided a description of the components and interfaces of the system, how they are organised internally and how they comunicate with each other.
+In this section it is provided a description of the components and interfaces of the system, how they are organized internally and how they communicate with each other.
 
 \subsubsection{High Level}
 
@@ -90,7 +95,26 @@ More specific and detailed on the server inner components.
 
 %---------------------%
 \subsection{Deployment view}
+The deplyment diagram in figure .. shows the allocation of the software components in the physical tiers of the system. 
+The system is organized into a three-tier application. This type of architecture can be 
+beneficial because each tier can be developed in parallel and maintained as single modules on separate platforms.
 
+
+\begin{itemize}
+    \item \textbf{Presentation Tier}: it is the user interface of the application, where the user interacts with the application. 
+    In this case it can only be a computer with a web browser running on an operating system (for example MacOS).
+    It is composed by the web app an the web server. The web server is responsible for the communication between application server 
+    and the client.
+
+    \item \textbf{Application Tier}: it is the logic tier of the application. Where all the information 
+    collected in the previous tier are processed using business logic. This tier is also 
+    responsible for the communication with the data tier through the DBMS gateway.
+    The most important thing is that all communication of the system goes through this tier.
+
+    \item \textbf{Data Tier}: it is a database server for managing read and write access to the database. 
+    Therefore all the information processed by the application tier are stored and managed here.
+    Data tier is also independent of the two previous tiers. 
+\end{itemize}
 %---------------------%
 \subsection{Runtime view}
 
@@ -155,6 +179,8 @@ The functionality offered by the component are the same as the ones in the RASD,
 
 %---------------------%
 \subsection{Component interfaces}
+
+
 
 %---------------------%
 \subsection{Architectural styles and patterns}
