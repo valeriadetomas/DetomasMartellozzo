@@ -1,6 +1,6 @@
 actor Farmer
 participant WebApplication
-participant WebServices
+participant FWebServer
 participant ProductionManager
 participant Model
 participant DataManager
@@ -10,17 +10,17 @@ participant DatabaseServer
 activate Farmer
 Farmer->WebApplication: click( addDataButton )
 activate WebApplication
-WebApplication->WebServices:getForm(production)
-activate WebServices
-WebServices-->WebApplication:productionForm
-deactivate WebServices
+WebApplication->FWebServer:getForm(production)
+activate FWebServer
+FWebServer-->WebApplication:productionForm
+deactivate FWebServer
 WebApplication-->Farmer: productionForm
 deactivate WebApplication
 Farmer->WebApplication: submitData( productionType, quantity, date )
 activate WebApplication
-WebApplication->WebServices:saveData( productionType, quantity, date )
-activate WebServices
-WebServices->ProductionManager:forwardDataSubmission( email, productionType,\n                                         quantity, date )
+WebApplication->FWebServer:saveData( productionType, quantity, date )
+activate FWebServer
+FWebServer->ProductionManager:forwardDataSubmission( email, productionType,\n                                         quantity, date )
 activate ProductionManager
 ProductionManager->Model:newProduction(email,productionType,\n                          quantity, date)
 activate Model
@@ -36,10 +36,10 @@ deactivate DataManager
 Model-->ProductionManager:FarmPage
 deactivate Model
 
-ProductionManager-->WebServices:FarmPage
+ProductionManager-->FWebServer:FarmPage
 deactivate ProductionManager
-WebServices-->WebApplication:FarmPage
-deactivate WebServices
+FWebServer-->WebApplication:FarmPage
+deactivate FWebServer
 WebApplication-->Farmer:FarmPage
 deactivate WebApplication
 deactivate Farmer

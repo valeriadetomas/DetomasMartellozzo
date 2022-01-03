@@ -1,6 +1,6 @@
 actor Farmer
 participant WebApplication
-participant WebServices
+participant FWebServer
 participant ForumManager
 participant Model
 participant DataManager
@@ -10,25 +10,25 @@ participant DatabaseServer
 activate Farmer
 Farmer->WebApplication: getForumPage()
 activate WebApplication
-WebApplication->WebServices:getForum()
-activate WebServices
-WebServices->ForumManager:getForum()
+WebApplication->FWebServer:getForum()
+activate FWebServer
+FWebServer->ForumManager:getForum()
 activate ForumManager
 ForumManager->Model:getForum()
 activate Model
 Model-->ForumManager:Forum (List<messages>)
 deactivate Model
-ForumManager-->WebServices:Forum (List<messages>)
+ForumManager-->FWebServer:Forum (List<messages>)
 deactivate ForumManager
-WebServices-->WebApplication:forumPage
-deactivate WebServices
+FWebServer-->WebApplication:forumPage
+deactivate FWebServer
 WebApplication-->Farmer: forumPage
 deactivate WebApplication
 Farmer->WebApplication: sendmessage(content)
 activate WebApplication
-WebApplication->WebServices:sendmessage(content)
-activate WebServices
-WebServices->ForumManager:forwardMessageSubmission(email,content)
+WebApplication->FWebServer:sendmessage(content)
+activate FWebServer
+FWebServer->ForumManager:forwardMessageSubmission(email,content)
 activate ForumManager
 ForumManager->Model:newMessage(email,content)
 activate Model
@@ -44,10 +44,10 @@ deactivate DataManager
 Model-->ForumManager:Forum(List<messages>)
 deactivate Model
 
-ForumManager-->WebServices:Forum(List<messages>)
+ForumManager-->FWebServer:Forum(List<messages>)
 deactivate ForumManager
-WebServices-->WebApplication:forumPage
-deactivate WebServices
+FWebServer-->WebApplication:forumPage
+deactivate FWebServer
 WebApplication-->Farmer:forumPage
 deactivate WebApplication
 deactivate Farmer

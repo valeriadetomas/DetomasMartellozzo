@@ -1,6 +1,7 @@
 actor User
 participant WebApplication
-participant WebServices
+participant FWebServer
+participant PMWebServer
 participant ViewInfoManager
 participant Model
 participant MapsManager
@@ -13,9 +14,9 @@ activate User
 
 User->WebApplication: click( mapButton )
 activate WebApplication
-WebApplication->WebServices:getMap()
-activate WebServices
-WebServices->ViewInfoManager:getMap( incomplete )
+WebApplication->FWebServer:getMap()
+activate FWebServer
+FWebServer->ViewInfoManager:getMap( incomplete )
 activate ViewInfoManager
 ViewInfoManager->Model:getMap( incomplete )
 activate Model
@@ -40,18 +41,18 @@ deactivate DataManager
 Model-->ViewInfoManager:simpleMap
 deactivate Model
 
-ViewInfoManager-->WebServices:simpleMap
+ViewInfoManager-->FWebServer:simpleMap
 deactivate ViewInfoManager
-WebServices-->WebApplication:simpleMap
-deactivate WebServices
+FWebServer-->WebApplication:simpleMap
+deactivate FWebServer
 WebApplication-->User:simpleMap
 deactivate WebApplication
 User->WebApplication:selectFarm(position)
 activate WebApplication
-WebApplication->WebServices:selectFarm(position)
-activate WebServices
-WebServices-->WebApplication:farmName, List<typeOfProduction>
-deactivate WebServices
+WebApplication->FWebServer:selectFarm(position)
+activate FWebServer
+FWebServer-->WebApplication:farmName, List<typeOfProduction>
+deactivate FWebServer
 WebApplication-->User:farmName, List<typeOfProduction>
 deactivate WebApplication
 deactivate User
@@ -61,9 +62,9 @@ activate User
 
 User->WebApplication: click( mapButton )
 activate WebApplication
-WebApplication->WebServices:getMap()
-activate WebServices
-WebServices->ViewInfoManager:getMap( complete )
+WebApplication->PMWebServer:getMap()
+activate PMWebServer
+PMWebServer->ViewInfoManager:getMap( complete )
 activate ViewInfoManager
 ViewInfoManager->Model:getMap( complete )
 activate Model
@@ -88,18 +89,18 @@ deactivate DataManager
 Model-->ViewInfoManager:completeMap
 deactivate Model
 
-ViewInfoManager-->WebServices:completeMap
+ViewInfoManager-->PMWebServer:completeMap
 deactivate ViewInfoManager
-WebServices-->WebApplication:completeMap
-deactivate WebServices
+PMWebServer-->WebApplication:completeMap
+deactivate PMWebServer
 WebApplication-->User:completeMap
 deactivate WebApplication
 User->WebApplication:selectFarm(position)
 activate WebApplication
-WebApplication->WebServices:selectFarm(position)
-activate WebServices
-WebServices-->WebApplication:farmName, Set<typeOfProduction,quantity>, evaluation
-deactivate WebServices
+WebApplication->PMWebServer:selectFarm(position)
+activate PMWebServer
+PMWebServer-->WebApplication:farmName, Set<typeOfProduction,quantity>, evaluation
+deactivate PMWebServer
 WebApplication-->User:farmName, Set<typeOfProduction,quantity>, evaluation
 deactivate WebApplication
 deactivate User

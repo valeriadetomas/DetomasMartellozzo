@@ -1,0 +1,118 @@
+actor User
+actor PolicyMaker
+actor Farmer
+participant WebApplication
+participant FWebServer
+participant PMWebServer
+participant NotificationManager
+participant Model
+participant DataManager
+participant DatabaseServer
+
+
+alt farmer, advice
+activate User
+User->WebApplication:select(adviceButton)
+activate WebApplication
+WebApplication->FWebServer:getForm(advice)
+activate FWebServer
+FWebServer-->WebApplication:adviceForm
+deactivate FWebServer
+WebApplication-->User: advice Form
+deactivate WebApplication
+User->WebApplication: sendAdvice(typeOfProduction, body)
+activate WebApplication
+WebApplication->FWebServer:sendAdvice(typeOfProduction, body)
+activate FWebServer
+FWebServer->NotificationManager:forwardAdviceSubmission (typeOfProduction,\n                    body, email, day, time)
+activate NotificationManager
+NotificationManager->Model:newAdvice(typeOfProduction,\n               body, email, day, time)
+activate Model
+Model->DataManager:newAdvice(typeOfProduction,\n                body, email, day, time)
+activate DataManager
+DataManager->DatabaseServer:saveAdvice(typeOfProduction,\n                 body, email, day, time)
+activate DatabaseServer
+DatabaseServer-->DataManager:ok
+deactivate DatabaseServer
+deactivate DataManager
+deactivate Model
+deactivate NotificationManager
+deactivate FWebServer
+deactivate WebApplication
+deactivate User
+
+
+else farmer, help
+activate User
+User->WebApplication:select(helpButton)
+activate WebApplication
+WebApplication->FWebServer:getForm(help)
+activate FWebServer
+FWebServer-->WebApplication:helpForm
+deactivate FWebServer
+WebApplication-->User: help Form
+deactivate WebApplication
+User->WebApplication: sendHelp(typeOfProduction, body)
+activate WebApplication
+WebApplication->FWebServer:sendHelp(typeOfProduction, body)
+activate FWebServer
+FWebServer->NotificationManager:forwardHelpSubmission (typeOfProduction,\n                    body, email, day, time)
+activate NotificationManager
+NotificationManager-->PMWebServer:sendHelpReq(farmer,typeOfP,body) 
+deactivate NotificationManager
+activate PMWebServer
+PMWebServer-->WebApplication:sendHelpReq(farmer,typeOfP,body)
+deactivate PMWebServer
+WebApplication-->*PolicyMaker:receiveNotification(farmer,typeOfP,body)
+deactivate FWebServer
+deactivate WebApplication
+deactivate User
+
+
+else policy maker
+activate User
+User->WebApplication:select(notification)
+activate WebApplication
+WebApplication-->User: full Notification
+deactivate WebApplication
+User->WebApplication:select(sendSolutionButton)
+activate WebApplication
+WebApplication->PMWebServer:getForm(solution,farmer)
+activate PMWebServer
+PMWebServer->Model:getAdvices(typeOfProduction)
+activate Model
+Model->DataManager:getAdvices(typeOfProduction)
+activate DataManager
+DataManager->DatabaseServer:getAdvices(typeOfProduction)
+activate DatabaseServer
+DatabaseServer-->DataManager:Advices
+deactivate DatabaseServer
+DataManager-->Model:Advices
+deactivate DataManager
+Model-->PMWebServer:Advices
+deactivate Model
+PMWebServer-->WebApplication:solutionForm(advices,farmer)
+deactivate PMWebServer
+WebApplication-->User: solution Form(advices,farmer)
+deactivate WebApplication
+
+
+User->WebApplication: sendSolution(typeOfProduction, body, farmer)
+activate WebApplication
+WebApplication->PMWebServer:sendSolution(typeOfProduction, body, farmer)
+activate PMWebServer
+PMWebServer->NotificationManager:forwardSolutionSubmission (typeOfProduction,\n                    body, farmer, day, time)
+activate NotificationManager
+NotificationManager-->FWebServer:sendSolution(typeOfP,body) 
+deactivate NotificationManager
+activate FWebServer
+FWebServer-->WebApplication:sendSolution(typeOfP,body)
+deactivate FWebServer
+WebApplication-->*Farmer:receiveNotification(typeOfP,body)
+deactivate PMWebServer
+deactivate WebApplication
+deactivate User
+end
+
+
+

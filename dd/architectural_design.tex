@@ -60,38 +60,55 @@ In this section it is provided a description of the components and interfaces of
 
 \begin{figure}[H]
     \begin{center}
-    \includegraphics[width=1\textwidth]{images/Component1.png}
-    \caption{Component view.}
-    \label{fig:component view}
-    \end{center}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{center}
-    \includegraphics[width=1\textwidth]{images/Component2.png}
+    \includegraphics[width=1\textwidth]{images/Component3.png}
     \caption{Component view.}
     \label{fig:component view2}
     \end{center}
 \end{figure}
+
+\begin{itemize}
+    \item \textbf{Dream Server}: this component contains the hole application logic of the system. The interfaces it provides allow the user, both farmer and policy maker, to comunicate with the server; them also allow the server to interact with external system that provide different kind of data.
+    \item \textbf{Web Application}: it rapresents the web application reachable by any web browser. It is the first component that any user uses to connect with the system.
+    \item \textbf{Farmer Web Server}: it provides the interface to a farmer to interact with the system. It has the minimum logic to make visible the content of the application provided by the server of the system. 
+    \item \textbf{PolicyMaker Web Server}: the same as the one above but specific for the policy maker.
+    \item \textbf{Database Server}: it provides the interfaces in all the processes that need to require or store information from the database of the system
+    \item \textbf{Maps Server}: it provides the interfaces when the Dream server needs the maps data to make it visible and fill it with all the farms in the sistem, locating them by the position provided from their owner in the registration phase.
+    \item \textbf{Weather Server}: it provides the interfaces to Dream server to retreive weather data of the territory.
+\end{itemize}
 
 \subsubsection{Server}
 More specific and detailed on the server inner components.
 
 \begin{figure}[H]
     \begin{center}
-    \includegraphics[width=1\textwidth]{images/ServerComponent1.png}
-    \caption{Inner server component view.}
-    \label{fig:server component view}
-    \end{center}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{center}
-    \includegraphics[width=1\textwidth]{images/ServerComponent2.png}
+    \includegraphics[width=1\textwidth]{images/ServerComponent3.png}
     \caption{Inner server component view2.}
     \label{fig:server component view2}
     \end{center}
 \end{figure}
+
+\begin{itemize}
+    \item \textbf{Access Manager}: this component provide the Web interface to the user and make login and sign up opratation possible. It recognize the operation required and if it is permitted (sign up only for new farmers) comunicate with the right component that follow.
+    \item \textbf{Registration Service}: if a request of a new registration occupr, it check the credential submitted by the new user and create the object that represent it, that will be stored in the Model; in fact it has an iterface to comunicate with the Model.
+    \item \textbf{Authentication Service}: this component is called by the Access manager when an authentication request occur. In this case it collect the data about this specific user and verify if the credential submitted correspond. When them maches it let the user to access the system, otherwise generate an error signal.
+    \item \textbf{ViewInfoManager}: this component is used by the system to collect the data from the Model request by the user. It operates when a farm's page has to be constructed with all the information visible in it.
+    \item \textbf{Notification Manager}: this component has the ability to differ based on the notification it receives:
+        \begin{itemize}
+            \item advice: when a farmer submit this type of notification his only duty is the one to make possible the saving of it.
+            \item help: when a farmer submit a request of help this component select randomly one policy maker (from the ones saved in the system) and send him the notification.
+            \item solution: when a policy maker decides to respond to a request of help, he send this type of notification. This componenet forward it to the addressee.
+            \item evaluation: when a policy maker evaluate a farm, this component takes care of sending it to the owner of the farm.
+        \end{itemize}
+    For all thee four type of notifications it attach the current day and time of the subbmission.
+    This component also make possible to the user to visualize the list of all notifications received and, if asked, visualize in details the one selected.
+
+    \item \textbf{Production Manager}: this component, by its connection to the model via \underline{Model interface}, povides all production data required for a specific farm. 
+    \item \textbf{Forum Manager}: this component manage all the messages comunication between farmers via forum. It gets all the messages in it, saved as  List in the Model and comunicate to it the new ones, that has to mìbe saved (attaching to it the date and time).
+    \item \textbf{Model}: this component have a main role in the system because it rapresents the data so all other components needs to interact with it, to ptovide the page and informations required.
+    \item \textbf{Data Manager}: it manages all the process where data are needed by the system. It uses methods provided by the DBMS API to execute queries on the database and object-relational mapping to the Model.
+    \item \textbf{Maps Manager}: this component is used to retreive map data, in order to provide a visualization of where each farmer registered in the system are located in the territory.
+    \item \textbf{Weather Manager}: this component is used to retreive weather data specific in the position of the farms. It map to the Model the information from a relational to an object construct as a structure where the key is the farm position and in the value another structure to linked each day the weather and temperature.
+\end{itemize}
 
 %---------------------%
 \subsection{Deployment view}
@@ -123,7 +140,8 @@ The functionality offered by the component are the same as the ones in the RASD,
 (MAKE SURE THAT THE OPERATION AND COMPONENT ARE ALL DEFINED IN THE COMPONENT DIAG/VIEW, in particular the interfaces that receives the msg)
 
 \begin{enumerate}
-    \item farmer registration
+    \item \textbf{farmer registration}\\
+    In this sequence diagram is shown the sign up operation by a new farmer. After the user fill the form provided by the web application with: name, surmane, farm's name, position, email and password. The Dream server stores all this information as a Farmer object in the Model, and also saves them in the database. At the end of the process redirects the user to the login page, only if some error occurred the data are not saved and the user is asked to repeat the operation.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/signup.png}
@@ -131,7 +149,8 @@ The functionality offered by the component are the same as the ones in the RASD,
         \label{fig:sequence1}
         \end{center}
     \end{figure}
-    \item f/pm login
+    \item \textbf{login}\\
+    In this sequence diagram the process of user login is shown, at first for the farmer and then for the policy maker. For both are almost the same, except that the farmers needs to provide email and password as access credentials and the policy maker a code and password. Another difference is in the server that forward the request to login to the Dream server component. If the credentials are wrong or missing the system gave an error message, if not the home page of the user is returned.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/login.png}
@@ -139,7 +158,8 @@ The functionality offered by the component are the same as the ones in the RASD,
         \label{fig:sequence2}
         \end{center}
     \end{figure}
-    \item f send msg on forum
+    \item \textbf{farmer read and write on forum}\\
+    In this sequence is shown how the system provides the forum with all the messages yet sended after the request of a farmer and a form where he can write a message and a button to send it. As shown, due to the Forum Manager, when a message is send it is saved whit the references of the sender and the date and time. These addictonal information are used to sort the messages by the timestamp and specify the sender name near the message itself.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/forum.png}
@@ -147,7 +167,8 @@ The functionality offered by the component are the same as the ones in the RASD,
         \label{fig:sequence3}
         \end{center}
     \end{figure}
-    \item f submit production data
+    \item \textbf{farmer submit production data}\\
+    Here is shown how a farmer can submit new information about his production. The Web Application provides him a form to fill with the type of production, the quantity collected and the date on which he collected it. The Server, or better its Production Manager component, build this information as an object collected in the Model and saved then in the database.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/addData-2.png}
@@ -155,7 +176,13 @@ The functionality offered by the component are the same as the ones in the RASD,
         \label{fig:sequence4}
         \end{center}
     \end{figure}
-    \item f/pm find farm on the map
+    \item \textbf{map visualization}\\
+    Here is shown how the system provides the visualization of the map to the user, with different level of visibility based on their permission.
+        \begin{itemize}
+            \item the user is a farmer: the Model contruct the object that rapresenting the map filled with all the farms saved in the system and only the type of production that are producted in it.
+            \item the user is a policy maker: the Model contruct the map object with the farms located on it with basic production data and the evaluetion of it.
+        \end{itemize}
+    From the Map page is possible, by a click on a specific button, for policy maker to evaluate a farm.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/viewMap.png}
@@ -163,7 +190,8 @@ The functionality offered by the component are the same as the ones in the RASD,
         \label{fig:sequence5}
         \end{center}
     \end{figure}
-    \item pm update the map (evaluation)
+    \item \textbf{policy maker makes an evaluation}\\
+    --Description--
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/updateMap.png}
@@ -171,9 +199,33 @@ The functionality offered by the component are the same as the ones in the RASD,
         \label{fig:sequence6}
         \end{center}
     \end{figure}
-    \item f/pm visualize farm info (page)
-    \item submit notification (f: help, advice | pm: solution)
-    \item f/pm visualize notification
+    \item \textbf{farm's page visualization}\\
+    --Description--
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequance/farmPage.png}
+        \caption{\emph{Visualize farm page} sequence diagram}
+        \label{fig:sequence7}
+        \end{center}
+    \end{figure}
+    \item \textbf{notification submittion}\\
+    --Description--
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequance/sendNotifications.png}
+        \caption{\emph{Send notifications} sequence diagram}
+        \label{fig:sequence8}
+        \end{center}
+    \end{figure}
+    \item \textbf{notification visualization}\\
+    --Description--
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.7\textwidth]{sequance/viewNotifications.png}
+        \caption{\emph{Visualize notifications} sequence diagram}
+        \label{fig:sequence9}
+        \end{center}
+    \end{figure}
     
 \end{enumerate}
 

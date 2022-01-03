@@ -1,6 +1,6 @@
 actor Farmer
 participant WebApplication
-participant WebServices
+participant FWebServer
 participant AccessManager
 participant RegistrationService
 participant Model
@@ -9,19 +9,19 @@ participant DatabaseServer
 
 
 activate Farmer
-Farmer->WebApplication: getRegistrationForum()
+Farmer->WebApplication: getRegistrationForm()
 activate WebApplication
-WebApplication->WebServices:getRegistrationForum
-activate WebServices
-WebServices-->WebApplication:registrationForum
-deactivate WebServices
-WebApplication-->Farmer: registrationForum
+WebApplication->FWebServer:getRegistrationForm
+activate FWebServer
+FWebServer-->WebApplication:registrationForm
+deactivate FWebServer
+WebApplication-->Farmer: registrationForm
 deactivate WebApplication
 Farmer->WebApplication: signup ( name, surname,\n               email, password,\n               farm, position )
 activate WebApplication
-WebApplication->WebServices:sendSignUpReq ( name, surname,\n                              email, password,\n                              farm, position )
-activate WebServices
-WebServices->AccessManager:forwardSignUpReq ( name, surname,\n                                  email, password,\n                                  farm, position )
+WebApplication->FWebServer:sendSignUpReq ( name, surname,\n                              email, password,\n                              farm, position )
+activate FWebServer
+FWebServer->AccessManager:forwardSignUpReq ( name, surname,\n                                  email, password,\n                                  farm, position )
 activate AccessManager
 AccessManager->RegistrationService:signUpReq ( name, surname,\n                     email, password,\n                     farm, position )
 activate RegistrationService
@@ -41,10 +41,10 @@ deactivate Model
 
 RegistrationService-->AccessManager:ok
 deactivate RegistrationService
-AccessManager-->WebServices:farmerLoginPage
+AccessManager-->FWebServer:farmerLoginPage
 deactivate AccessManager
-WebServices-->WebApplication:farmerLoginPage
-deactivate WebServices
+FWebServer-->WebApplication:farmerLoginPage
+deactivate FWebServer
 WebApplication-->Farmer:farmerLoginPage
 deactivate WebApplication
 deactivate Farmer
@@ -63,11 +63,11 @@ activate RegistrationService
 RegistrationService-->AccessManager:error
 deactivate RegistrationService
 activate AccessManager
-AccessManager-->WebServices:error
+AccessManager-->FWebServer:error
 deactivate AccessManager
-activate WebServices
-WebServices-->WebApplication:error
-deactivate WebServices
+activate FWebServer
+FWebServer-->WebApplication:error
+deactivate FWebServer
 activate WebApplication
 WebApplication-->Farmer:error
 deactivate WebApplication

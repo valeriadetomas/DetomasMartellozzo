@@ -1,8 +1,8 @@
 actor PolicyMaker
 actor Farmer
 participant WebApplication
-participant PMWebServices
-participant FWebServices
+participant PMWebServer
+participant FWebServer
 participant NotificationManager
 participant Model
 participant DataManager
@@ -14,27 +14,27 @@ participant DatabaseServer
 activate PolicyMaker
 PolicyMaker->WebApplication:selectFarm(position)
 activate WebApplication
-WebApplication->PMWebServices:selectFarm(position)
-activate PMWebServices
-PMWebServices-->WebApplication:farmName, Set<typeOfProduction,quantity>, evaluation
-deactivate PMWebServices
+WebApplication->PMWebServer:selectFarm(position)
+activate PMWebServer
+PMWebServer-->WebApplication:farmName, Set<typeOfProduction,quantity>, evaluation
+deactivate PMWebServer
 WebApplication-->PolicyMaker:farmName, Set<typeOfProduction,quantity>, evaluation
 deactivate WebApplication
 
 PolicyMaker->WebApplication:click( makeEvaluationButton )
 activate WebApplication
-WebApplication->PMWebServices:getEvaluationForm()
-activate PMWebServices
-PMWebServices-->WebApplication:evaluationForm(farmName)
-deactivate PMWebServices
+WebApplication->PMWebServer:getEvaluationForm()
+activate PMWebServer
+PMWebServer-->WebApplication:evaluationForm(farmName)
+deactivate PMWebServer
 WebApplication-->PolicyMaker:evaluationForm(farmName)
 deactivate WebApplication
 
 PolicyMaker->WebApplication: submitEvaluation( farm, result, content)
 activate WebApplication
-WebApplication->PMWebServices:submitEvaluation( farm, result, content)
-activate PMWebServices
-PMWebServices->NotificationManager:submitEvaluation( email, result, content)
+WebApplication->PMWebServer:submitEvaluation( farm, result, content)
+activate PMWebServer
+PMWebServer->NotificationManager:submitEvaluation( email, result, content)
 activate NotificationManager
 NotificationManager->Model:saveEvaluation (email,result) 
 activate Model
@@ -50,12 +50,12 @@ DataManager-->Model:ok
 deactivate DataManager
 Model-->NotificationManager:ok
 
-NotificationManager-->FWebServices:evaqluation( result, content )
-activate FWebServices
-FWebServices-->WebApplication:evaqluation( result, content )
-deactivate FWebServices
+NotificationManager-->FWebServer:evaqluation( result, content )
+activate FWebServer
+FWebServer-->WebApplication:evaqluation( result, content )
+deactivate FWebServer
 
-WebApplication-->Farmer:evaqluation( result, content )
+WebApplication-->*Farmer:evaqluation( result, content )
 activate Farmer
 deactivate WebApplication
 deactivate Farmer
@@ -63,11 +63,11 @@ deactivate Farmer
 
 Model-->NotificationManager:completeMap
 deactivate Model
-NotificationManager-->PMWebServices:completeMap
+NotificationManager-->PMWebServer:completeMap
 deactivate NotificationManager
 
-PMWebServices-->WebApplication:completeMap
-deactivate PMWebServices
+PMWebServer-->WebApplication:completeMap
+deactivate PMWebServer
 activate WebApplication
 WebApplication-->PolicyMaker:completeMap
 deactivate WebApplication

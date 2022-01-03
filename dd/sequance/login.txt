@@ -1,6 +1,7 @@
 actor User
 participant WebApplication
-participant WebServices
+participant FWebServer
+participant PMWebServer
 participant AccessManager
 participant AuthenticationService
 participant Model
@@ -9,19 +10,19 @@ participant DatabaseServer
 
 alt farmer
 activate User
-User->WebApplication: getLoginForum(farmer)
+User->WebApplication: getLoginForm(farmer)
 activate WebApplication
-WebApplication->WebServices:getLoginForum
-activate WebServices
-WebServices-->WebApplication:loginForum
-deactivate WebServices
-WebApplication-->User: farmerLoginForum
+WebApplication->FWebServer:getLoginForm
+activate FWebServer
+FWebServer-->WebApplication:loginForm
+deactivate FWebServer
+WebApplication-->User: farmerLoginForm
 deactivate WebApplication
 User->WebApplication: login( email, password )
 activate WebApplication
-WebApplication->WebServices:sendLoginReq(email,password)
-activate WebServices
-WebServices->AccessManager:forwardLoginReq(email,password)
+WebApplication->FWebServer:sendLoginReq(email,password)
+activate FWebServer
+FWebServer->AccessManager:forwardLoginReq(email,password)
 activate AccessManager
 AccessManager->AuthenticationService:loginReq(email,password)
 activate AuthenticationService
@@ -42,10 +43,10 @@ AuthenticationService->AuthenticationService: checkCredential
 alt right credentials
 AuthenticationService-->AccessManager:farmerHomePage
 deactivate AuthenticationService
-AccessManager-->WebServices:farmerHomePage
+AccessManager-->FWebServer:farmerHomePage
 deactivate AccessManager
-WebServices-->WebApplication:farmerHomePage
-deactivate WebServices
+FWebServer-->WebApplication:farmerHomePage
+deactivate FWebServer
 WebApplication-->User:farmerHomePage
 deactivate WebApplication
 deactivate User
@@ -55,11 +56,11 @@ activate AuthenticationService
 AuthenticationService-->AccessManager:error
 deactivate AuthenticationService
 activate AccessManager
-AccessManager-->WebServices:error
+AccessManager-->FWebServer:error
 deactivate AccessManager
-activate WebServices
-WebServices-->WebApplication:error
-deactivate WebServices
+activate FWebServer
+FWebServer-->WebApplication:error
+deactivate FWebServer
 activate WebApplication
 WebApplication-->User:error
 activate User
@@ -80,11 +81,11 @@ activate AuthenticationService
 AuthenticationService-->AccessManager:error
 deactivate AuthenticationService
 activate AccessManager
-AccessManager-->WebServices:error
+AccessManager-->FWebServer:error
 deactivate AccessManager
-activate WebServices
-WebServices-->WebApplication:error
-deactivate WebServices
+activate FWebServer
+FWebServer-->WebApplication:error
+deactivate FWebServer
 activate WebApplication
 WebApplication-->User:error
 deactivate WebApplication
@@ -97,19 +98,19 @@ end
 else policy maker
 
 activate User
-User->WebApplication: getLoginForum(policyMaker)
+User->WebApplication: getLoginForm(policyMaker)
 activate WebApplication
-WebApplication->WebServices:getLoginForum
-activate WebServices
-WebServices-->WebApplication:loginForum
-deactivate WebServices
-WebApplication-->User: policyMLoginForum
+WebApplication->PMWebServer:getLoginForm
+activate PMWebServer
+PMWebServer-->WebApplication:loginForm
+deactivate PMWebServer
+WebApplication-->User: policyMLoginForm
 deactivate WebApplication
 User->WebApplication: login( code, password )
 activate WebApplication
-WebApplication->WebServices:sendLoginReq(code,password)
-activate WebServices
-WebServices->AccessManager:forwardLoginReq(code,password)
+WebApplication->PMWebServer:sendLoginReq(code,password)
+activate PMWebServer
+PMWebServer->AccessManager:forwardLoginReq(code,password)
 activate AccessManager
 AccessManager->AuthenticationService:loginReq(code,password)
 activate AuthenticationService
@@ -130,10 +131,10 @@ AuthenticationService->AuthenticationService: checkCredential
 alt right credentials
 AuthenticationService-->AccessManager:policyMakerHomePage
 deactivate AuthenticationService
-AccessManager-->WebServices:policyMakerHomePage
+AccessManager-->PMWebServer:policyMakerHomePage
 deactivate AccessManager
-WebServices-->WebApplication:policyMakerHomePage
-deactivate WebServices
+PMWebServer-->WebApplication:policyMakerHomePage
+deactivate PMWebServer
 WebApplication-->User:policyMakerHomePage
 deactivate WebApplication
 deactivate User
@@ -143,11 +144,11 @@ activate AuthenticationService
 AuthenticationService-->AccessManager:error
 deactivate AuthenticationService
 activate AccessManager
-AccessManager-->WebServices:error
+AccessManager-->PMWebServer:error
 deactivate AccessManager
-activate WebServices
-WebServices-->WebApplication:error
-deactivate WebServices
+activate PMWebServer
+PMWebServer-->WebApplication:error
+deactivate PMWebServer
 activate WebApplication
 WebApplication-->User:error
 activate User
@@ -168,11 +169,11 @@ activate AuthenticationService
 AuthenticationService-->AccessManager:error
 deactivate AuthenticationService
 activate AccessManager
-AccessManager-->WebServices:error
+AccessManager-->PMWebServer:error
 deactivate AccessManager
-activate WebServices
-WebServices-->WebApplication:error
-deactivate WebServices
+activate PMWebServer
+PMWebServer-->WebApplication:error
+deactivate PMWebServer
 activate WebApplication
 WebApplication-->User:error
 deactivate WebApplication

@@ -1,0 +1,84 @@
+actor User
+participant WebApplication
+participant FWebServer
+participant PMWebServer
+participant NotificationManager
+participant Model
+participant DataManager
+participant DatabaseServer
+
+
+alt farmer
+activate User
+
+User->WebApplication: click(notificationButton)
+activate WebApplication
+WebApplication->FWebServer:getNotifications( )
+activate FWebServer
+FWebServer->NotificationManager:getNotifications(email)
+activate NotificationManager
+NotificationManager->Model:getNotifications( email )
+activate Model
+Model->DataManager:getNotification(email)
+activate DataManager
+DataManager->DatabaseServer:getNotification(email)
+activate DatabaseServer
+DatabaseServer-->DataManager:List <notification>
+
+deactivate DatabaseServer
+DataManager-->Model:notifications
+deactivate DataManager
+Model-->NotificationManager:notifications
+
+deactivate Model
+
+NotificationManager-->FWebServer:notifications
+deactivate NotificationManager
+FWebServer-->WebApplication:notifications
+deactivate FWebServer
+WebApplication-->User:notifications
+deactivate WebApplication
+User->WebApplication:select(notification)
+activate WebApplication
+WebApplication-->User: full Notification
+deactivate WebApplication
+
+deactivate User
+
+else policy maker
+activate User
+
+User->WebApplication: click(notificationButton)
+activate WebApplication
+WebApplication->PMWebServer:getNotifications()
+activate PMWebServer
+PMWebServer->NotificationManager:getNotifications(code)
+activate NotificationManager
+NotificationManager->Model:getNotifications(code)
+activate Model
+Model->DataManager:getNotifications(code)
+activate DataManager
+DataManager->DatabaseServer:getNotifications(code)
+activate DatabaseServer
+DatabaseServer-->DataManager:List <notifications>
+deactivate DatabaseServer
+DataManager-->Model:notifications
+deactivate DataManager
+Model-->NotificationManager:notifications
+deactivate Model 
+
+NotificationManager-->PMWebServer:notifications
+deactivate NotificationManager
+PMWebServer-->WebApplication:notifications
+deactivate PMWebServer
+WebApplication-->User:notifications
+deactivate WebApplication
+User->WebApplication:select(notification)
+activate WebApplication
+WebApplication-->User: full Notification
+deactivate WebApplication
+deactivate User
+end
+
+
+

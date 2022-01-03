@@ -1,0 +1,99 @@
+actor User
+participant WebApplication
+participant FWebServer
+participant PMWebServer
+participant ViewInfoManager
+participant Model
+participant DataManager
+participant DatabaseServer
+participant WeatherManager
+participant WeatherServer
+
+alt farmer
+activate User
+
+User->WebApplication: click( farmButton )
+activate WebApplication
+WebApplication->FWebServer:getFarmPage()
+activate FWebServer
+FWebServer->ViewInfoManager:getFarmPage( email )
+activate ViewInfoManager
+ViewInfoManager->Model:getFarmPage( email )
+activate Model
+Model->DataManager:getFramInfo(email)
+activate DataManager
+DataManager->DatabaseServer:getFarmInfo(email)
+activate DatabaseServer
+DatabaseServer-->DataManager:                          farm's name, \n                             position, \nSet< date, Set<typeOfProduction, quantity> >
+DataManager->DatabaseServer:getSensorData(position)
+DatabaseServer-->DataManager: Set< date, Set<sensor, quantity> >
+deactivate DatabaseServer
+DataManager-->Model:farmInfo (name, position, \n                 production, sensors)
+deactivate DataManager
+
+
+Model->WeatherManager:getWeatherInfo(position)
+activate WeatherManager
+WeatherManager->WeatherServer:getWeatherInfo(position)
+activate WeatherServer
+WeatherServer-->WeatherManager: Set< day, Info >
+deactivate WeatherServer
+WeatherManager-->Model:wheather
+
+deactivate WeatherManager
+Model-->ViewInfoManager:farmInfo (name, position,production,\n                   sensors, weather)
+
+
+deactivate Model
+
+ViewInfoManager-->FWebServer:farmInfo (name, position,production,\n                   sensors, weather)
+deactivate ViewInfoManager
+FWebServer-->WebApplication:farmInfo (name, position,production,\n                   sensors, weather)
+deactivate FWebServer
+WebApplication-->User:full Farm Page
+deactivate WebApplication
+
+deactivate User
+
+else policy maker
+activate User
+
+User->WebApplication: search( farm )
+activate WebApplication
+WebApplication->PMWebServer:getFarmPage(farm)
+activate PMWebServer
+PMWebServer->ViewInfoManager:getFarmPage( farm )
+activate ViewInfoManager
+ViewInfoManager->Model:getFarmPage( farm )
+activate Model
+Model->DataManager:getFramInfo(email)
+activate DataManager
+DataManager->DatabaseServer:getFarmInfo(email)
+activate DatabaseServer
+DatabaseServer-->DataManager:                          farm's name, \n                             position, \nSet< date, Set<typeOfProduction, quantity> >
+DataManager->DatabaseServer:getSensorData(position)
+DatabaseServer-->DataManager: Set< date, Set<sensor, quantity> >
+deactivate DatabaseServer
+DataManager-->Model:farmInfo (name, position, \n                 production, sensors)
+deactivate DataManager
+Model->WeatherManager:getWeatherInfo(position)
+activate WeatherManager
+WeatherManager->WeatherServer:getWeatherInfo(position)
+activate WeatherServer
+WeatherServer-->WeatherManager: Set< day, Info >
+deactivate WeatherServer
+WeatherManager-->Model:wheather
+deactivate WeatherManager
+Model-->ViewInfoManager:farmInfo (name, position,production,\n                   sensors, weather)
+deactivate Model
+ViewInfoManager-->PMWebServer:farmInfo (name, position,production,\n                   sensors, weather)
+deactivate ViewInfoManager
+PMWebServer-->WebApplication:farmInfo (name, position,production,\n                   sensors, weather)
+deactivate PMWebServer
+WebApplication-->User:farmPage\nbutton disable
+deactivate WebApplication
+deactivate User
+end
+
+
+
