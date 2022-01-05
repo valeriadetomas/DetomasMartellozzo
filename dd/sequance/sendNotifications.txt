@@ -26,6 +26,8 @@ WebApplication->FWebServer:sendAdvice(typeOfProduction, body)
 activate FWebServer
 FWebServer->NotificationManager:forwardAdviceSubmission (typeOfProduction,\n                    body, email, day, time)
 activate NotificationManager
+NotificationManager->NotificationManager:check \nevaluation
+alt last evaluatio = good
 NotificationManager->Model:newAdvice(typeOfProduction,\n               body, email, day, time)
 activate Model
 Model->DataManager:newAdvice(typeOfProduction,\n                body, email, day, time)
@@ -36,10 +38,13 @@ DatabaseServer-->DataManager:ok
 deactivate DatabaseServer
 deactivate DataManager
 deactivate Model
+else last evaluation = bad
+NotificationManager->NotificationManager:delate notification
 deactivate NotificationManager
 deactivate FWebServer
 deactivate WebApplication
 deactivate User
+end
 
 
 else farmer, help

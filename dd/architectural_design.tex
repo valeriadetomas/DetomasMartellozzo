@@ -191,7 +191,7 @@ The functionality offered by the component are the same as the ones in the RASD,
         \end{center}
     \end{figure}
     \item \textbf{policy maker makes an evaluation}\\
-    --Description--
+    This diagram describes the process of evaluation a farmer by a policy maker. At first, when the day of the month in wich the evaluation must be done, the policy maker select from the map the farm that he wants to evaluate and he clicks on the 'Evaluate' button. His Web Server provides him the form to fill with the results of the evaluation, with already the addresse attached. When this notification is submitted by the policy maker, his web server forward it to the notification manager that deal with the enrollment of the result in the database and also send it to the farmer evaluated.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/updateMap.png}
@@ -200,7 +200,20 @@ The functionality offered by the component are the same as the ones in the RASD,
         \end{center}
     \end{figure}
     \item \textbf{farm's page visualization}\\
-    --Description--
+    This functionality is avaiilable for both users, the only differences are:
+    \begin{itemize}
+        \item a farmer has only a button on his home page that he clicks when wants to visualize his \textbf{own} farm page
+        \item a policy maker has a form on which he writes the name of the farm he wants to visualize and pressing enter sends the request to the web application
+        \item for the first user the received web page will have a button for the notification visualization and the buttons for the creation of  help and advice notification
+    \end{itemize}
+    After received the request, the web application sends it to the view info manager (by the user's server), that collects all the data from the model. The last component gets from the right database all the data to generate all the object rapresenting the page content:
+    \begin{itemize}
+        \item from the application database gets the farm basic information, such as name and surname of the farm's owner, the farm name, the email and the position (as coordinates)
+        \item also from the application database it gets the production's information whith which create a set having as key the date and as value another key-value structure containing for each type of production the quantity crop 
+        \item the third request to the application database is the one to get the sensors data, that these dispositives put automatically in the database and always related to a specific day and position (corresponding to the farm on which they work)
+        \item it asks to the external system to retreive the weather information from the day of the request and all the ones befor in the position on the farm. This information are stored in a database specific of this system
+    \end{itemize}
+    After the model creates the structure for all the content of the page, forward them to the view info manager to the user's server and then the web application that will provide the visualization of these data.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/farmPage.png}
@@ -209,7 +222,12 @@ The functionality offered by the component are the same as the ones in the RASD,
         \end{center}
     \end{figure}
     \item \textbf{notification submittion}\\
-    --Description--
+    Different kind of notification can be sent in the system.
+    \begin{itemize}
+        \item advice: a farmer can select the advice button from his farm's page. He just have to select the type of production on which he wants to gave an advice and write it in the specific form. Will be the framer's server that will attach on it the references of the writer (the email of the farmer), and the date and time on which he submit the advice, before saving it in the database. Before push it in the database, the notification manager checks it the sender is a good farmer and if not just discard the notification.
+        \item help: a farmer who wants to ask a formal request of help also select the help button on his farm's page. As the notification above he select the type and writes the content of the message, where specify the problem he's dealing with. In this case the notification does not need to be saved in a db but the notification manager selects randomly a policy maker as a recipient of it. 
+        \item solution: a policy maker who received a request of help (process described above) can reply to it whith a solution. At first the user have to search the farm ho asks for it, and also all the avices stored in the system database about the type of production on which the problem is specified. Analyzing all these data he can  wrote some advice that should help the farmer with his problem and send him. In the moment when the policy maker selects the help notification on which he wants to respond and then submit it, the web application istantinelly attach the addresse (retreived by the sender of the help selected) and then the notification manager will forward it to him.
+    \end{itemize}
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/sendNotifications.png}
@@ -218,7 +236,7 @@ The functionality offered by the component are the same as the ones in the RASD,
         \end{center}
     \end{figure}
     \item \textbf{notification visualization}\\
-    --Description--
+    In this sequence is shown how the system provide the visualization of the notifications after a request of a user. For the farmer the process starts on his farm's page, where clicking the bell button send the request, dream server collect from the database all his notification. The model crete with the data the structure to be sent to the web application that provide the list to the user. All the messages are in the web application in that moment, so when he select one of the notifications in the list it provides the full content of it. on the other hand the policy maker to visualize his notifications starts from his home page and clicks on the specific button. The rest of the process is equal as for the farmer.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequance/viewNotifications.png}
