@@ -1,8 +1,31 @@
 \subsection{Purpose}
-
+This document describes the design choices that are applied to the Dream system.
+This document includes the architecture of the system and the details of what functionality will be performed in the different modules. 
+Moreover there is a detailed description of how the requirements and use cases specified in the 
+Requirement Analysis and Specification Document will be implemented in the system.
 %---------------------%
 \subsection{Scope}
-
+The aim of the system is to acquire and combine data and information of farmers in Telengana. 
+The system will provide support both to Telengana’s policy makers and to farmers 
+thanks to new innovative technologies.\\
+Through the system, policy makers are able 
+to get a complete picture of the agriculture status in the whole state. In order 
+to obtain this, Dream provides information that makes policy makers able to give 
+incentives to those farmers who are performing well. Moreover it allows them to 
+keep track of those farmers who need help. \\
+The farmers have access to a forum where they are able to communicate with other 
+farmers. The aim of the forum is to share useful suggestions and to let farmers 
+who struggle with something ask for help. \\
+Therefore on the one side policy makers can have an entire perspective of the farms’ 
+situation in the entire state and on the other side farmers can take advantage of the 
+application and discuss with their colleagues.
+\par 
+Hence the application is used by the policy makers as a way to monitor farmers. 
+Through the system they are able to search a farm and have access to its general information. 
+Once a month they also send each farmer an evaluation message where they specify if the farmer activity was
+performed good or bad.\\
+On the contrary farmers can ask for help or write advices. They are free to write messages and communicate with other farmers through a forum 
+that is created specifically for them.
 %---------------------%
 \subsection{Definitions, Acronyms, Abbreviations}
 
@@ -11,6 +34,40 @@
 
 %---------------------%
 \subsection{Reference Documents}
+\begin{itemize}
+    \item Specification document: R\&DD Assignment A.Y. 2021-2022
+    \item alloytool.org : Alloy Documentation
+\end{itemize}
 
 %---------------------%
 \subsection{Document Structure}
+\begin{enumerate}
+    \item \textbf{Introduction}\\
+            This section offers an introduction and a brief overview of the system that is presented in the document. 
+            It highlights the purpose of the document.
+            At the end there is also a glossary that contains a list of definitions, acronyms and abbreviations.
+            
+    \item \textbf{Architectural Design}\\
+            This section starts with a product perspective that contains a description of the system's domain through a class diagram. 
+            It includes also state diagrams which are used to give more details about the behavior of some objects in the model.
+            The section contains also a clear description of the features offered by the system, 
+            it identifies the actors involved and it describes their characteristics.
+            At the end there are domain assumptions and general constraints.
+            
+    
+    \item \textbf{User Interface Design}\\
+            This section enters into the details on how the system interacts with the external world. It describes 
+            the interfaces that are required and offered through several visual mockups. 
+            Moreover the section provides functional and nonfunctional requirements. Functional
+            requirements are additionally described by use cases, sequence diagrams and scenarios.
+            At the end the section focuses on nonfunctional requirements and various limitations that the system might face.
+
+    \item \textbf{Requirement Traceability}\\
+            This section provides the model described through Alloy language.
+            
+    \item \textbf{Implementation, Integration and Test Plan}\\
+            
+    \item \textbf{Effor Spent}\\
+            This section has a record of the hours spent to complete this document.
+
+\end{enumerate}

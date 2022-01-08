@@ -6,7 +6,8 @@ External services do not need to be unit tested since it is assumed that they ar
 
 
 \subsection{Plan Definition}
-The strategy adopted for this phase of the project is a \textbf{bottom-up}: it focus on individual components of the system. Starts from the detailed part, then links these ones to others and form larger components, until the entire system is formed. In this way it is possible to make decisions about low-level utilities and then decide how there will be put together to create high-level construct.\\ \\
+The strategy adopted for this phase of the project is a \textbf{bottom-up}: it focuses on individual components of the system. 
+Starts from the detailed part, then links these ones to others and form larger components, until the entire system is formed. In this way it is possible to make decisions about low-level utilities and then decide how there will be put together to create high-level construct.\\ \\
 In some cases we follow a \textbf{top-down} approach: start from an overview without going into details; then go deeper into more details each step. Top-down approach is used when a component needs another one that manages data it needs, but the second one is not implemented yet. In this way can be created hypothetical data while developing the main functionality. As a result we need to be able to generate feasible \textbf{stubs} used to simulate the data that the system is going to manage both real or randomly, in order to cover more scenarios possibles.\\ \\
 The description starts from server's component because it is the most complex part and the core one that organize the hole system.\\
 During the implementation \textbf{drivers} are used to simulate components that are not implemented yet, or to generate possible request.\\

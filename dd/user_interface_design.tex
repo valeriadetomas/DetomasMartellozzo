@@ -1,4 +1,4 @@
-In this section there is a complete view of hot the web application is going to look. 
+In this section there is a complete view of how the web application is going to look. 
 It includes diagrams that show hot the users can navigate in the user interfaces offered by the aplication.
 Its main purpose is to describe in details the mockups that are already presented in the RASD (reference). Therefore it is easier to understand 
 the main features that the system offers.
@@ -35,7 +35,7 @@ A user can click the button of the type of user that characterizes him.
 
 \subsubsection{Farmer Web Application}
 \textbf{Login}\\ 
-The mockup showed in Figure .. is the initial page that every farmer sees after selecting the type of user. A  farmer can interact with the application only 
+The mockup showed in Figure .. is the initial page that every farmer sees after selecting the type of user. A farmer can interact with the application only 
 after being authenticated. Therefore the farmer can decide to sign up if it is the first time ever that he uses the application or to login in through his authenticated credentials.
 In order to login the user has to provide its email and his password. After being recognized he will be redirected to the home page which is going to be described in the next paragraphs.
 
@@ -65,18 +65,10 @@ they have.
 
 
 \textbf{Farm Page}\\ 
-
-
-\textbf{Send Advice}\\
-
-
-\textbf{View Notification}\\
-
-
-\textbf{Send Request}\\
-
-
-\textbf{Add Production Data}\\
+The mockup showed in Figure .. is the homepage of the farm, the user can see here all the data that interest his farm. On top there is weather forecasting and data from sensor, r
+egarding water consumption and humidity of soil. On the right corner there is a notification button, if it is clicked the system will redirect the user to the \textbf{notification page}(Figure ..).
+Moreover on this page there are showed the most recent productions, divided by date and type. Clicking the '+' button the farmer can \textbf{insert new data}(Figure ...) that will be automatically be added to this list.
+On the right bottom corner the user can click 'Problem' to \textbf{send a request} of help (Figure ..) or on the left 'Advice' to \textbf{send an advice} (Figure ..) that will be added to the system.
 
 
 \subsubsection{Policy Maker Web Application}
@@ -84,3 +76,23 @@ they have.
 The mockup showed in Figure .. is the initial page that every policy maker sees after selecting the type of user.
 A policy maker can interact with the system only after being authenticated. Therefore the policy maker needs to own the authentication code and password previously given to him.
 Once being recognized the application will redirect him to the home page which is going to be described in the next paragraphs.
+
+\textbf{Homepage} \\
+After the successful login, the policy maker is redirected automatically to the homepage (Figure ..). 
+In this page the application allows the user to select the features offered by the system:
+\begin{itemize}
+    \item Search
+    \item Map
+    \item Notifications
+\end{itemize}
+The first one permits the user to type the name of a farm in the search dialog in order to see all the information regarding that farm (Figure ..) and in addition he can review the evaluation if it is not done yet in that month.
+
+\textbf{Map} \\
+After selecting the map functionality on the homepage the user can see an updated version of the map, 
+an example of it is showed in Figure ... 
+The policy maker on this page can see the location and name of the farms in the area, see what type of production 
+they have, their past evaluations and if in the last one they were evaluated positively or negatively.
+
+\textbf{Notifications} \\
+The notification page (Figure ..) shows all the requests sent by farmers. In order to read one of them the user must click on it. The notification now can be read (Figure ..) and can be solved or unsolved. 
+If it is not solved yet the user can click on the reply button and answer it (Figure ..)
