@@ -1,6 +1,7 @@
 %---------------------%
 \subsection{High-level components and their interaction}
-In the following section it is provided a high level view of the architecture of the system, which is structured following the three logic layer:\\
+In the following section it is provided a high level view of the architecture of the system, 
+which is structured following the three logic layer:\\
 
 \begin{figure}[H]
     \begin{center}
@@ -17,15 +18,21 @@ In the following section it is provided a high level view of the architecture of
     as desktop application, or a graphical user interface (GUI), for example. \\ \\Web presentation tiers 
     are usually developed using HTML, CSS and JavaScript. Desktop applications can be written in a variety 
     of languages depending on the platform.
-    \item \textbf{Business Logic or Application Layer(L)}: The application tier is the heart of the application. In this tier, information collected in the presentation tier is processed - sometimes against other information in the data tier - using business logic, a specific set of business rules. The application tier can also add, delete or modify data in the data tier.\\ \\The application tier is typically developed using Python, Java, Perl, PHP or Ruby, and communicates with the data tier using API calls. 
-    \item \textbf{Data Layer (D)}: The data tier, sometimes called database tier, data access tier or back-end, is where the information processed by the application is stored and managed. This can be a relational database management system such as PostgreSQL, MySQL, MariaDB, Oracle, DB2, Informix or Microsoft SQL Server, or in a NoSQL Database server such as Cassandra, CouchDB or MongoDB. 
+    \item \textbf{Business Logic or Application Layer(L)}: The application tier is the heart of the application. 
+    In this tier, information collected in the presentation tier is processed - sometimes against other information in the data tier - 
+    using business logic, a specific set of business rules. The application tier can also add, delete or modify data in the data tier.\\ \\
+    The application tier is typically developed using Python, Java, Perl, PHP or Ruby, and communicates with the data tier using API calls. 
+    \item \textbf{Data Layer (D)}: The data tier, sometimes called database tier, data access tier or back-end, is where the information 
+    processed by the application is stored and managed. This can be a relational database management system such as PostgreSQL, MySQL, MariaDB, 
+    Oracle, DB2, Informix or Microsoft SQL Server, or in a NoSQL Database server such as Cassandra, CouchDB or MongoDB. 
 \end{itemize}
 
-In this case the system is a distributed application that follows the client-server paradigm: it is a two-tier architecture, consisting of a presentation and a data tier. the business logic lives in the data tier only.
+In this case the system is a distributed application that follows the client-server paradigm: it is a two-tier architecture, consisting of a presentation and a data tier. 
+The business logic lives in the data tier only.
 In a two-tier application, all communication goes through the application tier. The presentation tier and the data tier cannot communicate directly with one another. 
 
 Client and server are being allocated into different physical machines and their communication takes place via other components and interfaces, located in the middle of the structure and composed by hardware and software modules. 
-The client is a Web Application, with is by definition a thin client, because of its total dependency from the server; so it only contains the presentation layer.
+The client is a Web Application, which is by definition a thin client, because of its total dependency from the server; so it only contains the presentation layer.
 
 \begin{figure}[H]
     \begin{center}
@@ -38,7 +45,7 @@ The client is a Web Application, with is by definition a thin client, because of
 \begin{itemize}
     \item \textbf{Server side:}
         \begin{itemize}
-            \item \underline{ApplicationServer (DREAM Server)}: it is the central point of the system. Is a server whit all the application logic, that communicates with the other servers. 
+            \item \underline{ApplicationServer (DREAM Server)}: it is the central point of the system. Is a server with all the application logic, that communicates with the other servers. 
             \item \underline{Database Server}: this is the server where all the application data are stored.
             \item \underline{Weather API}: external API used to retrieve data about weather in the territory. This information will be used to fill each farm page.
             \item \underline{Map API}: external API used to retrieve data about the territory.
@@ -112,7 +119,7 @@ More specific and detailed on the server inner components.
 
 %---------------------%
 \subsection{Deployment view}
-The deplyment diagram in figure .. shows the allocation of the software components in the physical tiers of the system. 
+The deplyment diagram in figure \ref{fig:deployment} shows the allocation of the software components in the physical tiers of the system. 
 The system is organized into a three-tier application. This type of architecture can be 
 beneficial because each tier can be developed in parallel and maintained as single modules on separate platforms.
 
@@ -132,6 +139,14 @@ beneficial because each tier can be developed in parallel and maintained as sing
     Therefore all the information processed by the application tier are stored and managed here.
     Data tier is also independent of the two previous tiers. 
 \end{itemize}
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.7\textwidth]{images/Deployment diagram.png}
+    \caption{\emph{Deployment} diagram}
+    \label{fig:deployment}
+    \end{center}
+\end{figure}
 %---------------------%
 \subsection{Runtime view}
 
@@ -144,7 +159,7 @@ The functionality offered by the component are the same as the ones in the RASD,
     In this sequence diagram is shown the sign up operation by a new farmer. After the user fill the form provided by the web application with: name, surmane, farm's name, position, email and password. The Dream server stores all this information as a Farmer object in the Model, and also saves them in the database. At the end of the process redirects the user to the login page, only if some error occurred the data are not saved and the user is asked to repeat the operation.
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequance/signup.png}
+        \includegraphics[width=0.7\textwidth]{sequence/signup.png}
         \caption{\emph{SignUp} sequence diagram}
         \label{fig:sequence1}
         \end{center}
@@ -153,7 +168,7 @@ The functionality offered by the component are the same as the ones in the RASD,
     In this sequence diagram the process of user login is shown, at first for the farmer and then for the policy maker. For both are almost the same, except that the farmers needs to provide email and password as access credentials and the policy maker a code and password. Another difference is in the server that forward the request to login to the Dream server component. If the credentials are wrong or missing the system gave an error message, if not the home page of the user is returned.
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequance/login.png}
+        \includegraphics[width=0.7\textwidth]{sequence/login.png}
         \caption{\emph{Login} sequence diagram}
         \label{fig:sequence2}
         \end{center}
@@ -162,7 +177,7 @@ The functionality offered by the component are the same as the ones in the RASD,
     In this sequence is shown how the system provides the forum with all the messages yet sended after the request of a farmer and a form where he can write a message and a button to send it. As shown, due to the Forum Manager, when a message is send it is saved whit the references of the sender and the date and time. These addictonal information are used to sort the messages by the timestamp and specify the sender name near the message itself.
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequance/forum.png}
+        \includegraphics[width=0.7\textwidth]{sequence/forum.png}
         \caption{\emph{Save message} sequence diagram}
         \label{fig:sequence3}
         \end{center}
@@ -171,7 +186,7 @@ The functionality offered by the component are the same as the ones in the RASD,
     Here is shown how a farmer can submit new information about his production. The Web Application provides him a form to fill with the type of production, the quantity collected and the date on which he collected it. The Server, or better its Production Manager component, build this information as an object collected in the Model and saved then in the database.
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequance/addData-2.png}
+        \includegraphics[width=0.7\textwidth]{sequence/addData-2.png}
         \caption{\emph{Submit production data} sequence diagram}
         \label{fig:sequence4}
         \end{center}
@@ -185,7 +200,7 @@ The functionality offered by the component are the same as the ones in the RASD,
     From the Map page is possible, by a click on a specific button, for policy maker to evaluate a farm.
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequance/viewMap.png}
+        \includegraphics[width=0.7\textwidth]{sequence/viewMap.png}
         \caption{\emph{Visualize map} sequence diagram}
         \label{fig:sequence5}
         \end{center}
@@ -194,7 +209,7 @@ The functionality offered by the component are the same as the ones in the RASD,
     This diagram describes the process of evaluation a farmer by a policy maker. At first, when the day of the month in wich the evaluation must be done, the policy maker select from the map the farm that he wants to evaluate and he clicks on the 'Evaluate' button. His Web Server provides him the form to fill with the results of the evaluation, with already the addresse attached. When this notification is submitted by the policy maker, his web server forward it to the notification manager that deal with the enrollment of the result in the database and also send it to the farmer evaluated.
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequance/updateMap.png}
+        \includegraphics[width=0.7\textwidth]{sequence/updateMap.png}
         \caption{\emph{Make evaluation} sequence diagram}
         \label{fig:sequence6}
         \end{center}
@@ -216,7 +231,7 @@ The functionality offered by the component are the same as the ones in the RASD,
     After the model creates the structure for all the content of the page, forward them to the view info manager to the user's server and then the web application that will provide the visualization of these data.
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequance/farmPage.png}
+        \includegraphics[width=0.7\textwidth]{sequence/farmPage.png}
         \caption{\emph{Visualize farm page} sequence diagram}
         \label{fig:sequence7}
         \end{center}
@@ -230,7 +245,7 @@ The functionality offered by the component are the same as the ones in the RASD,
     \end{itemize}
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequance/sendNotifications.png}
+        \includegraphics[width=0.7\textwidth]{sequence/sendNotifications.png}
         \caption{\emph{Send notifications} sequence diagram}
         \label{fig:sequence8}
         \end{center}
@@ -239,7 +254,7 @@ The functionality offered by the component are the same as the ones in the RASD,
     In this sequence is shown how the system provide the visualization of the notifications after a request of a user. For the farmer the process starts on his farm's page, where clicking the bell button send the request, dream server collect from the database all his notification. The model crete with the data the structure to be sent to the web application that provide the list to the user. All the messages are in the web application in that moment, so when he select one of the notifications in the list it provides the full content of it. on the other hand the policy maker to visualize his notifications starts from his home page and clicks on the specific button. The rest of the process is equal as for the farmer.
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[width=0.7\textwidth]{sequance/viewNotifications.png}
+        \includegraphics[width=0.7\textwidth]{sequence/viewNotifications.png}
         \caption{\emph{Visualize notifications} sequence diagram}
         \label{fig:sequence9}
         \end{center}
