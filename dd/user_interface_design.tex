@@ -17,35 +17,57 @@ both for farmers and policy makers.
 
 \begin{figure}[H]
     \begin{center}
-          \includegraphics[width=1\textwidth]{images/UXdiagram_farmer.png}
+          \includegraphics[width=1.1\textwidth]{images/UXdiagram_farmer.png}
           \caption{Farmer Web Application}
     \end{center}
 \end{figure}
 \begin{figure}[H]
     \begin{center}
-          \includegraphics[width=1\textwidth]{images/UXdiagram_policymaker.png}
+          \includegraphics[width=1.05\textwidth]{images/UXdiagram_policymaker.png}
           \caption{Policy Maker Web Application}
     \end{center}
 \end{figure}
 
 \subsection{Web application}
 \textbf{Dream's homepage} \\
-The first mockup (Figure ..) is the first page that every user sees when accessing the web application. 
+The first mockup (Figure \ref{fig:dream}) is the first page that every user sees when accessing the web application. 
 A user can click the button of the type of user that characterizes him.
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.5\textwidth]{images/mockups/Dream.png}
+    \caption{\emph{Dream} homepage}
+    \label{fig:dream}
+    \end{center}
+\end{figure}
+
 
 \subsubsection{Farmer Web Application}
 \textbf{Login}\\ 
-The mockup showed in Figure .. is the initial page that every farmer sees after selecting the type of user. A farmer can interact with the application only 
+The mockup showed in Figure \ref{fig:mockupLogin} is the initial page that every farmer sees after selecting the type of user. A farmer can interact with the application only 
 after being authenticated. Therefore the farmer can decide to sign up if it is the first time ever that he uses the application or to login in through his authenticated credentials.
 In order to login the user has to provide its email and his password. After being recognized he will be redirected to the home page which is going to be described in the next paragraphs.
 
 \textbf{Registration} \\
-The mockup showed in Figure .. is the sign up page, it allows the farmer to create a new account. This allows him to provide first the information related to his new account. 
+The mockup showed in Figure \ref{fig:mockupSignUp} is the sign up page, it allows the farmer to create a new account. This allows him to provide first the information related to his new account. 
 Therefore he need to write his personal information: name, surname, email and password and in addition to that he must insert his farm name and position.
 The sign up button will add the new farmer to the system and redirect the user to the login page where he can access the system.
+\begin{figure}[H]
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/FLogIn.png}
+        \caption{\emph{Farmer Log in} Web page}
+        \label{fig:mockupLogin}
+    \end{minipage}\hfill
+    \begin{minipage}{0.39\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/FSignUp.png}
+        \caption{\emph{Farmer Sign up} Web page}
+        \label{fig:mockupSignUp}
+    \end{minipage}
+\end{figure}
 
 \textbf{Homepage}\\
-The homepage of the farmer's web application allows the user to select the features offered by the system:
+The homepage (Figure \ref{fig:farmhome})of the farmer's web application allows the user to select the features offered by the system:
 \begin{itemize}
     \item Forum
     \item Map
@@ -53,46 +75,158 @@ The homepage of the farmer's web application allows the user to select the featu
 \end{itemize}
 After clicking one of this buttons the farmer will be redirected to the selected pages, which are goin to be described in the next paragraphs.
 
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.5\textwidth]{images/mockups/FHome.png}
+    \caption{\emph{Farmer} homepage}
+    \label{fig:farmhome}
+    \end{center}
+\end{figure}
+
 \textbf{Forum}\\
-The mockup in Figure .. shows a basic example of what the forum page will look like. The farmer on this page is able to read messages written by other farmer or 
+The mockup in Figure \ref{fig:forum} shows a basic example of what the forum page will look like. The farmer on this page is able to read messages written by other farmer or 
 write a message in order to answer or ask something to the other ones. After he types a message he need to click send in order to add the message in the application. 
 After the button is clicked the user can see an updated version of this page.
 
 \textbf{Map}\\
 After selecting the map functionality on the homepage the user can see an updated version of the map, 
-an example of it is showed in Figure ... The farmer on this page can see the location and name of the other farms and see what type of production 
+an example of it is showed in Figure \ref{fig:farmmap} The farmer on this page can see the location and name of the other farms and see what type of production 
 they have.
 
+\begin{figure}[H]
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/Forum.png}
+        \caption{\emph{Forum} Web page}
+        \label{fig:forum}
+    \end{minipage}\hfill
+    \begin{minipage}{0.39\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/FMap.png}
+        \caption{\emph{Map} Web page}
+        \label{fig:farmmap}
+    \end{minipage}
+\end{figure}
 
 \textbf{Farm Page}\\ 
-The mockup showed in Figure .. is the homepage of the farm, the user can see here all the data that interest his farm. On top there is weather forecasting and data from sensor, r
-egarding water consumption and humidity of soil. On the right corner there is a notification button, if it is clicked the system will redirect the user to the \textbf{notification page}(Figure ..).
-Moreover on this page there are showed the most recent productions, divided by date and type. Clicking the '+' button the farmer can \textbf{insert new data}(Figure ...) that will be automatically be added to this list.
-On the right bottom corner the user can click 'Problem' to \textbf{send a request} of help (Figure ..) or on the left 'Advice' to \textbf{send an advice} (Figure ..) that will be added to the system.
+The mockup showed in Figure \ref{fig:farm} is the homepage of the farm, the user can see here all the data that interest his farm. On top there is weather forecasting and data from sensor, r
+egarding water consumption and humidity of soil. On the right corner there is a notification button, if it is clicked the system will redirect the user to the \textbf{notification page}(Figure \ref{fig:farmnotif}).
+Moreover on this page there are showed the most recent productions, divided by date and type. Clicking the '+' button the farmer can \textbf{insert new data}(Figure \ref{fig:addData}) that will be automatically be added to this list.
+On the right bottom corner the user can click 'Problem' to \textbf{send a request} of help (Figure \ref{fig:help}) or on the left 'Advice' to \textbf{send an advice} (Figure ..) that will be added to the system.
 
+\begin{figure}[H]
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/FFarm.png}
+        \caption{\emph{Farm's} Web page}
+        \label{fig:farm}
+    \end{minipage}\hfill
+    \begin{minipage}{0.39\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/FNotifications.png}
+        \caption{\emph{Map} Web page}
+        \label{fig:farmnotif}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/FAddData.png}
+        \caption{\emph{Forum} Web page}
+        \label{fig:addData}
+    \end{minipage}\hfill
+    \begin{minipage}{0.39\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/Help.png}
+        \caption{\emph{Send Request} Web page}
+        \label{fig:help}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.5\textwidth]{images/mockups/Advice.png}
+    \caption{\emph{Send Advice} Web Page}
+    \label{fig:advice}
+    \end{center}
+\end{figure}
 
 \subsubsection{Policy Maker Web Application}
 \textbf{Login} \\
-The mockup showed in Figure .. is the initial page that every policy maker sees after selecting the type of user.
+The mockup showed in Figure \ref{fig:pmlogin} is the initial page that every policy maker sees after selecting the type of user.
 A policy maker can interact with the system only after being authenticated. Therefore the policy maker needs to own the authentication code and password previously given to him.
 Once being recognized the application will redirect him to the home page which is going to be described in the next paragraphs.
 
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.53\textwidth]{images/mockups/PMLogIn.png}
+        \caption{\emph{Login} page}
+        \label{fig:pmlogin}
+    \end{center}
+\end{figure}
+
 \textbf{Homepage} \\
-After the successful login, the policy maker is redirected automatically to the homepage (Figure ..). 
+After the successful login, the policy maker is redirected automatically to the homepage (Figure \ref{fig:pmhome}). 
 In this page the application allows the user to select the features offered by the system:
 \begin{itemize}
     \item Search
     \item Map
     \item Notifications
 \end{itemize}
-The first one permits the user to type the name of a farm in the search dialog in order to see all the information regarding that farm (Figure ..) and in addition he can review the evaluation if it is not done yet in that month.
+The first one permits the user to type the name of a farm in the search dialog in order to see all the information regarding that farm (Figure \ref{fig:pmfarm}) and in addition he can review the evaluation if it is not done yet in that month.
+
+\begin{figure}[H]
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/PMHome.png}
+        \caption{\emph{Policy Maker} homepage}
+        \label{fig:pmhome}
+    \end{minipage}\hfill
+    \begin{minipage}{0.39\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/PMFarm.png}
+        \caption{\emph{Farm's view} page}
+        \label{fig:pmfarm}
+    \end{minipage}
+\end{figure}
 
 \textbf{Map} \\
 After selecting the map functionality on the homepage the user can see an updated version of the map, 
-an example of it is showed in Figure ... 
+an example of it is showed in Figure \ref{fig:pmmap}.
 The policy maker on this page can see the location and name of the farms in the area, see what type of production 
 they have, their past evaluations and if in the last one they were evaluated positively or negatively.
 
 \textbf{Notifications} \\
-The notification page (Figure ..) shows all the requests sent by farmers. In order to read one of them the user must click on it. The notification now can be read (Figure ..) and can be solved or unsolved. 
-If it is not solved yet the user can click on the reply button and answer it (Figure ..)
+The notification page (Figure \ref{fig:pmnotifs}) shows all the requests sent by farmers. In order to read one of them the user must click on it. The notification now can be read (Figure \ref{fig:pmnot}) and can be solved or unsolved. 
+If it is not solved yet the user can click on the reply button and answer it (Figure \ref{fig:pmanswer})
+
+\begin{figure}[H]
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/PMMap.png}
+        \caption{\emph{Map's view} page}
+        \label{fig:pmmap}
+    \end{minipage}\hfill
+    \begin{minipage}{0.39\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/PMNotifications.png}
+        \caption{\emph{Notifications view} page}
+        \label{fig:pmnotifs}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/PMNotification.png}
+        \caption{\emph{Notification view} page}
+        \label{fig:pmnot}
+    \end{minipage}\hfill
+    \begin{minipage}{0.39\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{images/mockups/Solution.png}
+        \caption{\emph{Send solution} page}
+        \label{fig:pmanswer}
+    \end{minipage}
+\end{figure}
