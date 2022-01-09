@@ -262,13 +262,53 @@ The functionality offered by the component are the same as the ones in the RASD,
     
 \end{enumerate}
 
+
 %---------------------%
 \subsection{Component interfaces}
+In this section an image (Figure \ref{fig:interfacesView}) of all the interfaces that compose the system is provide. In it is not only specified the name of them but also all the methods provided by the components they implements. To follow there is a brief explenation of each one. All the methods present in the sequence diagrams must be present here. 
+
+\begin{adjustbox}{angle=90,center,caption=\emph{Interfaces} view,nofloat=figure}
+    \includegraphics[width=1.6\linewidth]{images/Interfaces.png}
+    \label{fig:interfacesView}
+\end{adjustbox}
+
+
+
+\begin{itemize}
+    \item \textbf{Farmer Server Interface}: this interfaces is specific for the farmer user. Its main pourpose is to connected the Web Application with the Server of the farmer; in order to do that its methods are implemented by the web aplication. In the case in wich the data required by the user are already loaded in the client server, it will not forward the request to the server system, the data will be provided immediatelly. On the other hand, for example when data required are stored in the db of the application, the request will be forwarded to the system (with the following components, as specified in the section 2.2)
+    \item \textbf{Policy Maker Interface}: this interface works as the previous one, with the difference that the user that needs these functionality is a policy maker; the component that implements its method is also the web application, but comunicates with the policy maker web server.
+    \item \textbf{Web Interface}: this interface have the main pourpose of forwarding the user request to the right component of the system. The components that have its exposed methods are the farmer web server and the policy maker web server.   
+    \item \textbf{Access Interface}: in this case the interface is inside the system server. Its main scope is to provide methods for the authentication or registration phase; to reach its goal the component that implements its method is the access manager, that also forward the request to the next right component: one for the registration and one for the authentication.
+    \item \textbf{User Interface}: with the aim of ability the access to a user, this itervace provide to the register service and authentication service components the method to comunicate with the model, and retreive the information to check the credentials or save the new ones.
+    \item \textbf{Model Interface}: this interface it's in the core of the system. It let components as view info manager, notification manager, production manager and forum manager comunicate with the model, and also retreive the object to reply to a user with the information required. These data could be already in the model or that component will retreive them from the db or the external system. This interface provide also methods for the model to ask to the maps manager and weather manager some data.  
+    \item \textbf{Data Interface}: with this interface the model has all the methods to request the data needed from the database, forwarding it to the data manager component. 
+    \item \textbf{DBMS API}: here is the final step of the data reaching, where the methods of this interface are used to translate the request of the system in a db language (as SQL).
+    \item \textbf{Map API}: this interface is used when data from the map external syetm are required, so with its methos let the maps manager comunicate with the maps server.
+    \item \textbf{Weather API}: the same as the one above but with the weather information, so its exposed methods are implemented by the weather manager that comunicates with the weather server.
+\end{itemize}
+%---------------------%
+\subsection{Logical description of data}
 
 
 
 %---------------------%
 \subsection{Architectural styles and patterns}
+
+\subsubsection{Server-Client architecture}
+As specified in section 2.2 the system is develop over a client-server architecture. It is a computing model in which the server hosts, delivers and manages most of the resources and services to be consumed by the client. This type of architecture has one or more client computers connected to a central server over a network or internet connection. This system shares computing resources. Server-client architecture is also known as a networking computing model or client-server network because all the requests and services are delivered over a network.
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=0.5\textwidth]{images/client-server.png}
+    \caption{\emph{Server-client} architecture}
+    \label{fig:client-server}
+    \end{center}
+\end{figure}
+
+\subsubsection{Four-tier architecture}
+presentation on web application (user browser), logic (web server and dream server)[2] and data on db 
+
+\subsubsection{RESTful architecture}
+REST stands for REpresentational State Transfer. REST is a software architectural style that defines the set of rules to be used for creating web services. Web services which follow the REST architectural style are known as RESTful web services. It allows requesting systems to access and manipulate web resources by using a uniform and predefined set of rules. Interaction in REST based systems happen through Internet’s Hypertext Transfer Protocol (HTTP). This protocolo is used not only to retreive data but also generate operation on them in many different forms, such as XML and JSON.
 
 %---------------------%
 \subsection{Other design decisions}
