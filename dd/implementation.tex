@@ -1,9 +1,9 @@
---Description--
-
+In order to implement, integrate and test the system, the strategy adopted follows a bottom 
+up approach. To do so components are divided into different groups, every group will be implemented independently from the others. 
+Every time a group of components has been implemented it will be integrated and tested.
+Once that all the groups have been successfully implemented, integrated and tested separately. After that the components will be 
+put all together and integrated and tested again.
 External services do not need to be unit tested since it is assumed that they are reliable. 
-
-[The order of the implementation, and why that one!]
-
 
 \subsection{Plan Definition}
 The strategy adopted for this phase of the project is a \textbf{bottom-up}: it focuses on individual components of the system. 
@@ -63,3 +63,24 @@ The components that retreive information from external system are implemented la
         \end{center}
     \end{figure}
 \end{enumerate}
+
+\newpage
+\subsection{Technologies}
+This section will specify the more appropriate tools to use in the development of the system. 
+
+\subsubsection{Development Tools}
+
+\textbf{Database}\\
+For the data storage system it is going to be used MySql Server which is a fully managed database service.
+
+\noindent\textbf{Back-end Server}\\
+The back-end part of the application will be developed inwin Java EE with TomEE application. 
+Java EE consists of a powerful set of specifications and APIs which facilitates development of Enterprise Applications and allows developers to focus on the most important aspects of the application. 
+It allows components to stablish and manage database connectivity.
+The business and web tier provide an API, a set of services (endpoints) for interacting with business functions of the application, over an HTTP-based protocol.
+
+
+\noindent\textbf{Front-end web app}\\
+Java will be used for the front-end web application. Thymeleaf is a modern server-side Java template engine for web application. Thanks to this framework the web application 
+will be easily developed. Moreover Thymeleaf is intuitive and very expressive so it makes implementation faster.
+

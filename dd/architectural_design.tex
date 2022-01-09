@@ -13,20 +13,23 @@ which is structured following the three logic layer:\\
 
 \begin{itemize}
     \item \textbf{Presentation Layer (P)}: The presentation tier is the user interface and communication layer 
-    of the application, where the user interacts with the application. Its main purpose is to display  and collect information from the user. This top-level tier can run on a web browser, 
+    of the application, where the end user interacts with the application. Its main purpose is to display 
+    information to and collect information from the user. This top-level tier can run on a web browser, 
     as desktop application, or a graphical user interface (GUI), for example. \\ \\Web presentation tiers 
-    are usually developed using HTML, CSS and JavaScript. Desktop applications can be written in a variety of languages depending on the platform.
+    are usually developed using HTML, CSS and JavaScript. Desktop applications can be written in a variety 
+    of languages depending on the platform.
     \item \textbf{Business Logic or Application Layer(L)}: The application tier is the heart of the application. 
     In this tier, information collected in the presentation tier is processed - sometimes against other information in the data tier - 
-    using business logic, a specific set of business rules. The application tier can also add, delete or modify data the data tier.\\ \\
+    using business logic, a specific set of business rules. The application tier can also add, delete or modify data in the data tier.\\ \\
     The application tier is typically developed using Python, Java, Perl, PHP or Ruby, and communicates with the data tier using API calls. 
     \item \textbf{Data Layer (D)}: The data tier, sometimes called database tier, data access tier or back-end, is where the information 
     processed by the application is stored and managed. This can be a relational database management system such as PostgreSQL, MySQL, MariaDB, 
     Oracle, DB2, Informix or Microsoft SQL Server, or in a NoSQL Database server such as Cassandra, CouchDB or MongoDB. 
 \end{itemize}
 
-In this case the system is a distributed application that follows the client-server paradigm: it is a three-tier architecture, consisting of a presentation, a bussiness and a data tier. 
-In a two-tier application, all communication goes through the business tier. The presentation tier and the data tier cannot communicate directly with one another. 
+In this case the system is a distributed application that follows the client-server paradigm: it is a two-tier architecture, consisting of a presentation and a data tier. 
+The business logic lives in the data tier only.
+In a two-tier application, all communication goes through the application tier. The presentation tier and the data tier cannot communicate directly with one another. 
 
 Client and server are being allocated into different physical machines and their communication takes place via other components and interfaces, located in the middle of the structure and composed by hardware and software modules. 
 The client is a Web Application, which is by definition a thin client, because of its total dependency from the server; so it only contains the presentation layer.
@@ -42,7 +45,7 @@ The client is a Web Application, which is by definition a thin client, because o
 \begin{itemize}
     \item \textbf{Server side:}
         \begin{itemize}
-            \item \underline{ApplicationServer (DREAM Server)}: it is the central point of the system. It is a server with all the application logic, that communicates with the other servers. 
+            \item \underline{ApplicationServer (DREAM Server)}: it is the central point of the system. Is a server with all the application logic, that communicates with the other servers. 
             \item \underline{Database Server}: this is the server where all the application data are stored.
             \item \underline{Weather API}: external API used to retrieve data about weather in the territory. This information will be used to fill each farm page.
             \item \underline{Map API}: external API used to retrieve data about the territory.
@@ -71,13 +74,13 @@ In this section it is provided a description of the components and interfaces of
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Dream Server}: this component contains the whole application logic of the system. The interfaces provided allow the user, either a farmer or policy maker, to communicate with the server; they also allow the server to interact with external system that provides different kind of data.
-    \item \textbf{Web Application}: it represents the web application reachable by any web browser. It is the first component that any user uses to connect with the system.
-    \item \textbf{Farmer Web Server}: it provides the interface of a farmer to interact with the system. It has the minimum logic to make visible the content of the application provided by the server of the system. 
-    \item \textbf{PolicyMaker Web Server}: the same as the one above but specific of the policy maker.
-    \item \textbf{Database Server}: it provides the interfaces in all the processes needed to require or store information from the database of the system
+    \item \textbf{Dream Server}: this component contains the hole application logic of the system. The interfaces it provides allow the user, both farmer and policy maker, to comunicate with the server; them also allow the server to interact with external system that provide different kind of data.
+    \item \textbf{Web Application}: it rapresents the web application reachable by any web browser. It is the first component that any user uses to connect with the system.
+    \item \textbf{Farmer Web Server}: it provides the interface to a farmer to interact with the system. It has the minimum logic to make visible the content of the application provided by the server of the system. 
+    \item \textbf{PolicyMaker Web Server}: the same as the one above but specific for the policy maker.
+    \item \textbf{Database Server}: it provides the interfaces in all the processes that need to require or store information from the database of the system
     \item \textbf{Maps Server}: it provides the interfaces when the Dream server needs the maps data to make it visible and fill it with all the farms in the sistem, locating them by the position provided from their owner in the registration phase.
-    \item \textbf{Weather Server}: it provides the interfaces to Dream server to retrieve weather data of the territory.
+    \item \textbf{Weather Server}: it provides the interfaces to Dream server to retreive weather data of the territory.
 \end{itemize}
 
 \subsubsection{Server}
@@ -92,40 +95,40 @@ More specific and detailed on the server inner components.
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Access Manager}: this component provides the Web interface of the user and makes login and sign up operations possible. It recognizes the operations required and if it is permitted (sign up only for new farmers) it communicate with the right component that follows.
-    \item \textbf{Registration Service}: if a request of a new registration occurs, it checks the credential submitted by the new user and creates the object that represents it. It will be then stored in the Model; in fact it has an iterface to communicate with the Model.
-    \item \textbf{Authentication Service}: this component is called by the Access manager when an authentication request occurs. In this case it collects the data about this specific user and verify if the credential submitted corresponds. When the credentials are matched it permits the user to access the system, otherwise it will generate an error signal.
-    \item \textbf{ViewInfoManager}: this component is used by the system to collect the data from the Model requested by the user. It operates when a farm's page has to be constructed with all the information visible in it.
-    \item \textbf{Notification Manager}: this component differs based on the notification it receives:
+    \item \textbf{Access Manager}: this component provide the Web interface to the user and make login and sign up opratation possible. It recognize the operation required and if it is permitted (sign up only for new farmers) comunicate with the right component that follow.
+    \item \textbf{Registration Service}: if a request of a new registration occupr, it check the credential submitted by the new user and create the object that represent it, that will be stored in the Model; in fact it has an iterface to comunicate with the Model.
+    \item \textbf{Authentication Service}: this component is called by the Access manager when an authentication request occur. In this case it collect the data about this specific user and verify if the credential submitted correspond. When them maches it let the user to access the system, otherwise generate an error signal.
+    \item \textbf{ViewInfoManager}: this component is used by the system to collect the data from the Model request by the user. It operates when a farm's page has to be constructed with all the information visible in it.
+    \item \textbf{Notification Manager}: this component has the ability to differ based on the notification it receives:
         \begin{itemize}
-            \item advice: when a farmer submits this type of notification his only duty is the one to make possible the saving of it.
-            \item help: when a farmer submits a request of help this component selects randomly one policy maker (from the ones saved in the system) and sends him the notification.
-            \item solution: when a policy maker decides to respond to a request of help, he sends this type of notification. This component forwards the notification to the addressee.
-            \item evaluation: when a policy maker evaluates a farm, this component takes care of sending it to the owner of the farm.
+            \item advice: when a farmer submit this type of notification his only duty is the one to make possible the saving of it.
+            \item help: when a farmer submit a request of help this component select randomly one policy maker (from the ones saved in the system) and send him the notification.
+            \item solution: when a policy maker decides to respond to a request of help, he send this type of notification. This componenet forward it to the addressee.
+            \item evaluation: when a policy maker evaluate a farm, this component takes care of sending it to the owner of the farm.
         \end{itemize}
-    For all the four type of notifications it includes the current day and time of the submission.
-    This component also makes possible to the user to visualize the list of all notifications received and, if asked, visualize in details the one selected.
+    For all thee four type of notifications it attach the current day and time of the subbmission.
+    This component also make possible to the user to visualize the list of all notifications received and, if asked, visualize in details the one selected.
 
-    \item \textbf{Production Manager}: this component, by its connection to the model via \underline{Model interface}, provides all production data required for a specific farm. 
-    \item \textbf{Forum Manager}: this component manages all the messages communication between farmers via forum. It gets all the messages in it, saved them as List in the Model and communicates to it the new ones, that has to be saved (including also date and time).
-    \item \textbf{Model}: this component has a main role in the system because it represents the data so all other components need to interact with it, to provide the page and informations required.
+    \item \textbf{Production Manager}: this component, by its connection to the model via \underline{Model interface}, povides all production data required for a specific farm. 
+    \item \textbf{Forum Manager}: this component manage all the messages comunication between farmers via forum. It gets all the messages in it, saved as  List in the Model and comunicate to it the new ones, that has to mìbe saved (attaching to it the date and time).
+    \item \textbf{Model}: this component have a main role in the system because it rapresents the data so all other components needs to interact with it, to ptovide the page and informations required.
     \item \textbf{Data Manager}: it manages all the process where data are needed by the system. It uses methods provided by the DBMS API to execute queries on the database and object-relational mapping to the Model.
-    \item \textbf{Maps Manager}: this component is used to retrieve map data, in order to provide a visualization of where each farmer registered in the system is located in the area.
-    \item \textbf{Weather Manager}: this component is used to retrieve weather data specific of the position of each farm. It maps to the Model the information from a relational to an object construct as a structure where the key is the farm position and in the value another structure to linked each day the weather and temperature.
+    \item \textbf{Maps Manager}: this component is used to retreive map data, in order to provide a visualization of where each farmer registered in the system are located in the territory.
+    \item \textbf{Weather Manager}: this component is used to retreive weather data specific in the position of the farms. It map to the Model the information from a relational to an object construct as a structure where the key is the farm position and in the value another structure to linked each day the weather and temperature.
 \end{itemize}
 
 %---------------------%
 \subsection{Deployment view}
-The deployment diagram in figure \ref{fig:deployment} shows the allocation of the software components in the physical tiers of the system. 
-The system is organized into a four-tier application. This type of architecture can be 
+The deplyment diagram in figure \ref{fig:deployment} shows the allocation of the software components in the physical tiers of the system. 
+The system is organized into a three-tier application. This type of architecture can be 
 beneficial because each tier can be developed in parallel and maintained as single modules on separate platforms.
 
-In order to manage the web side of the clients the architecture can not be represented by only three tiers. With this aim the architecture includes an extra presentation tier. 
 
 \begin{itemize}
     \item \textbf{Presentation Tier}: it is the user interface of the application, where the user interacts with the application. 
     In this case it can only be a computer with a web browser running on an operating system (for example MacOS).
-    One of them is composed by the web app and the otheer one by the web server. The web server is also responsible for the communication between application server and the client.
+    It is composed by the web app an the web server. The web server is responsible for the communication between application server 
+    and the client.
 
     \item \textbf{Application Tier}: it is the logic tier of the application. Where all the information 
     collected in the previous tier are processed using business logic. This tier is also 
@@ -147,12 +150,13 @@ In order to manage the web side of the clients the architecture can not be repre
 %---------------------%
 \subsection{Runtime view}
 
-In this section the focus is on the specific (dynamic) interaction between the components of the system, in other words this section specifies the behaviour of the system at runtime.
-The functionalities offered by the component are the same as the ones in the RASD, but this time the focus is on how the internal components provides it.
+In this section the focus is on the specific (dynamic) interaction between the components of the system; in other world the behaviour of the system at runtime.
+The functionality offered by the component are the same as the ones in the RASD, but this time the focus is on how the internal components provides it.
+(MAKE SURE THAT THE OPERATION AND COMPONENT ARE ALL DEFINED IN THE COMPONENT DIAG/VIEW, in particular the interfaces that receives the msg)
 
 \begin{enumerate}
     \item \textbf{farmer registration}\\
-    In this sequence diagram is shown the sign up operation by a new farmer. After the user fills the form provided by the web application with: name, surmane, farm's name, position, email and password. The Dream server stores all this information as a Farmer object in the Model, and also saves them in the database. At the end of the process redirects the user to the login page, only if some error occurred the data is not saved and the user is asked to repeat the operation.
+    In this sequence diagram is shown the sign up operation by a new farmer. After the user fill the form provided by the web application with: name, surmane, farm's name, position, email and password. The Dream server stores all this information as a Farmer object in the Model, and also saves them in the database. At the end of the process redirects the user to the login page, only if some error occurred the data are not saved and the user is asked to repeat the operation.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/signup.png}
@@ -161,7 +165,7 @@ The functionalities offered by the component are the same as the ones in the RAS
         \end{center}
     \end{figure}
     \item \textbf{login}\\
-    In this sequence diagram it is shown the process of user login, first for the farmer and then for the policy maker. For both of them it is almost the same, except that the each farmer needs to provide email and password as access credentials and each policy maker a code and password. Another difference is that the server forward the user to login to the Dream server component. If the credentials are wrong or missing the system gave an error message, if not the home page of the user is returned.
+    In this sequence diagram the process of user login is shown, at first for the farmer and then for the policy maker. For both are almost the same, except that the farmers needs to provide email and password as access credentials and the policy maker a code and password. Another difference is in the server that forward the request to login to the Dream server component. If the credentials are wrong or missing the system gave an error message, if not the home page of the user is returned.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/login.png}
@@ -170,7 +174,7 @@ The functionalities offered by the component are the same as the ones in the RAS
         \end{center}
     \end{figure}
     \item \textbf{farmer read and write on forum}\\
-    In this sequence is shown how the system provides the forum with all the messages yet sended after the request of a farmer and a form where he can write a message and a button to send it. As shown, due to the Forum Manager, when a message is sent it is saved with the references of the sender, the date and time. These addictonal information are used to sort the messages by the timestamp and specify the sender name near the message itself.
+    In this sequence is shown how the system provides the forum with all the messages yet sended after the request of a farmer and a form where he can write a message and a button to send it. As shown, due to the Forum Manager, when a message is send it is saved whit the references of the sender and the date and time. These addictonal information are used to sort the messages by the timestamp and specify the sender name near the message itself.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/forum.png}
@@ -179,7 +183,7 @@ The functionalities offered by the component are the same as the ones in the RAS
         \end{center}
     \end{figure}
     \item \textbf{farmer submit production data}\\
-    Here is shown how a farmer can submit new information about his production. The Web Application provides him a form to fill with the type of production, the quantity collected and the date on which he collected it. The Server, or better its Production Manager component, builds this information as an object collected in the Model and then saved in the database.
+    Here is shown how a farmer can submit new information about his production. The Web Application provides him a form to fill with the type of production, the quantity collected and the date on which he collected it. The Server, or better its Production Manager component, build this information as an object collected in the Model and saved then in the database.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/addData-2.png}
@@ -202,7 +206,7 @@ The functionalities offered by the component are the same as the ones in the RAS
         \end{center}
     \end{figure}
     \item \textbf{policy maker makes an evaluation}\\
-    This diagram describes the process of evaluation a farmer by a policy maker. At first, when the day of the month in which the evaluation must be done, the policy maker selects from the map the farm that he wants to evaluate and he clicks on the 'Evaluate' button. His Web Server provides him the form to fill with the results of the evaluation, with already the addressee attached. When this notification is submitted by the policy maker, his web server forwards it to the notification manager that deals with the enrollment of the result in the database and also sends it to the farmer evaluated.
+    This diagram describes the process of evaluation a farmer by a policy maker. At first, when the day of the month in wich the evaluation must be done, the policy maker select from the map the farm that he wants to evaluate and he clicks on the 'Evaluate' button. His Web Server provides him the form to fill with the results of the evaluation, with already the addresse attached. When this notification is submitted by the policy maker, his web server forward it to the notification manager that deal with the enrollment of the result in the database and also send it to the farmer evaluated.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/updateMap.png}
@@ -211,20 +215,20 @@ The functionalities offered by the component are the same as the ones in the RAS
         \end{center}
     \end{figure}
     \item \textbf{farm's page visualization}\\
-    This functionality is available for both users, the only differences are:
+    This functionality is avaiilable for both users, the only differences are:
     \begin{itemize}
-        \item a farmer has only a button on his home page that he clicks it when he wants to visualize his \textbf{own} farm page
-        \item a policy maker has a form on which he writes the name of the farm he wants to visualize and after pressing enter sends the request to the web application
-        \item for the first user the received web page will has a button for the notification visualization and the buttons for the creation of  help and advice notification
+        \item a farmer has only a button on his home page that he clicks when wants to visualize his \textbf{own} farm page
+        \item a policy maker has a form on which he writes the name of the farm he wants to visualize and pressing enter sends the request to the web application
+        \item for the first user the received web page will have a button for the notification visualization and the buttons for the creation of  help and advice notification
     \end{itemize}
-    After receiving the request, the web application sends it to the view info manager (by the user's server), that collects all the data from the model. The last component gets from the right database all the data to generate all the object rapresenting the page content:
+    After received the request, the web application sends it to the view info manager (by the user's server), that collects all the data from the model. The last component gets from the right database all the data to generate all the object rapresenting the page content:
     \begin{itemize}
         \item from the application database gets the farm basic information, such as name and surname of the farm's owner, the farm name, the email and the position (as coordinates)
         \item also from the application database it gets the production's information whith which create a set having as key the date and as value another key-value structure containing for each type of production the quantity crop 
         \item the third request to the application database is the one to get the sensors data, that these dispositives put automatically in the database and always related to a specific day and position (corresponding to the farm on which they work)
-        \item it asks to the external system to retreive the weather information from the day of the request and all the ones before in the position on the farm. These information are stored in a database specific of this system
+        \item it asks to the external system to retreive the weather information from the day of the request and all the ones befor in the position on the farm. This information are stored in a database specific of this system
     \end{itemize}
-    After the model creates the structure for all the content of the page, forwards them to the view info manager to the user's server and then the web application that will provide the visualization of these data.
+    After the model creates the structure for all the content of the page, forward them to the view info manager to the user's server and then the web application that will provide the visualization of these data.
     \begin{figure}[H]
         \begin{center}
         \includegraphics[width=0.7\textwidth]{sequence/farmPage.png}
@@ -233,7 +237,7 @@ The functionalities offered by the component are the same as the ones in the RAS
         \end{center}
     \end{figure}
     \item \textbf{notification submittion}\\
-    Different kind of notifications can be sent in the system.
+    Different kind of notification can be sent in the system.
     \begin{itemize}
         \item advice: a farmer can select the advice button from his farm's page. He just have to select the type of production on which he wants to gave an advice and write it in the specific form. Will be the framer's server that will attach on it the references of the writer (the email of the farmer), and the date and time on which he submit the advice, before saving it in the database. Before push it in the database, the notification manager checks it the sender is a good farmer and if not just discard the notification.
         \item help: a farmer who wants to ask a formal request of help also select the help button on his farm's page. As the notification above he select the type and writes the content of the message, where specify the problem he's dealing with. In this case the notification does not need to be saved in a db but the notification manager selects randomly a policy maker as a recipient of it. 
@@ -261,35 +265,43 @@ The functionalities offered by the component are the same as the ones in the RAS
 
 %---------------------%
 \subsection{Component interfaces}
-In this section an image (Figure \ref{fig:interfacesView}) of all the interfaces that compose the system is provided. In the diagram it is not only specified the name of them but also all the methods provided by the components they implements. To follow there is a brief explenation of each one. All the methods present in the sequence diagrams must be present here. 
+In this section an image (Figure \ref{fig:interfacesView}) of all the interfaces that compose the system is provide. In it is not only specified the name of them but also all the methods provided by the components they implements. To follow there is a brief explenation of each one. All the methods present in the sequence diagrams must be present here. 
 
 \begin{adjustbox}{angle=90,center,caption=\emph{Interfaces} view,nofloat=figure}
     \includegraphics[width=1.6\linewidth]{images/Interfaces.png}
     \label{fig:interfacesView}
 \end{adjustbox}
 
+
+
 \begin{itemize}
-    \item \textbf{Farmer Server Interface}: this interfaces is specific for the farmer user. Its main porpose is to connect the Web Application with the Server of the farmer; in order to do that, its methods are implemented by the web application. In the case in which the data required by the user are already loaded in the client server, it will not forward the request to the server system, the data will be provided immediately. On the other hand, for example when data required are stored in the database of the application, the request will be forwarded to the system (with the following components, as specified in the section 2.2)
-    \item \textbf{Policy Maker Interface}: this interface works as the previous one, with the difference that the user that needs this functionality is a policy maker; the component that implements its method is also the web application, but communicates with the policy maker web server.
-    \item \textbf{Web Interface}: this interface has the main porpose of forwarding the user requests to the right component of the system. The components that have its exposed methods are the farmer web server and the policy maker web server.   
-    \item \textbf{Access Interface}: in this case the interface is inside the system server. Its main scope is to provide methods for the authentication or registration phase; to reach its goal the component that implements its method is the access manager, that also forwards the request to the next right component: one for the registration and one for the authentication.
-    \item \textbf{User Interface}: with the aim of letting the user to access, this interface provides to the register service and authentication service components the method to communicate with the model, and retrieve the information to check the credentials or save the new ones.
-    \item \textbf{Model Interface}: this interface it is in the core of the system. It lets components as view info manager, notification manager, production manager and forum manager communicate with the model, and also retrieve the object to reply to a user with the information required. These data could be already in the model or that component will retrieve them from the database or the external system. This interface provides also methods for the model to ask to the maps manager and weather manager some data.  
+    \item \textbf{Farmer Server Interface}: this interfaces is specific for the farmer user. Its main pourpose is to connected the Web Application with the Server of the farmer; in order to do that its methods are implemented by the web aplication. In the case in wich the data required by the user are already loaded in the client server, it will not forward the request to the server system, the data will be provided immediatelly. On the other hand, for example when data required are stored in the db of the application, the request will be forwarded to the system (with the following components, as specified in the section 2.2)
+    \item \textbf{Policy Maker Interface}: this interface works as the previous one, with the difference that the user that needs these functionality is a policy maker; the component that implements its method is also the web application, but comunicates with the policy maker web server.
+    \item \textbf{Web Interface}: this interface have the main pourpose of forwarding the user request to the right component of the system. The components that have its exposed methods are the farmer web server and the policy maker web server.   
+    \item \textbf{Access Interface}: in this case the interface is inside the system server. Its main scope is to provide methods for the authentication or registration phase; to reach its goal the component that implements its method is the access manager, that also forward the request to the next right component: one for the registration and one for the authentication.
+    \item \textbf{User Interface}: with the aim of ability the access to a user, this itervace provide to the register service and authentication service components the method to comunicate with the model, and retreive the information to check the credentials or save the new ones.
+    \item \textbf{Model Interface}: this interface it's in the core of the system. It let components as view info manager, notification manager, production manager and forum manager comunicate with the model, and also retreive the object to reply to a user with the information required. These data could be already in the model or that component will retreive them from the db or the external system. This interface provide also methods for the model to ask to the maps manager and weather manager some data.  
     \item \textbf{Data Interface}: with this interface the model has all the methods to request the data needed from the database, forwarding it to the data manager component. 
-    \item \textbf{DBMS API}: here is the final step of the data reaching, where the methods of this interface are used to translate the request of the system in a database language (as SQL).
-    \item \textbf{Map API}: this interface is used when data from the map external syetm are required, so with its methods lets the maps manager communicate with the maps server.
-    \item \textbf{Weather API}: the same as the one above but with the weather information, so its exposed methods are implemented by the weather manager that communicates with the weather server.
+    \item \textbf{DBMS API}: here is the final step of the data reaching, where the methods of this interface are used to translate the request of the system in a db language (as SQL).
+    \item \textbf{Map API}: this interface is used when data from the map external syetm are required, so with its methos let the maps manager comunicate with the maps server.
+    \item \textbf{Weather API}: the same as the one above but with the weather information, so its exposed methods are implemented by the weather manager that comunicates with the weather server.
 \end{itemize}
 %---------------------%
 \subsection{Logical description of data}
+All the data will be stored in a database. 
+The entity relationship diagram showed in Figure \ref{fig:er} shows the relationships of entity sets stored in the database.
 
 
+\begin{adjustbox}{angle=90,center,caption=\emph{Interfaces} view,nofloat=figure}
+    \includegraphics[width=1.6\linewidth]{images/ER diagram.png}
+    \label{fig:er}
+\end{adjustbox}
 
 %---------------------%
 \subsection{Architectural styles and patterns}
 
 \subsubsection{Server-Client architecture}
-As specified in section \ref{fig:system diagram}{2.2} the system is developed over a client-server architecture. It is a computing model in which the server hosts, delivers and manages most of the resources and services to be consumed by the client. This type of architecture has one or more client computers connected to a central server over a network or internet connection. This system shares computing resources. Server-client architecture is also known as a networking computing model or client-server network because all the requests and services are delivered over a network.
+As specified in section 2.2 the system is develop over a client-server architecture. It is a computing model in which the server hosts, delivers and manages most of the resources and services to be consumed by the client. This type of architecture has one or more client computers connected to a central server over a network or internet connection. This system shares computing resources. Server-client architecture is also known as a networking computing model or client-server network because all the requests and services are delivered over a network.
 \begin{figure}[H]
     \begin{center}
     \includegraphics[width=0.5\textwidth]{images/client-server.png}
@@ -299,18 +311,9 @@ As specified in section \ref{fig:system diagram}{2.2} the system is developed ov
 \end{figure}
 
 \subsubsection{Four-tier architecture}
-It is now required to distribute the different layer (specified in section 2.1) along the system. This approach makes possible a creation of a thin-client. We chose to adopt a four-tier architecture devided as follow:
-\begin{itemize}
-    \item Web Application: that allows the user to directly interact with the system. It has the only the presentation duty.
-    \item Web Server: this tier also provide the presentation functionality, it is required to manage the web side of the client. It's interaction with the user is through an internet connection.
-    \item Dream server: the most complex and important of the system, where all the logic of the system is placed.
-    \item Database: there is an internal database on which are stored almost all the imformation and also the two outsider on which the system interact to retreive addictional data. This tier deal with the locic layer.
-\end{itemize}
-Presentation on web application (user browser), logic (web server and dream server)[2] and data on database 
+presentation on web application (user browser), logic (web server and dream server)[2] and data on db 
 
 \subsubsection{RESTful architecture}
-REST stands for REpresentational State Transfer. REST is a software architectural style that defines the set of rules to be used for creating web services. Web services which follow the REST architectural style are known as RESTful web services. They allow requesting systems to access and manipulate web resources by using a uniform and predefined set of rules. Interaction in REST based systems happen through Internet’s Hypertext Transfer Protocol (HTTP). This protocol is used not only to retrieve data but also generate operation on them in many different forms, such as XML and JSON.
+REST stands for REpresentational State Transfer. REST is a software architectural style that defines the set of rules to be used for creating web services. Web services which follow the REST architectural style are known as RESTful web services. It allows requesting systems to access and manipulate web resources by using a uniform and predefined set of rules. Interaction in REST based systems happen through Internet’s Hypertext Transfer Protocol (HTTP). This protocolo is used not only to retreive data but also generate operation on them in many different forms, such as XML and JSON.
 
-%---------------------%
-\subsection{Other design decisions}
 
